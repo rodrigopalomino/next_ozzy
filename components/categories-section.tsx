@@ -1,0 +1,71 @@
+import Image from "next/image";
+import Link from "next/link";
+
+const categories = [
+  {
+    title: "Nuevo",
+    subtitle: "Drops recientes",
+    href: "/nuevo",
+    image: "/img/cat-nuevo.jpg",
+  },
+  {
+    title: "Ropa",
+    subtitle: "Todo el catálogo",
+    href: "/ropa/Categoria%201",
+    image: "/img/cat-ropa.avif",
+  },
+  {
+    title: "Ofertas",
+    subtitle: "Precios especiales",
+    href: "/ofertas",
+    image: "/img/cat-ofertas.jpg",
+  },
+];
+
+export default function CategoriesSection() {
+  return (
+    <section>
+      <div className="flex items-end justify-between gap-4">
+        <div>
+          <h2 className="text-xl font-semibold sm:text-2xl">Explora</h2>
+          <p className="mt-1 text-sm text-neutral-600">
+            Encuentra tu estilo en segundos.
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-5 grid gap-4 md:grid-cols-3">
+        {categories.map((c) => (
+          <Link
+            key={c.title}
+            href={c.href}
+            className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-100"
+          >
+            <div className="relative h-44 sm:h-52">
+              <Image
+                src={c.image}
+                alt={c.title}
+                fill
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+            </div>
+
+            <div className="absolute inset-0 flex items-end">
+              <div className="p-5">
+                <div className="text-lg font-semibold text-white">
+                  {c.title}
+                </div>
+                <div className="mt-1 text-sm text-white/85">{c.subtitle}</div>
+
+                <div className="mt-3 inline-flex rounded-full bg-white/90 px-4 py-2 text-xs font-semibold text-neutral-900">
+                  Explorar
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
