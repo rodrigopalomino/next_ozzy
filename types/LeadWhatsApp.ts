@@ -1,5 +1,5 @@
 import { ID, ISODateString, OrigenLead } from "./helpers-enums";
-import { Producto } from "./producto";
+import { Producto } from "./Producto";
 import { VarianteProducto } from "./VarianteProducto";
 
 export type LeadWhatsApp = {

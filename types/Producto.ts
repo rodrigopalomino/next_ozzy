@@ -4,7 +4,7 @@ import {
   ID,
   ISODateString,
 } from "./helpers-enums";
-import { ImagenProducto } from "./imagenProducto";
+import { ImagenProducto } from "./ImagenProducto";
 import { LeadWhatsApp } from "./LeadWhatsApp";
 import { PrecioProducto } from "./PrecioProducto";
 import { ProductoCategoria } from "./ProductoCategoria";
@@ -22,6 +22,7 @@ export type Producto = {
   precioBase?: DecimalLike | null;
 
   // relaciones
+
   imagenes?: ImagenProducto[];
   videos?: VideoProducto[];
   variantes?: VarianteProducto[];

@@ -2,7 +2,7 @@
 "use client";
 
 import { api } from "@/lib/api";
-import { Producto } from "@/types/producto";
+import { Producto } from "@/types/Producto";
 import { useQuery } from "@tanstack/react-query";
 
 export type ProductosResponse = {

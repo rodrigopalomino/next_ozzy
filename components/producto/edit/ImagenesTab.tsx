@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // src/components/admin/productos/edit/tabs/ImagenesTab.tsx
 "use client";
 
@@ -204,9 +205,12 @@ function ImageManagerShopifyLike({
   function setPrincipalUI(id: string) {
     setItems((prev) => {
       const next = prev.map((x) =>
-        x.id === id ? { ...x, tipo: "principal" } : { ...x, tipo: "galeria" },
+        x.id === id
+          ? { ...x, tipo: "principal" as const }
+          : { ...x, tipo: "galeria" as const },
       );
-      next.sort((a, b) => (a.tipo === "principal" ? -1 : 1));
+
+      next.sort((a) => (a.tipo === "principal" ? -1 : 1));
       return next.map((x, i) => ({ ...x, orden: i }));
     });
   }

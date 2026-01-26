@@ -1,7 +1,7 @@
 import { Color } from "./Color";
 import { DecimalLike, ID, ISODateString } from "./helpers-enums";
 import { LeadWhatsApp } from "./LeadWhatsApp";
-import { Producto } from "./producto";
+import { Producto } from "./Producto";
 import { Talla } from "./Talla";
 
 export type VarianteProducto = {

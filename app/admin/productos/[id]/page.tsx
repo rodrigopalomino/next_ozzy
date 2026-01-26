@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // app/admin/productos/[id]/page.tsx
 "use client";
 
@@ -199,9 +200,9 @@ export default function Page() {
     }
 
     setRelaciones({
-      selectedCatIds: (producto.categorias ?? []).map((x) => x.categoria.id),
-      selectedColIds: (producto.colecciones ?? []).map((x) => x.coleccion.id),
-      selectedBadgeIds: (producto.insignias ?? []).map((x) => x.insignia.id),
+      selectedCatIds: (producto.categorias ?? []).map((x) => x.categoria!.id),
+      selectedColIds: (producto.colecciones ?? []).map((x) => x.coleccion!.id),
+      selectedBadgeIds: (producto.insignias ?? []).map((x) => x.insignia!.id),
     });
   }, [producto]);
 
@@ -225,7 +226,7 @@ export default function Page() {
         activo: Boolean(precio.activo),
       };
 
-      if (body.porcentajeDescuento < 0 || body.porcentajeDescuento > 100) {
+      if (body.porcentajeDescuento! < 0 || body.porcentajeDescuento! > 100) {
         throw new Error("% Descuento debe estar entre 0 y 100");
       }
       if (body.precioOferta != null && body.precioOferta < 0) {
@@ -345,7 +346,15 @@ export default function Page() {
             productoId={id}
             state={{ form: variantesForm, setForm: setVariantesForm }}
             catalog={{ tallas, colores }}
-            variantes={producto.variantes ?? []}
+            variantes={(producto.variantes ?? []).map((v) => ({
+              ...v,
+              precio:
+                v.precio == null
+                  ? null
+                  : typeof v.precio === "number"
+                    ? v.precio
+                    : Number(String(v.precio).replace(",", ".")),
+            }))}
           />
         </TabsContent>
 

@@ -1,5 +1,5 @@
 import { DecimalLike, ID, ISODateString } from "./helpers-enums";
-import { Producto } from "./producto";
+import { Producto } from "./Producto";
 
 export type PrecioProducto = {
   productoId: ID;
