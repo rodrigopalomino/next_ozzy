@@ -1,8 +1,8 @@
-import { ID, ISODateString } from "./helpers-enums";
+import { ISODateString } from "./helpers-enums";
 import { VarianteProducto } from "./VarianteProducto";
 
 export type Color = {
-  id: ID;
+  id: number;
   nombre: string; // "Negro", "Blanco", ...
   hex?: string | null;
 

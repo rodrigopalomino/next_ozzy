@@ -14,8 +14,8 @@ export type CreateProductoVideoBody = {
 };
 
 export type CreateProductoVideoResponse = {
-  id: string;
-  productoId: string;
+  id: number;
+  productoId: number;
   plataforma: PlataformaVideo;
   url: string;
   etiqueta: string | null;
@@ -24,7 +24,7 @@ export type CreateProductoVideoResponse = {
   updatedAt: string;
 };
 
-export function useCreateProductoVideo(productoId: string) {
+export function useCreateProductoVideo(productoId: number) {
   const qc = useQueryClient();
 
   return useMutation<

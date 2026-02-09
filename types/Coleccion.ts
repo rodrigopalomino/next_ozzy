@@ -1,8 +1,8 @@
-import { ID, ISODateString } from "./helpers-enums";
+import { ISODateString } from "./helpers-enums";
 import { ProductoColeccion } from "./ProductoColeccion";
 
 export type Coleccion = {
-  id: ID;
+  id: number;
   nombre: string;
   slug: string;
 

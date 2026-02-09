@@ -1,4 +1,4 @@
-import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 import "./globals.css";
 import { Inter, Sora } from "next/font/google";
 

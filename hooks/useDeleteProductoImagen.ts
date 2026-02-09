@@ -4,11 +4,11 @@
 import { api } from "@/lib/api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-export function useDeleteProductoImagen(productoId: string) {
+export function useDeleteProductoImagen(productoId: number) {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (imgId: string) => {
+    mutationFn: async (imgId: number) => {
       return api
         .delete(`admin/producto/${productoId}/imagenes/${imgId}`)
         .json();

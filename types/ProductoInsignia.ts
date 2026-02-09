@@ -1,10 +1,10 @@
-import { ID, ISODateString } from "./helpers-enums";
+import { ISODateString } from "./helpers-enums";
 import { Insignia } from "./Insignia";
 import { Producto } from "./Producto";
 
 export type ProductoInsignia = {
-  productoId: ID;
-  insigniaId: ID;
+  producto_id: number;
+  insignia_id: number;
 
   asignadoEn: ISODateString;
 

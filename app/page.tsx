@@ -1,3 +1,5 @@
+"use client";
+
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import ProductCarousel from "@/components/product-carousel";
@@ -11,87 +13,122 @@ import SocialSection from "@/components/social-section";
 import StoresSection from "@/components/stores-section";
 import CategoriesSection from "@/components/categories-section";
 
-const featured = [
-  {
-    id: "1",
-    name: "Camiseta Ray",
-    price: 50,
-    discountPercent: 50,
-    image: "/img/polo.png",
-    badge: "-50%",
-  },
-  {
-    id: "2",
-    name: "Camiseta Ray",
-    price: 55,
-    image: "/img/polo.png",
-    badge: "Nuevo",
-  },
-  {
-    id: "3",
-    name: "Camiseta Ray",
-    price: 45,
-    image: "/img/polo.png",
-    badge: "Tendencia",
-  },
-  { id: "4", name: "Camiseta Ray", price: 60, image: "/img/polo.png" },
-  { id: "5", name: "Camiseta Ray", price: 52, image: "/img/polo.png" },
-];
+import { useProductos } from "@/hooks/producto/useProductos";
+import type { Producto } from "@/types/Producto";
 
-const offers = [
-  {
-    id: "6",
-    name: "Camiseta Ray",
-    price: 50,
-    discountPercent: 30,
-    image: "/img/polo.png",
-    badge: "-30%",
-  },
-  {
-    id: "7",
-    name: "Camiseta Ray",
-    price: 58,
-    discountPercent: 20,
-    image: "/img/polo.png",
-    badge: "-20%",
-  },
-  {
-    id: "8",
-    name: "Camiseta Ray",
-    price: 49,
-    discountPercent: 15,
-    image: "/img/polo.png",
-    badge: "-15%",
-  },
-  { id: "9", name: "Camiseta Ray", price: 59, image: "/img/polo.png" },
-  { id: "10", name: "Camiseta Ray", price: 53, image: "/img/polo.png" },
-];
+type UiItem = {
+  id: string;
+  name: string;
+  price: number;
+  discountPercent?: number;
+  image: string; // principal
+  hoverImage?: string; // ✅ hover opcional
+  badge?: string;
+};
 
-const bestSellers = [
-  {
-    id: "11",
-    name: "Camiseta Ray",
-    price: 55,
-    image: "/img/polo.png",
-    badge: "Top",
-  },
-  {
-    id: "12",
-    name: "Camiseta Ray",
-    price: 49,
-    discountPercent: 10,
-    image: "/img/polo.png",
-    badge: "-10%",
-  },
-  { id: "13", name: "Camiseta Ray", price: 62, image: "/img/polo.png" },
-  { id: "14", name: "Camiseta Ray", price: 58, image: "/img/polo.png" },
-  { id: "15", name: "Camiseta Ray", price: 52, image: "/img/polo.png" },
-  { id: "16", name: "Camiseta Ray", price: 50, image: "/img/polo.png" },
-  { id: "17", name: "Camiseta Ray", price: 59, image: "/img/polo.png" },
-  { id: "18", name: "Camiseta Ray", price: 57, image: "/img/polo.png" },
-];
+function pickImage(p: Producto) {
+  const imgs = p?.imagenes ?? [];
+  if (!Array.isArray(imgs) || imgs.length === 0) return "/img/polo.png";
+
+  const ordered = imgs
+    .slice()
+    .sort((a, b) => Number(a?.orden ?? 0) - Number(b?.orden ?? 0));
+
+  const principal = ordered.find((x) => x?.tipo === "principal");
+  return principal?.url ?? ordered[0]?.url ?? "/img/polo.png";
+}
+
+function calcDiscountPercent(p: Producto): number | undefined {
+  const precio = p?.precio;
+  if (!precio?.activo) return undefined;
+
+  const original = Number(precio?.precioOriginal ?? 0);
+  const oferta =
+    precio?.precioOferta == null ? null : Number(precio?.precioOferta);
+
+  if (!Number.isFinite(original) || original <= 0) return undefined;
+  if (oferta == null || !Number.isFinite(oferta) || oferta <= 0)
+    return undefined;
+  if (oferta >= original) return undefined;
+
+  return Math.round(((original - oferta) / original) * 100);
+}
+
+function getPrice(p: Producto) {
+  const precioBase = Number(p?.precioBase ?? 0);
+  const precio = p?.precio;
+
+  const oferta =
+    precio?.activo && precio?.precioOferta != null
+      ? Number(precio?.precioOferta)
+      : null;
+
+  if (oferta != null && Number.isFinite(oferta) && oferta > 0) return oferta;
+  if (Number.isFinite(precioBase) && precioBase > 0) return precioBase;
+
+  return 0;
+}
+
+function getBadge(p: Producto): string | undefined {
+  const d = calcDiscountPercent(p);
+  if (d) return `-${d}%`;
+
+  // Si tu backend incluye insignia real:
+  // producto.insignias: [{ insignia: { nombre: "TOP" } }]
+  const insignias = p?.insignias ?? [];
+  const nombre = insignias?.[0]?.insignia?.nombre;
+  if (typeof nombre === "string" && nombre.trim()) return nombre.trim();
+
+  return undefined;
+}
+
+function pickHoverImage(p: Producto) {
+  const imgs = p?.imagenes ?? [];
+  if (!Array.isArray(imgs) || imgs.length < 2) return undefined;
+
+  const ordered = imgs
+    .slice()
+    .sort((a, b) => Number(a?.orden ?? 0) - Number(b?.orden ?? 0));
+
+  // ✅ segunda imagen como hover
+  return ordered[1]?.url;
+}
+
+function toUiItem(p: Producto): UiItem {
+  return {
+    id: String(p?.id),
+    name: String(p?.nombre ?? ""),
+    price: getPrice(p),
+    discountPercent: calcDiscountPercent(p),
+    image: pickImage(p),
+    hoverImage: pickHoverImage(p), // ✅
+    badge: getBadge(p),
+  };
+}
+function hasOferta(p: Producto) {
+  const precio = p?.precio;
+  return Boolean(
+    precio?.activo &&
+    (precio?.precioOferta != null ||
+      Number(precio?.porcentajeDescuento ?? 0) > 0),
+  );
+}
 
 export default function HomePage() {
+  // ✅ usa TU hook genérico (getProductos)
+  const { data: resp } = useProductos({
+    page: 1,
+    limit: 80,
+    include: ["imagenes", "precio", "insignias"],
+  });
+
+  const productos: Producto[] = resp?.data ?? [];
+
+  // ✅ reemplazo directo de tu data de prueba
+  const featured = productos.slice(0, 10).map(toUiItem);
+  const offers = productos.filter(hasOferta).slice(0, 10).map(toUiItem);
+  const bestSellers = productos.slice(0, 12).map(toUiItem);
+
   return (
     <div className="min-h-dvh bg-white text-neutral-900">
       <SiteHeader />

@@ -1,8 +1,8 @@
-import { ID, ISODateString } from "./helpers-enums";
+import { ISODateString } from "./helpers-enums";
 
 export type ImagenProducto = {
-  id: ID;
-  productoId: ID;
+  id: number;
+  productoId: number;
 
   url: string;
   alt?: string | null;

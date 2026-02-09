@@ -1,9 +1,4 @@
-import {
-  DecimalLike,
-  EstadoProducto,
-  ID,
-  ISODateString,
-} from "./helpers-enums";
+import { DecimalLike, EstadoProducto, ISODateString } from "./helpers-enums";
 import { ImagenProducto } from "./ImagenProducto";
 import { LeadWhatsApp } from "./LeadWhatsApp";
 import { PrecioProducto } from "./PrecioProducto";
@@ -14,7 +9,7 @@ import { VarianteProducto } from "./VarianteProducto";
 import { VideoProducto } from "./VideoProducto";
 
 export type Producto = {
-  id: ID;
+  id: number;
   nombre: string;
   slug: string;
   descripcion?: string | null;

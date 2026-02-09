@@ -5,12 +5,12 @@ import { api } from "@/lib/api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export type DeleteProductoVideoResponse = {
-  productoId: string;
-  videoId: string;
+  productoId: number;
+  videoId: number;
   deleted: true;
 };
 
-export function useDeleteProductoVideo(productoId: string, videoId: string) {
+export function useDeleteProductoVideo(productoId: number, videoId: number) {
   const qc = useQueryClient();
 
   return useMutation<DeleteProductoVideoResponse>({

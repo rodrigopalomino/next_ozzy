@@ -1,10 +1,10 @@
 import { Categoria } from "./Categoria";
-import { ID, ISODateString } from "./helpers-enums";
+import { ISODateString } from "./helpers-enums";
 import { Producto } from "./Producto";
 
 export type ProductoCategoria = {
-  productoId: ID;
-  categoriaId: ID;
+  producto_id: number;
+  categoria_id: number;
 
   asignadoEn: ISODateString;
 

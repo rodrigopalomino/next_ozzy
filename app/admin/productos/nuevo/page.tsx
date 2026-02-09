@@ -18,7 +18,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   EstadoProducto,
   useCreateProducto,
-} from "@/hooks/productoo/useCreateProducto";
+} from "@/hooks/producto/useCreateProducto";
 
 function slugify(value: string) {
   return value

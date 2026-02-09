@@ -1,16 +1,19 @@
-// src/hooks/useCategorias.ts
-"use client";
-
-import { useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
+import { useQuery } from "@tanstack/react-query";
+
+import { QueryOptions, buildQueryOptions } from "@/lib/query-options";
+import { PaginatedResponse } from "@/types/PaginatedResponse";
 import { Categoria } from "@/types/Categoria";
 
-export function useCategorias() {
-  return useQuery({
-    queryKey: ["categorias"],
+export const useCategorias = (options: QueryOptions = {}) => {
+  const { searchParams, queryKey } = buildQueryOptions("categoria", options);
+
+  return useQuery<PaginatedResponse<Categoria>>({
+    queryKey,
     queryFn: async () => {
-      return api.get("categoria").json<Categoria[]>();
+      return api
+        .get("categoria", { searchParams })
+        .json<PaginatedResponse<Categoria>>();
     },
-    staleTime: 1000 * 60 * 5,
   });
-}
+};

@@ -1,8 +1,8 @@
-import { ID, ISODateString, PlataformaVideo } from "./helpers-enums";
+import { ISODateString, PlataformaVideo } from "./helpers-enums";
 
 export type VideoProducto = {
-  id: ID;
-  productoId: ID;
+  id: number;
+  productoId: number;
 
   plataforma: PlataformaVideo;
   url: string;

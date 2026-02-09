@@ -8,10 +8,13 @@ export type CreateProductoImagenBody = {
   url: string;
   alt?: string | null;
   orden: number;
-  tipo: "principal" | "galeria";
+
+  // ✅ nuevo modelo
+  esPrincipal?: boolean;
+  esHover?: boolean;
 };
 
-export function useCreateProductoImagen(productoId: string) {
+export function useCreateProductoImagen(productoId: number) {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -23,7 +26,6 @@ export function useCreateProductoImagen(productoId: string) {
         .json();
     },
     onSuccess: async () => {
-      // refresca el producto → imágenes actualizadas
       await queryClient.invalidateQueries({
         queryKey: ["producto", productoId],
       });

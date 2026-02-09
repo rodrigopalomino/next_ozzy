@@ -7,18 +7,17 @@ import { useParams } from "next/navigation";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { useProducto } from "@/hooks/productoo/useProducto";
+import { useProducto } from "@/hooks/producto/useProducto";
 import { useCategorias } from "@/hooks/categoria/useCategorias";
 import { useColecciones } from "@/hooks/coleccion/useColecciones";
-import { useInsignias } from "@/hooks/insignia/useInsignias";
 import { useTallas } from "@/hooks/talla/useTallas";
 import { useColores } from "@/hooks/color/useColores";
 
 import {
   useUpsertProductoPrecio,
   type UpsertProductoPrecioBody,
-} from "@/hooks/productoo/useUpsertProductoPrecio";
-import { useDeleteProductoPrecio } from "@/hooks/productoo/useDeleteProductoPrecio";
+} from "@/hooks/producto/useUpsertProductoPrecio";
+import { useDeleteProductoPrecio } from "@/hooks/producto/useDeleteProductoPrecio";
 import { ProductosHeader } from "@/components/producto/edit/ProductosHeader";
 import { GeneralTab } from "@/components/producto/edit/GeneralTab";
 import { PrecioTab } from "@/components/producto/edit/PrecioTab";
@@ -26,6 +25,7 @@ import { ImagenesTab } from "@/components/producto/edit/ImagenesTab";
 import { VideosTab } from "@/components/producto/edit/VideosTab";
 import { VariantesTab } from "@/components/producto/edit/VariantesTab";
 import { RelacionesTab } from "@/components/producto/edit/RelacionesTab";
+import { useInsignias } from "@/hooks/insignia/useInsignia";
 
 type EstadoProducto = "ACTIVO" | "OCULTO" | "ARCHIVADO";
 type PlataformaVideo = "INSTAGRAM" | "TIKTOK";
@@ -49,9 +49,9 @@ export type PrecioForm = {
 };
 
 export type RelacionesForm = {
-  selectedCatIds: string[];
-  selectedColIds: string[];
-  selectedBadgeIds: string[];
+  selectedCatIds: number[];
+  selectedColIds: number[];
+  selectedBadgeIds: number[];
 };
 
 export type VideosForm = {
@@ -62,8 +62,8 @@ export type VideosForm = {
 };
 
 export type VariantesForm = {
-  tallaId: string;
-  colorId: string;
+  talla_id: number;
+  color_id: number;
   sku: string;
   precio: string;
   stock: string;
@@ -100,13 +100,37 @@ export default function Page() {
   const params = useParams<{ id: string }>();
   const id = params?.id;
 
-  const { data: producto, isLoading, isError } = useProducto(id);
+  const {
+    data: responseProducto,
+    isLoading,
+    isError,
+  } = useProducto(Number(id), {
+    include: [
+      "imagenes",
+      "insignias",
+      "categorias",
+      "colecciones",
+      "variantes",
+      "variantes.color",
+      "variantes.talla",
+      "videos",
+      "precio",
+    ],
+  });
+  const producto = responseProducto?.data;
 
-  const { data: cats = [] } = useCategorias();
-  const { data: cols = [] } = useColecciones();
-  const { data: badges = [] } = useInsignias();
-  const { data: tallas = [] } = useTallas();
-  const { data: colores = [] } = useColores();
+  const { data: reponseCats } = useCategorias();
+  const { data: reponseCols } = useColecciones();
+  const { data: responseBadges } = useInsignias();
+  const { data: responseTallas } = useTallas();
+  const { data: responseColores } = useColores();
+
+  const cats = reponseCats?.data ?? [];
+  const cols = reponseCols?.data ?? [];
+  const badges = responseBadges?.data ?? [];
+
+  const tallas = responseTallas?.data ?? [];
+  const colores = responseColores?.data ?? [];
 
   // hooks precio/oferta
   const { mutateAsync: upsertPrecioAsync, isPending: isSavingPrecio } =
@@ -149,8 +173,8 @@ export default function Page() {
   });
 
   const [variantesForm, setVariantesForm] = React.useState<VariantesForm>({
-    tallaId: "",
-    colorId: "",
+    talla_id: 0,
+    color_id: 0,
     sku: "",
     precio: "",
     stock: "",
@@ -200,9 +224,9 @@ export default function Page() {
     }
 
     setRelaciones({
-      selectedCatIds: (producto.categorias ?? []).map((x) => x.categoria!.id),
-      selectedColIds: (producto.colecciones ?? []).map((x) => x.coleccion!.id),
-      selectedBadgeIds: (producto.insignias ?? []).map((x) => x.insignia!.id),
+      selectedCatIds: (producto.categorias ?? []).map((x) => x.categoria_id),
+      selectedColIds: (producto.colecciones ?? []).map((x) => x.coleccion_id),
+      selectedBadgeIds: (producto.insignias ?? []).map((x) => x.insignia_id),
     });
   }, [producto]);
 
@@ -316,7 +340,7 @@ export default function Page() {
 
         <TabsContent value="images" className="space-y-4">
           <ImagenesTab
-            productoId={id}
+            productoId={Number(id)}
             initial={(producto.imagenes ?? []).map((img) => ({
               id: img.id,
               previewUrl: img.url,
@@ -335,7 +359,7 @@ export default function Page() {
             videos={producto.videos ?? []}
           /> */}
           <VideosTab
-            productoId={id}
+            productoId={Number(id)}
             state={{ form: videosForm, setForm: setVideosForm }}
             videos={producto.videos ?? []}
           />
@@ -343,7 +367,7 @@ export default function Page() {
 
         <TabsContent value="variants" className="space-y-4">
           <VariantesTab
-            productoId={id}
+            productoId={Number(id)}
             state={{ form: variantesForm, setForm: setVariantesForm }}
             catalog={{ tallas, colores }}
             variantes={(producto.variantes ?? []).map((v) => ({
@@ -360,7 +384,7 @@ export default function Page() {
 
         <TabsContent value="relations" className="space-y-4">
           <RelacionesTab
-            productoId={id}
+            productoId={Number(id)}
             state={{ form: relaciones, setForm: setRelaciones }}
             catalog={{ cats, cols, badges }}
           />

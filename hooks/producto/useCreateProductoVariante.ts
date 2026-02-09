@@ -5,8 +5,8 @@ import { api } from "@/lib/api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export type CreateProductoVarianteBody = {
-  tallaId: string;
-  colorId: string;
+  talla_id: number;
+  color_id: number;
   sku?: string;
   precio?: number;
   stock?: number;
@@ -14,21 +14,21 @@ export type CreateProductoVarianteBody = {
 };
 
 export type ProductoVarianteResponse = {
-  id: string;
-  productoId: string;
-  tallaId: string;
-  colorId: string;
+  id: number;
+  productoId: number;
+  tallaId: number;
+  colorId: number;
   sku: string | null;
   precio: number | null;
   stock: number | null;
   activo: boolean;
   createdAt: string;
   updatedAt: string;
-  talla?: { id: string; etiqueta: string } | null;
-  color?: { id: string; nombre: string } | null;
+  talla?: { id: number; etiqueta: string } | null;
+  color?: { id: number; nombre: string } | null;
 };
 
-export function useCreateProductoVariante(productoId: string) {
+export function useCreateProductoVariante(productoId: number) {
   const qc = useQueryClient();
 
   return useMutation<
@@ -40,8 +40,8 @@ export function useCreateProductoVariante(productoId: string) {
       return api
         .post(`producto/${productoId}/variantes`, {
           json: {
-            tallaId: body.tallaId,
-            colorId: body.colorId,
+            talla_id: body.talla_id,
+            color_id: body.color_id,
             sku: body.sku ?? undefined,
             precio: body.precio ?? undefined,
             stock: body.stock ?? undefined,

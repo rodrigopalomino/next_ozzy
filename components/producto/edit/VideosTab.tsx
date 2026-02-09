@@ -14,9 +14,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { useCreateProductoVideo } from "@/hooks/productoo/useCreateProductoVideo";
-import { useDeleteProductoVideo } from "@/hooks/productoo/useDeleteProductoVideo";
-import { useUpdateProductoVideo } from "@/hooks/productoo/useUpdateProductoVideo";
+import { useCreateProductoVideo } from "@/hooks/producto/useCreateProductoVideo";
+import { useDeleteProductoVideo } from "@/hooks/producto/useDeleteProductoVideo";
+import { useUpdateProductoVideo } from "@/hooks/producto/useUpdateProductoVideo";
 
 type PlataformaVideo = "INSTAGRAM" | "TIKTOK";
 
@@ -28,7 +28,7 @@ export type VideosForm = {
 };
 
 type VideoItem = {
-  id: string;
+  id: number;
   plataforma: string;
   url: string;
   etiqueta?: string | null;
@@ -55,7 +55,7 @@ export function VideosTab({
   state,
   videos,
 }: {
-  productoId: string;
+  productoId: number;
   state: {
     form: VideosForm;
     setForm: React.Dispatch<React.SetStateAction<VideosForm>>;
@@ -68,7 +68,7 @@ export function VideosTab({
   const { mutateAsync: createAsync, isPending: isCreating } =
     useCreateProductoVideo(productoId);
 
-  const [deletingId, setDeletingId] = React.useState<string | null>(null);
+  const [deletingId, setDeletingId] = React.useState<number | null>(null);
 
   const [msg, setMsg] = React.useState<{
     type: "ok" | "err";
@@ -93,6 +93,7 @@ export function VideosTab({
       // limpiar form
       setForm((p) => ({ ...p, url: "", etiqueta: "", orden: "0" }));
       setMsg({ type: "ok", text: "Video agregado." });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       setMsg({ type: "err", text: e?.message || "Error agregando video." });
     }
@@ -222,9 +223,9 @@ function VideoRow({
   onBusy,
   onDone,
 }: {
-  productoId: string;
+  productoId: number;
   video: VideoItem;
-  onBusy: (id: string) => void;
+  onBusy: (id: number) => void;
   onDone: () => void;
 }) {
   const { mutateAsync: deleteAsync, isPending: isDeleting } =

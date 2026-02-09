@@ -44,6 +44,8 @@ const data = {
       items: [
         { title: "Categorías", url: "/admin/categorias" },
         { title: "Colecciones", url: "/admin/colecciones" },
+        { title: "Color", url: "/admin/color" },
+        { title: "Talla", url: "/admin/talla" },
       ],
     },
   ],

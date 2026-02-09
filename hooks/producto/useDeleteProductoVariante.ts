@@ -5,14 +5,14 @@ import { api } from "@/lib/api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export type DeleteProductoVarianteResponse = {
-  productoId: string;
-  varianteId: string;
+  productoId: number;
+  varianteId: number;
   deleted: true;
 };
 
 export function useDeleteProductoVariante(
-  productoId: string,
-  varianteId: string,
+  productoId: number,
+  varianteId: number,
 ) {
   const qc = useQueryClient();
 

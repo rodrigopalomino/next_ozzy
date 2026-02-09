@@ -15,7 +15,7 @@ export type PresignResponse = {
   objectKey: string; // key dentro del bucket
 };
 
-export function useProductoImagenPresign(productoId: string) {
+export function useProductoImagenPresign(productoId: number) {
   return useMutation({
     mutationFn: async (body: PresignBody) => {
       return api

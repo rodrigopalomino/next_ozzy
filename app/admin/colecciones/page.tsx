@@ -9,7 +9,6 @@ import {
   X,
   Image as ImageIcon,
   UploadCloud,
-  Link2,
   Trash2,
 } from "lucide-react";
 
@@ -53,8 +52,9 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Progress } from "@/components/ui/progress";
 
+// ✅ TIPOS (usa tus types reales si ya existen)
 type Coleccion = {
-  id: string;
+  id: number;
   nombre: string;
   slug: string;
   descripcion?: string | null;
@@ -68,6 +68,9 @@ type Coleccion = {
 
 type SortKey = "nombre" | "createdAt";
 type SortDir = "asc" | "desc";
+
+const ESTADO_VALUES = ["ALL", "ACTIVO", "INACTIVO"] as const;
+type EstadoFilter = (typeof ESTADO_VALUES)[number];
 
 function slugify(input: string) {
   return input
@@ -89,69 +92,51 @@ function formatDate(iso: string) {
   });
 }
 
-function uniqId() {
-  return crypto.randomUUID();
+function normalizeIsoOrNull(v: string) {
+  const t = v.trim();
+  if (!t) return null;
+  const d = new Date(t);
+  if (Number.isNaN(d.getTime())) return null;
+  return d.toISOString();
 }
 
-const MOCK: Coleccion[] = [
-  {
-    id: "k1",
-    nombre: "Temporada Verano",
-    slug: "temporada-verano",
-    descripcion: "Drops frescos para verano.",
-    imagenPortada: null,
-    iniciaEn: "2026-01-01T00:00:00.000Z",
-    terminaEn: "2026-03-31T00:00:00.000Z",
-    activo: true,
-    createdAt: "2025-12-01T10:00:00.000Z",
-    updatedAt: "2025-12-05T10:00:00.000Z",
-  },
-  {
-    id: "k2",
-    nombre: "Ofertas",
-    slug: "ofertas",
-    descripcion: "Descuentos y packs.",
-    imagenPortada:
-      "https://images.unsplash.com/photo-1528701800489-20be3c59b84b?auto=format&fit=crop&w=1200&q=60",
-    iniciaEn: null,
-    terminaEn: null,
-    activo: true,
-    createdAt: "2025-12-11T10:00:00.000Z",
-    updatedAt: "2025-12-12T10:00:00.000Z",
-  },
-  {
-    id: "k3",
-    nombre: "Archivadas",
-    slug: "archivadas",
-    descripcion: null,
-    imagenPortada: null,
-    iniciaEn: null,
-    terminaEn: null,
-    activo: false,
-    createdAt: "2025-11-01T10:00:00.000Z",
-    updatedAt: "2025-12-20T10:00:00.000Z",
-  },
-];
+// ✅ HOOKS (ajusta paths)
+import { useCreateColeccion } from "@/hooks/coleccion/useCreateColeccion";
+import { useUpdateColeccion } from "@/hooks/coleccion/useUpdateColeccion";
+import { useColecciones } from "@/hooks/coleccion/useColecciones";
 
 export default function PageColecciones() {
-  const [items, setItems] = React.useState<Coleccion[]>(MOCK);
+  // ✅ paginado real
+  const [page, setPage] = React.useState(1);
+  const [limit] = React.useState(20);
 
+  // filtros UI locales (solo página actual)
   const [q, setQ] = React.useState("");
-  const [estado, setEstado] = React.useState<"ALL" | "ACTIVO" | "INACTIVO">(
-    "ALL",
-  );
+  const [estado, setEstado] = React.useState<EstadoFilter>("ALL");
   const [sortKey, setSortKey] = React.useState<SortKey>("createdAt");
   const [sortDir, setSortDir] = React.useState<SortDir>("desc");
 
+  // modal
   const [open, setOpen] = React.useState(false);
   const [editing, setEditing] = React.useState<Coleccion | null>(null);
+
+  // ✅ data real
+  const { data, isLoading, isError } = useColecciones({ page, limit });
+  const createColeccion = useCreateColeccion();
+  const updateColeccion = useUpdateColeccion();
+
+  // control de UI
+  const [updatingId, setUpdatingId] = React.useState<number | null>(null);
+
+  const rows = data?.data ?? [];
+  const meta = data?.meta;
 
   const hasFilters = q.trim().length > 0 || estado !== "ALL";
 
   const filtered = React.useMemo(() => {
     const qq = q.trim().toLowerCase();
 
-    const res = items
+    return rows
       .filter((c) => {
         const matchQ =
           !qq ||
@@ -180,18 +165,7 @@ export default function PageColecciones() {
         if (va > vb) return 1 * dir;
         return 0;
       });
-
-    return res;
-  }, [items, q, estado, sortKey, sortDir]);
-
-  function toggleSort(nextKey: SortKey) {
-    if (sortKey !== nextKey) {
-      setSortKey(nextKey);
-      setSortDir("asc");
-      return;
-    }
-    setSortDir((d) => (d === "asc" ? "desc" : "asc"));
-  }
+  }, [rows, q, estado, sortKey, sortDir]);
 
   function clearFilters() {
     setQ("");
@@ -208,54 +182,68 @@ export default function PageColecciones() {
     setOpen(true);
   }
 
-  function upsertColeccion(
-    payload: Omit<Coleccion, "createdAt" | "updatedAt">,
-  ) {
-    const now = new Date().toISOString();
+  async function onSubmitForm(payload: {
+    nombre: string;
+    slug: string;
+    descripcion: string | null;
+    imagenPortada: string | null;
+    iniciaEn: string | null;
+    terminaEn: string | null;
+    activo: boolean;
+  }) {
+    if (!payload.nombre.trim() || !payload.slug.trim()) return;
 
-    setItems((prev) => {
-      const idx = prev.findIndex((x) => x.id === payload.id);
-      if (idx === -1) {
-        return [
-          {
-            ...payload,
-            createdAt: now,
-            updatedAt: now,
-          },
-          ...prev,
-        ];
-      }
-      const copy = [...prev];
-      copy[idx] = {
-        ...copy[idx],
-        ...payload,
-        updatedAt: now,
-      };
-      return copy;
-    });
+    if (!editing) {
+      await createColeccion.mutateAsync({
+        nombre: payload.nombre.trim(),
+        slug: slugify(payload.slug.trim()),
+        descripcion: payload.descripcion,
+        imagenPortada: payload.imagenPortada,
+        iniciaEn: payload.iniciaEn,
+        terminaEn: payload.terminaEn,
+        activo: payload.activo,
+      });
+    } else {
+      await updateColeccion.mutateAsync({
+        id: editing.id,
+        payload: {
+          nombre: payload.nombre.trim(),
+          slug: slugify(payload.slug.trim()),
+          descripcion: payload.descripcion,
+          imagenPortada: payload.imagenPortada,
+          iniciaEn: payload.iniciaEn,
+          terminaEn: payload.terminaEn,
+          activo: payload.activo,
+        },
+      });
+    }
 
     setOpen(false);
     setEditing(null);
   }
 
-  function setActivo(id: string, value: boolean) {
-    const now = new Date().toISOString();
-    setItems((prev) =>
-      prev.map((x) =>
-        x.id === id ? { ...x, activo: value, updatedAt: now } : x,
-      ),
-    );
+  async function toggleActivo(row: Coleccion, value: boolean) {
+    setUpdatingId(row.id);
+    try {
+      await updateColeccion.mutateAsync({
+        id: row.id,
+        payload: { activo: value },
+      });
+    } finally {
+      setUpdatingId(null);
+    }
   }
 
+  const canPrev = page > 1;
+  const canNext = meta?.totalPages ? page < meta.totalPages : true;
+
   return (
-    // ✅ igual que "Nuevo producto": centrado + padding lateral en mobile
     <div className="mx-auto w-full max-w-5xl space-y-6 px-4 sm:px-0">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0 space-y-1">
           <h1 className="text-2xl font-semibold tracking-tight">Colecciones</h1>
           <p className="text-sm text-muted-foreground">
-            Modelo real: nombre, slug, descripción, imagenPortada, fechas
-            (opcional) y activo.
+            Administra nombre, slug, descripción, portada, vigencia y estado.
           </p>
         </div>
 
@@ -266,13 +254,15 @@ export default function PageColecciones() {
               Nueva colección
             </Button>
           </DialogTrigger>
+
           <ColeccionDialogContent
             value={editing}
+            loading={createColeccion.isPending || updateColeccion.isPending}
             onCancel={() => {
               setOpen(false);
               setEditing(null);
             }}
-            onSubmit={upsertColeccion}
+            onSubmit={onSubmitForm}
           />
         </Dialog>
       </div>
@@ -283,7 +273,7 @@ export default function PageColecciones() {
             <div className="min-w-0">
               <CardTitle>Listado</CardTitle>
               <CardDescription>
-                Uploader solo UI (tipo Shopify), sin backend todavía.
+                Paginado real + filtros locales.
               </CardDescription>
             </div>
 
@@ -314,7 +304,14 @@ export default function PageColecciones() {
             </div>
 
             <div className="md:col-span-3 min-w-0">
-              <Select value={estado} onValueChange={(v) => setEstado(v as any)}>
+              <Select
+                value={estado}
+                onValueChange={(v) => {
+                  if (ESTADO_VALUES.includes(v as EstadoFilter)) {
+                    setEstado(v as EstadoFilter);
+                  }
+                }}
+              >
                 <SelectTrigger>
                   <SelectValue placeholder="Estado" />
                 </SelectTrigger>
@@ -350,7 +347,6 @@ export default function PageColecciones() {
         </CardHeader>
 
         <CardContent>
-          {/* ✅ border con espacio correcto + scroll en mobile */}
           <div className="rounded-lg border overflow-x-auto">
             <Table>
               <TableHeader>
@@ -359,12 +355,20 @@ export default function PageColecciones() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => toggleSort("nombre")}
+                      onClick={() => {
+                        if (sortKey !== "nombre") {
+                          setSortKey("nombre");
+                          setSortDir("asc");
+                        } else {
+                          setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+                        }
+                      }}
                       className="-ml-2 h-8"
                     >
                       Colección <ArrowUpDown className="ml-2 h-3.5 w-3.5" />
                     </Button>
                   </TableHead>
+
                   <TableHead className="w-[20%] min-w-[180px]">Slug</TableHead>
                   <TableHead className="w-[16%] min-w-[200px]">
                     Vigencia
@@ -379,7 +383,25 @@ export default function PageColecciones() {
               </TableHeader>
 
               <TableBody>
-                {filtered.length === 0 ? (
+                {isLoading ? (
+                  <TableRow>
+                    <TableCell
+                      colSpan={5}
+                      className="py-10 text-center text-sm text-muted-foreground"
+                    >
+                      Cargando...
+                    </TableCell>
+                  </TableRow>
+                ) : isError ? (
+                  <TableRow>
+                    <TableCell
+                      colSpan={5}
+                      className="py-10 text-center text-sm text-muted-foreground"
+                    >
+                      Error cargando colecciones.
+                    </TableCell>
+                  </TableRow>
+                ) : filtered.length === 0 ? (
                   <TableRow>
                     <TableCell
                       colSpan={5}
@@ -448,7 +470,8 @@ export default function PageColecciones() {
                         <div className="flex items-center gap-2">
                           <Switch
                             checked={row.activo}
-                            onCheckedChange={(v) => setActivo(row.id, v)}
+                            disabled={updatingId === row.id}
+                            onCheckedChange={(v) => toggleActivo(row, v)}
                             aria-label="Activo"
                           />
                           <span className="text-sm text-muted-foreground">
@@ -475,20 +498,44 @@ export default function PageColecciones() {
 
           <Separator className="my-4" />
 
-          <div className="flex flex-col gap-2 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              Mostrando{" "}
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div className="text-xs text-muted-foreground">
+              Página{" "}
               <span className="font-medium text-foreground">
-                {filtered.length}
-              </span>{" "}
-              de{" "}
-              <span className="font-medium text-foreground">
-                {items.length}
+                {meta?.page ?? page}
               </span>
-              .
+              {meta?.totalPages ? (
+                <>
+                  {" "}
+                  de{" "}
+                  <span className="font-medium text-foreground">
+                    {meta.totalPages}
+                  </span>
+                </>
+              ) : null}{" "}
+              • Total:{" "}
+              <span className="font-medium text-foreground">
+                {meta?.total ?? 0}
+              </span>
             </div>
-            <div className="font-mono">
-              sort={sortKey}:{sortDir} • estado={estado} • q="{q}"
+
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                disabled={!canPrev}
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
+              >
+                Anterior
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                disabled={!canNext}
+                onClick={() => setPage((p) => p + 1)}
+              >
+                Siguiente
+              </Button>
             </div>
           </div>
         </CardContent>
@@ -497,10 +544,21 @@ export default function PageColecciones() {
   );
 }
 
+// =====================================================================================
+
 function ColeccionDialogContent(props: {
   value: Coleccion | null;
+  loading?: boolean;
   onCancel: () => void;
-  onSubmit: (payload: Omit<Coleccion, "createdAt" | "updatedAt">) => void;
+  onSubmit: (payload: {
+    nombre: string;
+    slug: string;
+    descripcion: string | null;
+    imagenPortada: string | null;
+    iniciaEn: string | null;
+    terminaEn: string | null;
+    activo: boolean;
+  }) => void;
 }) {
   const isEdit = !!props.value;
 
@@ -538,29 +596,20 @@ function ColeccionDialogContent(props: {
     setProgress(0);
   }, [props.value]);
 
-  const canSubmit = nombre.trim().length >= 2 && slug.trim().length >= 2;
+  const canSubmit = nombre.trim().length >= 2;
 
   function autoSlug() {
     setSlug(slugify(nombre));
-  }
-
-  function normalizeIsoOrNull(v: string) {
-    const t = v.trim();
-    if (!t) return null;
-    const d = new Date(t);
-    if (Number.isNaN(d.getTime())) return null;
-    return d.toISOString();
   }
 
   function submit() {
     if (!canSubmit) return;
 
     props.onSubmit({
-      id: props.value?.id ?? uniqId(),
       nombre: nombre.trim(),
-      slug: slugify(slug.trim()),
+      slug: slugify((slug.trim() || nombre).trim()),
       descripcion: descripcion.trim() ? descripcion.trim() : null,
-      imagenPortada: imagenPortada?.trim() ? imagenPortada.trim() : null,
+      imagenPortada: imagenPortada.trim() ? imagenPortada.trim() : null,
       iniciaEn: normalizeIsoOrNull(iniciaEn),
       terminaEn: normalizeIsoOrNull(terminaEn),
       activo,
@@ -603,33 +652,18 @@ function ColeccionDialogContent(props: {
   }
 
   return (
-    <DialogContent
-      className="
-      w-[50vw]
-      max-h-[85vh]
-      box-border
-      flex
-      flex-col
-      overflow-hidden
-      text-black
-      px-4
-      sm:px-6
-    "
-    >
-      {/* HEADER */}
+    <DialogContent className="w-[50vw] max-h-[85vh] box-border flex flex-col overflow-hidden text-black px-4 sm:px-6">
       <DialogHeader className="shrink-0">
         <DialogTitle className="text-black">
           {isEdit ? "Editar colección" : "Nueva colección"}
         </DialogTitle>
         <DialogDescription className="text-gray-700">
-          La imagen se “sube” solo a nivel UI. Luego lo conectas a Nest + MinIO.
+          Usa create/update real. La imagen sigue en UI por ahora.
         </DialogDescription>
       </DialogHeader>
 
-      {/* BODY — SOLO SCROLL VERTICAL */}
       <div className="flex-1 overflow-y-auto overflow-x-hidden">
         <div className="grid gap-4 pr-1">
-          {/* Nombre / Slug */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="grid gap-2">
               <Label className="text-black">Nombre</Label>
@@ -665,7 +699,6 @@ function ColeccionDialogContent(props: {
             </div>
           </div>
 
-          {/* Descripción */}
           <div className="grid gap-2">
             <Label className="text-black">Descripción (opcional)</Label>
             <Textarea
@@ -676,12 +709,10 @@ function ColeccionDialogContent(props: {
             />
           </div>
 
-          {/* Imagen */}
           <div className="grid gap-2">
             <Label className="text-black">Imagen de portada (opcional)</Label>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-[2fr_1fr]">
-              {/* Dropzone */}
               <div>
                 <Dropzone disabled={uploading} onFiles={onPickFile} />
 
@@ -699,12 +730,12 @@ function ColeccionDialogContent(props: {
                 )}
               </div>
 
-              {/* Preview */}
               <div className="rounded-lg border p-3">
                 <div className="text-sm font-medium text-black">Preview</div>
 
                 <div className="mt-2 aspect-[4/3] overflow-hidden rounded-md border bg-muted">
                   {imagenPortada ? (
+                    // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={imagenPortada}
                       alt="Portada"
@@ -729,17 +760,6 @@ function ColeccionDialogContent(props: {
                   <div className="flex gap-2">
                     <Button
                       type="button"
-                      variant="outline"
-                      className="flex-1"
-                      onClick={() =>
-                        navigator.clipboard.writeText(imagenPortada ?? "")
-                      }
-                      disabled={!imagenPortada}
-                    >
-                      Copiar URL
-                    </Button>
-                    <Button
-                      type="button"
                       variant="destructive"
                       size="icon"
                       onClick={removeImage}
@@ -753,7 +773,6 @@ function ColeccionDialogContent(props: {
             </div>
           </div>
 
-          {/* Fechas */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="grid gap-2">
               <Label className="text-black">Inicia en (opcional)</Label>
@@ -776,7 +795,6 @@ function ColeccionDialogContent(props: {
             </div>
           </div>
 
-          {/* Activo */}
           <div className="grid gap-2">
             <Label className="text-black">Activo</Label>
             <div className="flex items-center justify-between rounded-lg border p-3">
@@ -794,15 +812,19 @@ function ColeccionDialogContent(props: {
         </div>
       </div>
 
-      {/* FOOTER */}
       <DialogFooter className="shrink-0 pt-3">
-        <Button type="button" variant="outline" onClick={props.onCancel}>
+        <Button
+          type="button"
+          variant="outline"
+          onClick={props.onCancel}
+          disabled={props.loading}
+        >
           Cancelar
         </Button>
         <Button
           type="button"
           onClick={submit}
-          disabled={!canSubmit || uploading}
+          disabled={!canSubmit || uploading || props.loading}
         >
           {isEdit ? "Guardar cambios" : "Crear colección"}
         </Button>

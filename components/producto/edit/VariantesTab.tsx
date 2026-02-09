@@ -1,4 +1,3 @@
-// src/components/producto/edit/VariantesTab.tsx
 "use client";
 
 import * as React from "react";
@@ -14,13 +13,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { useCreateProductoVariante } from "@/hooks/productoo/useCreateProductoVariante";
-import { useUpdateProductoVariante } from "@/hooks/productoo/useUpdateProductoVariante";
-import { useDeleteProductoVariante } from "@/hooks/productoo/useDeleteProductoVariante";
+import { useCreateProductoVariante } from "@/hooks/producto/useCreateProductoVariante";
+import { useUpdateProductoVariante } from "@/hooks/producto/useUpdateProductoVariante";
+import { useDeleteProductoVariante } from "@/hooks/producto/useDeleteProductoVariante";
 
 export type VariantesForm = {
-  tallaId: string;
-  colorId: string;
+  talla_id: number; // ✅ NUMBER (tu modelo real)
+  color_id: number; // ✅ NUMBER (tu modelo real)
   sku: string;
   precio: string;
   stock: string;
@@ -28,9 +27,9 @@ export type VariantesForm = {
 };
 
 type VarianteItem = {
-  id: string;
-  talla?: { id?: string; etiqueta: string } | null;
-  color?: { id?: string; nombre: string } | null;
+  id: number;
+  talla?: { id: number; etiqueta: string } | null;
+  color?: { id: number; nombre: string } | null;
   sku?: string | null;
   precio?: number | null;
   stock?: number | null;
@@ -45,20 +44,30 @@ function toIntOrUndefined(raw: string) {
   return Math.max(0, Math.trunc(v));
 }
 
+function toIdOrZero(v: string) {
+  const n = Number(v);
+  if (!Number.isFinite(n) || n <= 0) return 0;
+  return n;
+}
+
+function requireId(label: string, id: number) {
+  if (!Number.isFinite(id) || id <= 0) throw new Error(`${label} inválido`);
+}
+
 export function VariantesTab({
   productoId,
   state,
   catalog,
   variantes,
 }: {
-  productoId: string;
+  productoId: number;
   state: {
     form: VariantesForm;
     setForm: React.Dispatch<React.SetStateAction<VariantesForm>>;
   };
   catalog: {
-    tallas: Array<{ id: string; etiqueta: string }>;
-    colores: Array<{ id: string; nombre: string }>;
+    tallas: Array<{ id: number; etiqueta: string }>;
+    colores: Array<{ id: number; nombre: string }>;
   };
   variantes: VarianteItem[];
 }) {
@@ -77,22 +86,23 @@ export function VariantesTab({
     try {
       setMsg(null);
 
-      if (!form.tallaId) throw new Error("Selecciona una talla");
-      if (!form.colorId) throw new Error("Selecciona un color");
+      requireId("Talla", form.talla_id);
+      requireId("Color", form.color_id);
 
       await createAsync({
-        tallaId: form.tallaId,
-        colorId: form.colorId,
+        // ✅ lo que el back espera (Zod)
+        talla_id: form.talla_id,
+        color_id: form.color_id,
+
         sku: form.sku.trim() ? form.sku.trim() : undefined,
         precio: toIntOrUndefined(form.precio),
         stock: toIntOrUndefined(form.stock),
         activo: Boolean(form.activo),
       });
 
-      setForm((p) => ({
-        ...p,
-        tallaId: "",
-        colorId: "",
+      setForm(() => ({
+        talla_id: 0,
+        color_id: 0,
         sku: "",
         precio: "",
         stock: "",
@@ -100,8 +110,10 @@ export function VariantesTab({
       }));
 
       setMsg({ type: "ok", text: "Variante agregada." });
-    } catch (e: any) {
-      setMsg({ type: "err", text: e?.message || "Error creando variante." });
+    } catch (e) {
+      const message =
+        e instanceof Error ? e.message : "Error creando variante.";
+      setMsg({ type: "err", text: message });
     }
   }
 
@@ -121,8 +133,10 @@ export function VariantesTab({
             <div className="grid gap-2">
               <Label>Talla</Label>
               <Select
-                value={form.tallaId}
-                onValueChange={(v) => setForm((p) => ({ ...p, tallaId: v }))}
+                value={form.talla_id ? String(form.talla_id) : ""}
+                onValueChange={(v) =>
+                  setForm((p) => ({ ...p, talla_id: toIdOrZero(v) }))
+                }
                 disabled={busy}
               >
                 <SelectTrigger>
@@ -130,7 +144,7 @@ export function VariantesTab({
                 </SelectTrigger>
                 <SelectContent>
                   {tallas.map((t) => (
-                    <SelectItem key={t.id} value={t.id}>
+                    <SelectItem key={t.id} value={String(t.id)}>
                       {t.etiqueta}
                     </SelectItem>
                   ))}
@@ -141,8 +155,10 @@ export function VariantesTab({
             <div className="grid gap-2">
               <Label>Color</Label>
               <Select
-                value={form.colorId}
-                onValueChange={(v) => setForm((p) => ({ ...p, colorId: v }))}
+                value={form.color_id ? String(form.color_id) : ""}
+                onValueChange={(v) =>
+                  setForm((p) => ({ ...p, color_id: toIdOrZero(v) }))
+                }
                 disabled={busy}
               >
                 <SelectTrigger>
@@ -150,7 +166,7 @@ export function VariantesTab({
                 </SelectTrigger>
                 <SelectContent>
                   {colores.map((c) => (
-                    <SelectItem key={c.id} value={c.id}>
+                    <SelectItem key={c.id} value={String(c.id)}>
                       {c.nombre}
                     </SelectItem>
                   ))}
@@ -160,16 +176,6 @@ export function VariantesTab({
           </div>
 
           <div className="grid gap-3 md:grid-cols-3">
-            {/* <div className="grid gap-2">
-              <Label>SKU (opcional)</Label>
-              <Input
-                value={form.sku}
-                onChange={(e) =>
-                  setForm((p) => ({ ...p, sku: e.target.value }))
-                }
-                disabled={busy}
-              />
-            </div> */}
             <div className="grid gap-2">
               <Label>Precio (opcional)</Label>
               <Input
@@ -253,11 +259,11 @@ function VarianteRow({
   variante,
   catalog,
 }: {
-  productoId: string;
+  productoId: number;
   variante: VarianteItem;
   catalog: {
-    tallas: Array<{ id: string; etiqueta: string }>;
-    colores: Array<{ id: string; nombre: string }>;
+    tallas: Array<{ id: number; etiqueta: string }>;
+    colores: Array<{ id: number; nombre: string }>;
   };
 }) {
   const { mutateAsync: deleteAsync, isPending: isDeleting } =
@@ -267,27 +273,20 @@ function VarianteRow({
     useUpdateProductoVariante(productoId, variante.id);
 
   const [edit, setEdit] = React.useState(false);
-  const [draft, setDraft] = React.useState({
-    tallaId:
-      catalog.tallas.find((t) => t.etiqueta === variante.talla?.etiqueta)?.id ??
-      "",
-    colorId:
-      catalog.colores.find((c) => c.nombre === variante.color?.nombre)?.id ??
-      "",
+
+  const [draft, setDraft] = React.useState<VariantesForm>(() => ({
+    talla_id: variante.talla?.id ?? 0,
+    color_id: variante.color?.id ?? 0,
     sku: variante.sku ?? "",
     precio: variante.precio == null ? "" : String(variante.precio),
     stock: variante.stock == null ? "" : String(variante.stock),
     activo: Boolean(variante.activo),
-  });
+  }));
 
   React.useEffect(() => {
     setDraft({
-      tallaId:
-        catalog.tallas.find((t) => t.etiqueta === variante.talla?.etiqueta)
-          ?.id ?? "",
-      colorId:
-        catalog.colores.find((c) => c.nombre === variante.color?.nombre)?.id ??
-        "",
+      talla_id: variante.talla?.id ?? 0,
+      color_id: variante.color?.id ?? 0,
       sku: variante.sku ?? "",
       precio: variante.precio == null ? "" : String(variante.precio),
       stock: variante.stock == null ? "" : String(variante.stock),
@@ -295,14 +294,12 @@ function VarianteRow({
     });
   }, [
     variante.id,
-    variante.talla?.etiqueta,
-    variante.color?.nombre,
+    variante.talla?.id,
+    variante.color?.id,
     variante.sku,
     variante.precio,
     variante.stock,
     variante.activo,
-    catalog.tallas,
-    catalog.colores,
   ]);
 
   const busy = isDeleting || isUpdating;
@@ -312,12 +309,14 @@ function VarianteRow({
   }
 
   async function onSave() {
-    if (!draft.tallaId) return;
-    if (!draft.colorId) return;
+    requireId("Talla", draft.talla_id);
+    requireId("Color", draft.color_id);
 
     await updateAsync({
-      tallaId: draft.tallaId,
-      colorId: draft.colorId,
+      // ✅ back espera esto
+      talla_id: draft.talla_id,
+      color_id: draft.color_id,
+
       sku: draft.sku.trim() ? draft.sku.trim() : null,
       precio: draft.precio.trim()
         ? (toIntOrUndefined(draft.precio) ?? null)
@@ -337,7 +336,8 @@ function VarianteRow({
         {!edit ? (
           <>
             <div className="text-sm font-medium">
-              {variante.talla?.etiqueta} • {variante.color?.nombre} •{" "}
+              {variante.talla?.etiqueta ?? "—"} •{" "}
+              {variante.color?.nombre ?? "—"} •{" "}
               {variante.activo ? "Activa" : "Inactiva"}
             </div>
             <div className="text-xs text-muted-foreground">
@@ -351,8 +351,10 @@ function VarianteRow({
               <div className="grid gap-2">
                 <Label>Talla</Label>
                 <Select
-                  value={draft.tallaId}
-                  onValueChange={(v) => setDraft((p) => ({ ...p, tallaId: v }))}
+                  value={draft.talla_id ? String(draft.talla_id) : ""}
+                  onValueChange={(v) =>
+                    setDraft((p) => ({ ...p, talla_id: toIdOrZero(v) }))
+                  }
                   disabled={busy}
                 >
                   <SelectTrigger>
@@ -360,7 +362,7 @@ function VarianteRow({
                   </SelectTrigger>
                   <SelectContent>
                     {catalog.tallas.map((t) => (
-                      <SelectItem key={t.id} value={t.id}>
+                      <SelectItem key={t.id} value={String(t.id)}>
                         {t.etiqueta}
                       </SelectItem>
                     ))}
@@ -371,8 +373,10 @@ function VarianteRow({
               <div className="grid gap-2">
                 <Label>Color</Label>
                 <Select
-                  value={draft.colorId}
-                  onValueChange={(v) => setDraft((p) => ({ ...p, colorId: v }))}
+                  value={draft.color_id ? String(draft.color_id) : ""}
+                  onValueChange={(v) =>
+                    setDraft((p) => ({ ...p, color_id: toIdOrZero(v) }))
+                  }
                   disabled={busy}
                 >
                   <SelectTrigger>
@@ -380,7 +384,7 @@ function VarianteRow({
                   </SelectTrigger>
                   <SelectContent>
                     {catalog.colores.map((c) => (
-                      <SelectItem key={c.id} value={c.id}>
+                      <SelectItem key={c.id} value={String(c.id)}>
                         {c.nombre}
                       </SelectItem>
                     ))}
@@ -390,16 +394,6 @@ function VarianteRow({
             </div>
 
             <div className="grid gap-3 md:grid-cols-3">
-              {/* <div className="grid gap-2">
-                <Label>SKU</Label>
-                <Input
-                  value={draft.sku}
-                  onChange={(e) =>
-                    setDraft((p) => ({ ...p, sku: e.target.value }))
-                  }
-                  disabled={busy}
-                />
-              </div> */}
               <div className="grid gap-2">
                 <Label>Precio</Label>
                 <Input

@@ -5,8 +5,8 @@ import { api } from "@/lib/api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export type UpdateProductoVarianteBody = {
-  tallaId?: string;
-  colorId?: string;
+  talla_id?: number;
+  color_id?: number;
   sku?: string | null;
   precio?: number | null;
   stock?: number | null;
@@ -14,23 +14,23 @@ export type UpdateProductoVarianteBody = {
 };
 
 export type ProductoVarianteResponse = {
-  id: string;
-  productoId: string;
-  tallaId: string;
-  colorId: string;
+  id: number;
+  productoId: number;
+  talla_id: number;
+  color_id: number;
   sku: string | null;
   precio: number | null;
   stock: number | null;
   activo: boolean;
   createdAt: string;
   updatedAt: string;
-  talla?: { id: string; etiqueta: string } | null;
-  color?: { id: string; nombre: string } | null;
+  talla?: { id: number; etiqueta: string } | null;
+  color?: { id: number; nombre: string } | null;
 };
 
 export function useUpdateProductoVariante(
-  productoId: string,
-  varianteId: string,
+  productoId: number,
+  varianteId: number,
 ) {
   const qc = useQueryClient();
 
@@ -43,8 +43,8 @@ export function useUpdateProductoVariante(
       return api
         .put(`producto/${productoId}/variantes/${varianteId}`, {
           json: {
-            tallaId: body.tallaId ?? undefined,
-            colorId: body.colorId ?? undefined,
+            talla_id: body.talla_id ?? undefined,
+            color_id: body.color_id ?? undefined,
             sku: body.sku === undefined ? undefined : body.sku,
             precio: body.precio === undefined ? undefined : body.precio,
             stock: body.stock === undefined ? undefined : body.stock,

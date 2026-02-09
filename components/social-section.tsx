@@ -1,13 +1,6 @@
 import Image from "next/image";
 
-const ig = [
-  "/img/image.png",
-  "/img/image.png",
-  "/img/image.png",
-  "/img/image.png",
-  "/img/image.png",
-  "/img/image.png",
-];
+const ig = ["/img/image.png"];
 
 export default function SocialSection() {
   return (

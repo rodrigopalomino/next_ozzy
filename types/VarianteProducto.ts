@@ -1,15 +1,15 @@
 import { Color } from "./Color";
-import { DecimalLike, ID, ISODateString } from "./helpers-enums";
+import { DecimalLike, ISODateString } from "./helpers-enums";
 import { LeadWhatsApp } from "./LeadWhatsApp";
 import { Producto } from "./Producto";
 import { Talla } from "./Talla";
 
 export type VarianteProducto = {
-  id: ID;
-  productoId: ID;
+  id: number;
+  productoId: number;
 
-  tallaId: ID;
-  colorId: ID;
+  tallaId: number;
+  colorId: number;
 
   sku?: string | null;
 

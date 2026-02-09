@@ -8,9 +8,10 @@ import ProductCard from "./product-card";
 type Item = {
   id: string;
   name: string;
-  price: number; // precio original
-  discountPercent?: number; // 50 => 50%
-  image: string;
+  price: number;
+  discountPercent?: number;
+  image: string; // principal
+  hoverImage?: string; // ✅ hover opcional
   badge?: string;
 };
 
@@ -104,16 +105,11 @@ export default function ProductCarousel({
                     price={p.price}
                     discountPercent={p.discountPercent}
                     image={p.image}
-                    hoverImage="/img/polo_2.jpg"
+                    hoverImage={p.hoverImage} // ✅ ya no fijo
                     badge={p.badge}
                     href={`/producto/${encodeURIComponent(
                       p.name.toLowerCase().replace(/\s+/g, "-"),
                     )}`}
-                    // whatsappHref={`https://wa.me/51999999999?text=${encodeURIComponent(
-                    //   `Hola, quiero pedir: ${p.name}. Precio: S/ ${p.price.toFixed(2)}${
-                    //     p.discountPercent ? ` (${p.discountPercent}% OFF)` : ""
-                    //   }.`,
-                    // )}`}
                   />
                 </div>
               );

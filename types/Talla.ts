@@ -1,8 +1,8 @@
-import { ID, ISODateString } from "./helpers-enums";
+import { ISODateString } from "./helpers-enums";
 import { VarianteProducto } from "./VarianteProducto";
 
 export type Talla = {
-  id: ID;
+  id: number;
   etiqueta: string; // "S" | "M" | "L" (según data)
   orden: number;
   activo: boolean;

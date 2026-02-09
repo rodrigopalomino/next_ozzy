@@ -1,4 +1,5 @@
 import { AppSidebar } from "@/components/app-sidebar";
+import AuthProvider from "@/components/providers/AuthProvider";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -40,7 +41,7 @@ export default function HrLayout({ children }: { children: React.ReactNode }) {
           </Breadcrumb>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 text-black">
-          {children}
+          <AuthProvider>{children}</AuthProvider>
         </div>
       </SidebarInset>
     </SidebarProvider>

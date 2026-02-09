@@ -5,19 +5,19 @@ import { api } from "@/lib/api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export type SetProductoRelacionesBody = {
-  categoriaIds?: string[];
-  coleccionIds?: string[];
-  insigniaIds?: string[];
+  categoriaIds?: number[];
+  coleccionIds?: number[];
+  insigniaIds?: number[];
 };
 
 export type ProductoRelacionesResponse = {
   id: string;
-  categorias: Array<{ id: string; nombre: string }>;
-  colecciones: Array<{ id: string; nombre: string }>;
-  insignias: Array<{ id: string; nombre: string }>;
+  categorias: Array<{ id: number; nombre: string }>;
+  colecciones: Array<{ id: number; nombre: string }>;
+  insignias: Array<{ id: number; nombre: string }>;
 };
 
-export function useSetProductoRelaciones(productoId: string) {
+export function useSetProductoRelaciones(productoId: number) {
   const qc = useQueryClient();
 
   return useMutation<

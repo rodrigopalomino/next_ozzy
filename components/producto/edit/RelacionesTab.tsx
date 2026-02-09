@@ -5,12 +5,12 @@ import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { useSetProductoRelaciones } from "@/hooks/productoo/useSetProductoRelaciones";
+import { useSetProductoRelaciones } from "@/hooks/producto/useSetProductoRelaciones";
 
 export type RelacionesForm = {
-  selectedCatIds: string[];
-  selectedColIds: string[];
-  selectedBadgeIds: string[];
+  selectedCatIds: number[];
+  selectedColIds: number[];
+  selectedBadgeIds: number[];
 };
 
 export function RelacionesTab({
@@ -18,15 +18,15 @@ export function RelacionesTab({
   state,
   catalog,
 }: {
-  productoId: string;
+  productoId: number;
   state: {
     form: RelacionesForm;
     setForm: React.Dispatch<React.SetStateAction<RelacionesForm>>;
   };
   catalog: {
-    cats: Array<{ id: string; nombre: string }>;
-    cols: Array<{ id: string; nombre: string }>;
-    badges: Array<{ id: string; nombre: string }>;
+    cats: Array<{ id: number; nombre: string }>;
+    cols: Array<{ id: number; nombre: string }>;
+    badges: Array<{ id: number; nombre: string }>;
   };
 }) {
   const { form, setForm } = state;
@@ -39,10 +39,18 @@ export function RelacionesTab({
     text: string;
   } | null>(null);
 
-  function toggle(listKey: keyof RelacionesForm, id: string, checked: boolean) {
+  function toggle(listKey: keyof RelacionesForm, id: number, checked: boolean) {
     setForm((prev) => {
       const list = prev[listKey];
-      const next = checked ? [...list, id] : list.filter((x) => x !== id);
+      const exists = list.includes(id);
+
+      // evita duplicados por seguridad
+      const next = checked
+        ? exists
+          ? list
+          : [...list, id]
+        : list.filter((x) => x !== id);
+
       return { ...prev, [listKey]: next };
     });
   }
@@ -58,11 +66,10 @@ export function RelacionesTab({
       });
 
       setMsg({ type: "ok", text: "Relaciones guardadas correctamente." });
-    } catch (e: any) {
-      setMsg({
-        type: "err",
-        text: e?.message || "Error guardando relaciones.",
-      });
+    } catch (e) {
+      const message =
+        e instanceof Error ? e.message : "Error guardando relaciones.";
+      setMsg({ type: "err", text: message });
     }
   }
 
@@ -81,6 +88,7 @@ export function RelacionesTab({
             onToggle={(id, checked) => toggle("selectedCatIds", id, checked)}
             disabled={isPending}
           />
+
           <Box
             title="Colecciones"
             items={cols}
@@ -88,6 +96,7 @@ export function RelacionesTab({
             onToggle={(id, checked) => toggle("selectedColIds", id, checked)}
             disabled={isPending}
           />
+
           <Box
             title="Insignias"
             items={badges}
@@ -130,17 +139,19 @@ function Box({
   disabled,
 }: {
   title: string;
-  items: Array<{ id: string; nombre: string }>;
-  selected: string[];
-  onToggle: (id: string, checked: boolean) => void;
+  items: Array<{ id: number; nombre: string }>;
+  selected: number[];
+  onToggle: (id: number, checked: boolean) => void;
   disabled?: boolean;
 }) {
   return (
     <div className="space-y-3">
       <div className="text-sm font-medium">{title}</div>
+
       <div className="max-h-64 space-y-2 overflow-auto rounded-md border p-3">
         {items.map((i) => {
           const checked = selected.includes(i.id);
+
           return (
             <label
               key={i.id}
