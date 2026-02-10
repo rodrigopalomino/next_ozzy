@@ -74,9 +74,22 @@ function estadoBadgeVariant(estado: EstadoProducto) {
   }
 }
 
-function formatMoney(n: number | null | undefined) {
+type DecimalLike = number | string | { toString(): string };
+
+function toNumberDecimalLike(v: DecimalLike | null | undefined): number | null {
+  if (v == null) return null;
+
+  if (typeof v === "number") return Number.isFinite(v) ? v : null;
+
+  // string o Decimal/obj con toString()
+  const n = Number(v.toString());
+  return Number.isFinite(n) ? n : null;
+}
+
+function formatMoney(v: DecimalLike | null | undefined) {
+  const n = toNumberDecimalLike(v);
   if (n == null) return "—";
-  return `S/ ${Number(n).toFixed(2)}`;
+  return `S/ ${n.toFixed(2)}`;
 }
 
 export default function PageProductos() {

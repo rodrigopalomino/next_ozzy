@@ -91,7 +91,7 @@ export default function PageCategorias() {
 
   const hasFilters = q.trim().length > 0 || estado !== "ALL";
 
-  const rows = data!.data;
+  const rows = data?.data ?? [];
   const meta = data?.meta;
 
   const filtered = React.useMemo(() => {
