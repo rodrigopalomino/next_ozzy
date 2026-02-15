@@ -52,6 +52,16 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Progress } from "@/components/ui/progress";
 
+// ✅ HOOKS (tuyos)
+import { useCreateColeccion } from "@/hooks/coleccion/useCreateColeccion";
+import { useUpdateColeccion } from "@/hooks/coleccion/useUpdateColeccion";
+import { useColecciones } from "@/hooks/coleccion/useColecciones";
+
+// ✅ Hooks de imagen (los 3 nuevos que ya tienes)
+import { useColeccionImagenPresign } from "@/hooks/coleccion/useColeccionImagenPresign";
+import { useSetColeccionImagenPortada } from "@/hooks/coleccion/useSetColeccionImagenPortada";
+import { useRemoveColeccionImagenPortada } from "@/hooks/coleccion/useRemoveColeccionImagenPortada";
+
 // ✅ TIPOS (usa tus types reales si ya existen)
 type Coleccion = {
   id: number;
@@ -100,10 +110,34 @@ function normalizeIsoOrNull(v: string) {
   return d.toISOString();
 }
 
-// ✅ HOOKS (ajusta paths)
-import { useCreateColeccion } from "@/hooks/coleccion/useCreateColeccion";
-import { useUpdateColeccion } from "@/hooks/coleccion/useUpdateColeccion";
-import { useColecciones } from "@/hooks/coleccion/useColecciones";
+function uploadWithProgress(
+  uploadUrl: string,
+  file: File,
+  onProgress: (p: number) => void,
+) {
+  return new Promise<void>((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("PUT", uploadUrl, true);
+    xhr.setRequestHeader(
+      "Content-Type",
+      file.type || "application/octet-stream",
+    );
+
+    xhr.upload.onprogress = (e) => {
+      if (!e.lengthComputable) return;
+      const p = Math.round((e.loaded / e.total) * 100);
+      onProgress(Math.max(1, Math.min(99, p)));
+    };
+
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) resolve();
+      else reject(new Error(`Upload failed (${xhr.status})`));
+    };
+
+    xhr.onerror = () => reject(new Error("Upload error"));
+    xhr.send(file);
+  });
+}
 
 export default function PageColecciones() {
   // ✅ paginado real
@@ -561,6 +595,12 @@ function ColeccionDialogContent(props: {
   }) => void;
 }) {
   const isEdit = !!props.value;
+  const coleccionId = props.value?.id ?? 0;
+
+  // ✅ hooks imagen (USAR los tuyos)
+  const presign = useColeccionImagenPresign(coleccionId);
+  const setPortada = useSetColeccionImagenPortada(coleccionId);
+  const removePortada = useRemoveColeccionImagenPortada(coleccionId);
 
   const [nombre, setNombre] = React.useState(props.value?.nombre ?? "");
   const [slug, setSlug] = React.useState(props.value?.slug ?? "");
@@ -616,39 +656,55 @@ function ColeccionDialogContent(props: {
     });
   }
 
-  async function simulateUpload(file: File) {
-    const localUrl = URL.createObjectURL(file);
+  async function uploadImage(file: File) {
+    // ✅ Crear primero; luego editar para subir imagen (porque necesitas ID)
+    if (!isEdit || !coleccionId) return;
 
     setUploading(true);
-    setProgress(10);
+    setProgress(5);
 
-    let p = 10;
-    const timer = setInterval(() => {
-      p += Math.floor(Math.random() * 18) + 6;
-      if (p >= 95) p = 95;
-      setProgress(p);
-    }, 200);
+    try {
+      const pres = await presign.mutateAsync({ filename: file.name });
 
-    await new Promise((r) => setTimeout(r, 1200));
+      await uploadWithProgress(pres.uploadUrl, file, (p) => setProgress(p));
 
-    clearInterval(timer);
-    setProgress(100);
-    setImagenPortada(localUrl);
+      await setPortada.mutateAsync({ url: pres.url });
 
-    await new Promise((r) => setTimeout(r, 250));
-    setUploading(false);
+      setImagenPortada(pres.url);
+      setProgress(100);
+    } catch {
+      setProgress(0);
+    } finally {
+      setTimeout(() => setUploading(false), 150);
+    }
   }
 
   function onPickFile(files: FileList | null) {
     const file = files?.[0];
     if (!file) return;
-    void simulateUpload(file);
+    void uploadImage(file);
   }
 
-  function removeImage() {
-    setImagenPortada("");
-    setProgress(0);
-    setUploading(false);
+  async function removeImage() {
+    if (!imagenPortada) return;
+
+    // si es nuevo sin ID, solo limpia UI
+    if (!isEdit || !coleccionId) {
+      setImagenPortada("");
+      setProgress(0);
+      return;
+    }
+
+    setUploading(true);
+    setProgress(35);
+
+    try {
+      await removePortada.mutateAsync();
+      setImagenPortada("");
+      setProgress(0);
+    } finally {
+      setUploading(false);
+    }
   }
 
   return (
@@ -658,7 +714,9 @@ function ColeccionDialogContent(props: {
           {isEdit ? "Editar colección" : "Nueva colección"}
         </DialogTitle>
         <DialogDescription className="text-gray-700">
-          Usa create/update real. La imagen sigue en UI por ahora.
+          {isEdit
+            ? "Puedes subir, reemplazar o quitar la portada."
+            : "Crea la colección primero. Luego podrás subir la imagen de portada."}
         </DialogDescription>
       </DialogHeader>
 
@@ -714,7 +772,10 @@ function ColeccionDialogContent(props: {
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-[2fr_1fr]">
               <div>
-                <Dropzone disabled={uploading} onFiles={onPickFile} />
+                <Dropzone
+                  disabled={uploading || !isEdit}
+                  onFiles={onPickFile}
+                />
 
                 {uploading && (
                   <div className="mt-3 rounded-lg border p-3">
@@ -755,6 +816,7 @@ function ColeccionDialogContent(props: {
                     onChange={(e) => setImagenPortada(e.target.value)}
                     placeholder="https://..."
                     className="text-black placeholder:text-gray-500"
+                    disabled
                   />
 
                   <div className="flex gap-2">
@@ -762,8 +824,8 @@ function ColeccionDialogContent(props: {
                       type="button"
                       variant="destructive"
                       size="icon"
-                      onClick={removeImage}
-                      disabled={!imagenPortada}
+                      onClick={() => void removeImage()}
+                      disabled={!imagenPortada || uploading}
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
@@ -771,6 +833,12 @@ function ColeccionDialogContent(props: {
                 </div>
               </div>
             </div>
+
+            {!isEdit ? (
+              <p className="text-xs text-gray-700">
+                * Guarda la colección para habilitar la subida de imagen.
+              </p>
+            ) : null}
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -817,7 +885,7 @@ function ColeccionDialogContent(props: {
           type="button"
           variant="outline"
           onClick={props.onCancel}
-          disabled={props.loading}
+          disabled={props.loading || uploading}
         >
           Cancelar
         </Button>
@@ -900,6 +968,7 @@ function Dropzone(props: {
             e.stopPropagation();
             openPicker();
           }}
+          disabled={props.disabled}
         >
           Seleccionar archivo
         </Button>
