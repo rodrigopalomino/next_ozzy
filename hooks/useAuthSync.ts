@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import { api } from "@/lib/api";
 import { useAuthStore } from "@/store/auth-store";
 import { useRouter } from "next/navigation";
-import { Usuario } from "@/types/Usuario";
+import { ApiItemResponse } from "@/types/ApiResponse";
+import { UsuarioSesion } from "@/types/Usuario";
 
 export function useAuthSync() {
   const router = useRouter();
@@ -21,7 +22,14 @@ export function useAuthSync() {
       setLoading(true);
 
       try {
-        const user = await api.get("auth/me").json<Usuario>();
+        // `/auth/me` devuelve el payload del JWT (cuatro campos, sin fechas)
+        // envuelto en el contrato estándar: el usuario está en `data`, no en
+        // la raíz. Sin desenvolverlo, el store guardaba `{status, message,
+        // data}` en vez del usuario.
+        const respuesta = await api
+          .get("auth/me")
+          .json<ApiItemResponse<UsuarioSesion>>();
+        const user = respuesta.data;
 
         if (!active) return;
 

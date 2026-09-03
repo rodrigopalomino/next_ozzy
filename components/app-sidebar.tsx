@@ -21,8 +21,6 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 
-// This is sample data.
-// This is sample data.  ✅ Ahora con tu Admin de OZZY
 const data = {
   navMain: [
     {
@@ -48,6 +46,31 @@ const data = {
         { title: "Talla", url: "/admin/talla" },
       ],
     },
+    {
+      title: "Ventas",
+      url: "#",
+      items: [
+        { title: "Leads de WhatsApp", url: "/admin/leads" },
+        { title: "Carritos abandonados", url: "/admin/carritos" },
+        { title: "Cupones", url: "/admin/cupones" },
+      ],
+    },
+    {
+      title: "Tienda",
+      url: "#",
+      items: [
+        { title: "Configuración", url: "/admin/configuracion" },
+        { title: "Notificaciones", url: "/admin/notificaciones" },
+      ],
+    },
+    {
+      title: "Sistema",
+      url: "#",
+      items: [
+        { title: "Auditoría", url: "/admin/auditoria" },
+        { title: "Mantenimiento", url: "/admin/mantenimiento" },
+      ],
+    },
   ],
 };
 
@@ -58,13 +81,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
+              <a href="/admin">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <GalleryVerticalEnd className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-medium">Documentation</span>
-                  <span className="">v1.0.0</span>
+                  <span className="font-medium">OZZY</span>
+                  <span className="">Panel de administración</span>
                 </div>
               </a>
             </SidebarMenuButton>

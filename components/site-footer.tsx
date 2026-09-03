@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import FooterEnlaces from "@/components/footer-enlaces";
+
 export default function SiteFooter() {
   return (
     <footer className="bg-pink-500 text-white">
@@ -59,39 +61,12 @@ export default function SiteFooter() {
             por WhatsApp.
           </p>
 
-          <div className="mt-4 flex flex-wrap gap-2">
-            <a
-              href="https://wa.me/51999999999"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full bg-white/15 px-4 py-2 text-xs font-semibold hover:bg-white/20"
-            >
-              Pedir por WhatsApp
-            </a>
-
-            <a
-              href="https://www.instagram.com/ozzy.urban.store/"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full bg-white/15 px-4 py-2 text-xs font-semibold hover:bg-white/20"
-            >
-              Instagram
-            </a>
-
-            <a
-              href="https://www.tiktok.com/@ozzy.urban.store"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full bg-white/15 px-4 py-2 text-xs font-semibold hover:bg-white/20"
-            >
-              TikTok
-            </a>
-          </div>
+          <FooterEnlaces />
         </div>
       </div>
 
       <div className="border-t border-white/20 py-4 text-center text-xs opacity-95">
-        © 2025 OZZY — Todos los derechos reservados.
+        © {new Date().getFullYear()} OZZY — Todos los derechos reservados.
       </div>
     </footer>
   );

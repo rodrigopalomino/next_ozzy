@@ -1,0 +1,180 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e5]:
+        - link "Ir al inicio" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img "Ozzy" [ref=e229]
+        - link "Instagram" [ref=e231] [cursor=pointer]:
+          - /url: https://instagram.com/ozzy
+          - img "Instagram" [ref=e233]
+      - generic [ref=e10]:
+        - navigation [ref=e11]:
+          - link "Inicio" [ref=e12] [cursor=pointer]:
+            - /url: /
+          - link "Categorías" [ref=e13] [cursor=pointer]:
+            - /url: /producto?tipo=categorias
+          - link "Colecciones" [ref=e14] [cursor=pointer]:
+            - /url: /producto?tipo=colecciones
+          - link "Tiendas" [ref=e15] [cursor=pointer]:
+            - /url: /#tiendas
+        - generic [ref=e16]:
+          - search [ref=e17]:
+            - generic [ref=e18]: Buscar productos
+            - searchbox "Buscar productos" [ref=e22]
+          - link "Ver favoritos" [ref=e23] [cursor=pointer]:
+            - /url: /favoritos
+          - button "Ver carrito" [ref=e26]
+          - button "Entrar" [ref=e125]
+    - main [ref=e31]:
+      - navigation [ref=e32]:
+        - list [ref=e33]:
+          - listitem [ref=e34]:
+            - link "Inicio" [ref=e35] [cursor=pointer]:
+              - /url: /
+            - generic [ref=e36]: ">"
+          - listitem [ref=e37]:
+            - link "Polos" [ref=e38] [cursor=pointer]:
+              - /url: /producto?tipo=categorias&categoria=polos
+            - generic [ref=e39]: ">"
+          - listitem [ref=e40]:
+            - generic [ref=e41]: Polo Oversize Basic
+      - generic [ref=e42]:
+        - img "Polo Oversize Basic" [ref=e45]
+        - generic [ref=e46]:
+          - generic [ref=e47]: TOP
+          - heading "Polo Oversize Basic" [level=1] [ref=e49]
+          - generic [ref=e50]: S/ 59.00
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - generic [ref=e54]:
+                - generic [ref=e55]: "Color:"
+                - generic [ref=e56]:
+                  - button "Color Negro" [pressed] [ref=e57]: Negro
+                  - button "Color Blanco" [ref=e61]: Blanco
+                  - button "Color Beige" [ref=e63]: Beige
+              - generic [ref=e65]:
+                - generic [ref=e66]: "Talla:"
+                - generic [ref=e67]:
+                  - button "Talla S" [pressed] [ref=e68]: S
+                  - button "Talla M" [ref=e69]: M
+                  - button "Talla L" [ref=e70]: L
+                  - button "Talla XL" [ref=e71]: XL
+              - paragraph [ref=e72]: Desde S/ 59.00 en Negro
+            - generic [ref=e73]:
+              - generic [ref=e74]: "Cantidad:"
+              - generic [ref=e75]:
+                - button "Disminuir cantidad" [disabled] [ref=e76]: −
+                - 'status "Cantidad: 1" [ref=e77]': "1"
+                - button "Aumentar cantidad" [ref=e78]: +
+            - button "Guía de tallas" [ref=e80]
+            - generic [ref=e81]:
+              - button "Pedir por WhatsApp" [ref=e83]
+              - button "Agregando..." [disabled] [ref=e234]
+          - generic [ref=e89]:
+            - heading "Descripción:" [level=2] [ref=e90]
+            - paragraph [ref=e91]: Polo de algodón peruano 100% pima, corte oversize con caída recta. Tela de 180 g/m² que no se transparenta y mantiene la forma tras el lavado. Cuello reforzado con cinta interna. Prelavado, no encoge.
+      - generic [ref=e238]:
+        - generic [ref=e239]:
+          - generic [ref=e240]:
+            - heading "Similares para ti" [level=2] [ref=e241]
+            - paragraph [ref=e242]: Productos que combinan con este estilo.
+          - generic [ref=e243]:
+            - button "Anterior" [ref=e244]
+            - button "Siguiente" [ref=e247]
+        - generic [ref=e250]:
+          - generic [ref=e252]:
+            - generic [ref=e255]:
+              - generic [ref=e256]:
+                - generic [ref=e257]: "-20%"
+                - generic [ref=e258]: OFERTA
+              - button "Guardar en favoritos" [ref=e259]
+              - link "Polo Boxy Fit Heavyweight Polo Boxy Fit Heavyweight S/ 79.00 S/ 63.20 Negro Verde Militar Vino" [ref=e262] [cursor=pointer]:
+                - /url: /producto/polo-boxy-fit-heavyweight
+                - img "Polo Boxy Fit Heavyweight" [ref=e264]
+                - generic [ref=e265]:
+                  - generic [ref=e266]: Polo Boxy Fit Heavyweight
+                  - generic [ref=e268]:
+                    - generic [ref=e269]: S/ 79.00
+                    - generic [ref=e270]: S/ 63.20
+                  - generic [ref=e271]:
+                    - generic "Negro" [ref=e272]
+                    - generic "Verde Militar" [ref=e273]
+                    - generic "Vino" [ref=e274]
+            - generic [ref=e277]:
+              - button "Guardar en favoritos" [ref=e278]
+              - link "Polo Pima Cuello V Polo Pima Cuello V S/ 55.00 Blanco Azul Marino Gris Melange" [ref=e281] [cursor=pointer]:
+                - /url: /producto/polo-pima-cuello-v
+                - img "Polo Pima Cuello V" [ref=e283]
+                - generic [ref=e284]:
+                  - generic [ref=e285]: Polo Pima Cuello V
+                  - generic [ref=e286]: S/ 55.00
+                  - generic [ref=e288]:
+                    - generic "Blanco" [ref=e289]
+                    - generic "Azul Marino" [ref=e290]
+                    - generic "Gris Melange" [ref=e291]
+            - generic [ref=e294]:
+              - generic [ref=e295]:
+                - generic [ref=e296]: NUEVO
+                - generic [ref=e297]: TOP
+              - button "Guardar en favoritos" [ref=e298]
+              - link "Polo Estampado Back Print Polo Estampado Back Print S/ 75.00 Negro Blanco" [ref=e301] [cursor=pointer]:
+                - /url: /producto/polo-estampado-back-print
+                - img "Polo Estampado Back Print" [ref=e303]
+                - generic [ref=e304]:
+                  - generic [ref=e305]: Polo Estampado Back Print
+                  - generic [ref=e306]: S/ 75.00
+                  - generic [ref=e308]:
+                    - generic "Negro" [ref=e309]
+                    - generic "Blanco" [ref=e310]
+            - generic [ref=e313]:
+              - generic [ref=e314]: NUEVO
+              - button "Guardar en favoritos" [ref=e316]
+              - link "Polo Manga Larga Rib Polo Manga Larga Rib S/ 69.00 Negro Blanco Gris Melange" [ref=e319] [cursor=pointer]:
+                - /url: /producto/polo-manga-larga-rib
+                - img "Polo Manga Larga Rib" [ref=e321]
+                - generic [ref=e322]:
+                  - generic [ref=e323]: Polo Manga Larga Rib
+                  - generic [ref=e324]: S/ 69.00
+                  - generic [ref=e326]:
+                    - generic "Negro" [ref=e327]
+                    - generic "Blanco" [ref=e328]
+                    - generic "Gris Melange" [ref=e329]
+          - generic [ref=e330]:
+            - button "Ir al slide 1" [ref=e331]
+            - button "Ir al slide 2" [ref=e332]
+    - contentinfo [ref=e92]:
+      - generic [ref=e93]:
+        - generic [ref=e94]:
+          - heading "Ayuda" [level=3] [ref=e95]
+          - list [ref=e96]:
+            - listitem [ref=e97]:
+              - link "Delivery" [ref=e98] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e99]:
+              - link "Cambios" [ref=e100] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e101]:
+              - link "Cómo pagar con Yape" [ref=e102] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e103]:
+          - heading "Links" [level=3] [ref=e104]
+          - list [ref=e105]:
+            - listitem [ref=e106]:
+              - link "Tiendas" [ref=e107] [cursor=pointer]:
+                - /url: /tiendas
+            - listitem [ref=e108]:
+              - link "Contáctanos" [ref=e109] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e110]:
+              - link "Catálogo" [ref=e111] [cursor=pointer]:
+                - /url: /producto?tipo=categorias
+        - generic [ref=e112]:
+          - heading "OZZY" [level=3] [ref=e113]
+          - paragraph [ref=e114]: Catálogo de ropa urbana para damas. Elige tu estilo y pide directo por WhatsApp.
+          - link "Instagram" [ref=e334] [cursor=pointer]:
+            - /url: https://instagram.com/ozzy
+      - generic [ref=e115]: © 2026 OZZY — Todos los derechos reservados.
+  - button "Open Tanstack query devtools" [ref=e179] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=e121] [cursor=pointer]
+  - alert [ref=e228]

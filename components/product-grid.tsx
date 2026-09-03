@@ -1,27 +1,33 @@
 import ProductCard from "./product-card";
 
-type Product = {
-  id: string;
-  name: string;
-  price: number;
-  discountPercent?: number;
-  image: string;
-  slug: string; // esto será tu producto_id en la URL
-  category?: string;
-  collection?: string;
-};
+import type { ProductoTarjetaSalida } from "@/types/catalogo";
 
-export default function ProductGrid({ products }: { products: Product[] }) {
+export default function ProductGrid({
+  productos,
+}: {
+  productos: ProductoTarjetaSalida[];
+}) {
+  if (productos.length === 0) {
+    return (
+      <div className="rounded-2xl border border-neutral-200 bg-neutral-50 p-10 text-center">
+        <p className="text-sm font-semibold text-neutral-900">
+          No encontramos productos
+        </p>
+        <p className="mt-1 text-sm text-neutral-600">
+          Prueba quitando algún filtro o buscando otra cosa.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
-      {products.map((p) => (
+      {productos.map((producto, idx) => (
         <ProductCard
-          key={p.id}
-          name={p.name}
-          price={p.price}
-          discountPercent={p.discountPercent}
-          image={p.image}
-          href={`/producto/${encodeURIComponent(p.slug)}`}
+          key={producto.id}
+          producto={producto}
+          // Las primeras filas entran en el viewport: sin lazy no hay salto.
+          priority={idx < 4}
         />
       ))}
     </div>

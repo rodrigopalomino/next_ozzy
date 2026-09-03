@@ -1,0 +1,134 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - generic [ref=f3e5]:
+      - generic [ref=f3e6]:
+        - list [ref=f3e7]:
+          - listitem [ref=f3e8]:
+            - link "OZZY Panel de administración" [ref=f3e9] [cursor=pointer]:
+              - /url: /admin
+              - generic [ref=f3e13]:
+                - generic [ref=f3e14]: OZZY
+                - generic [ref=f3e15]: Panel de administración
+        - generic [ref=f3e18]:
+          - generic [ref=f3e19]: Search
+          - textbox "Search" [ref=f3e20]:
+            - /placeholder: Search the docs...
+      - list [ref=f3e23]:
+        - listitem [ref=f3e25]:
+          - button "Panel" [ref=f3e26]
+        - listitem [ref=f3e29]:
+          - button "Catálogo" [expanded] [ref=f3e30]
+          - list [ref=f3e33]:
+            - listitem [ref=f3e34]:
+              - link "Productos" [ref=f3e35] [cursor=pointer]:
+                - /url: /admin/productos
+            - listitem [ref=f3e36]:
+              - link "Crear producto" [ref=f3e37] [cursor=pointer]:
+                - /url: /admin/productos/nuevo
+        - listitem [ref=f3e39]:
+          - button "Gestión" [ref=f3e40]
+        - listitem [ref=f3e43]:
+          - button "Ventas" [ref=f3e44]
+        - generic:
+          - listitem
+        - listitem [ref=f3e47]:
+          - button "Sistema" [ref=f3e48]
+      - button "Toggle Sidebar" [ref=f3e50]
+    - main [ref=f3e51]:
+      - generic [ref=f3e52]:
+        - button "Toggle Sidebar" [ref=f3e53]
+        - navigation "breadcrumb" [ref=f3e55]:
+          - list [ref=f3e56]:
+            - listitem [ref=f3e57]:
+              - link "Building Your Application" [ref=f3e58] [cursor=pointer]:
+                - /url: "#"
+            - listitem [aria-hidden] [ref=f3e59]
+            - listitem [ref=f3e62]:
+              - link "Data Fetching" [disabled] [ref=f3e63]
+      - generic [ref=f3e65]:
+        - generic [ref=f3e78]:
+          - generic [ref=f3e79]:
+            - heading "Configuración de la tienda" [level=1] [ref=f3e80]
+            - paragraph [ref=f3e81]: El número de WhatsApp, las redes y el texto de los mensajes. Los cambios se aplican de inmediato en la tienda.
+          - button "Guardar" [disabled]
+        - generic [ref=f3e82]:
+          - generic [ref=f3e83]: Envíos
+          - generic [ref=f3e86]:
+            - generic [ref=f3e87]: Info
+            - textbox "Info" [ref=f3e88]: Envíos a todo el país. Consulta el costo por WhatsApp.
+            - paragraph [ref=f3e89]: Texto informativo de envíos
+            - paragraph [ref=f3e90]: envio.info
+        - generic [ref=f3e91]:
+          - generic [ref=f3e92]: Redes sociales
+          - generic [ref=f3e94]:
+            - generic [ref=f3e95]:
+              - generic [ref=f3e96]: Facebook
+              - textbox "Facebook" [ref=f3e97]
+              - paragraph [ref=f3e98]: URL de la página de Facebook
+              - paragraph [ref=f3e99]: redes.facebook
+            - generic [ref=f3e100]:
+              - generic [ref=f3e101]: Instagram
+              - textbox "Instagram" [ref=f3e102]: https://instagram.com/ozzy
+              - paragraph [ref=f3e103]: URL del perfil de Instagram
+              - paragraph [ref=f3e104]: redes.instagram
+            - generic [ref=f3e105]:
+              - generic [ref=f3e106]: Tiktok
+              - textbox "Tiktok" [ref=f3e107]
+              - paragraph [ref=f3e108]: URL del perfil de TikTok
+              - paragraph [ref=f3e109]: redes.tiktok
+        - generic [ref=f3e110]:
+          - generic [ref=f3e111]: Tienda
+          - generic [ref=f3e113]:
+            - generic [ref=f3e114]:
+              - generic [ref=f3e115]: Moneda
+              - textbox "Moneda" [ref=f3e116]: PEN
+              - paragraph [ref=f3e117]: Código ISO de la moneda
+              - paragraph [ref=f3e118]: tienda.moneda
+            - generic [ref=f3e119]:
+              - generic [ref=f3e120]: Moneda simbolo
+              - textbox "Moneda simbolo" [ref=f3e121]: S/
+              - paragraph [ref=f3e122]: Símbolo de la moneda
+              - paragraph [ref=f3e123]: tienda.moneda_simbolo
+            - generic [ref=f3e124]:
+              - generic [ref=f3e125]: Nombre
+              - textbox "Nombre" [ref=f3e126]: Ozzy
+              - paragraph [ref=f3e127]: Nombre de la tienda
+              - paragraph [ref=f3e128]: tienda.nombre
+            - generic [ref=f3e129]:
+              - generic [ref=f3e130]: Url
+              - textbox "Url" [ref=f3e131]: http://localhost:3000
+              - paragraph [ref=f3e132]: URL pública del front, usada en enlaces y sitemap
+              - paragraph [ref=f3e133]: tienda.url
+        - generic [ref=f3e134]:
+          - generic [ref=f3e135]:
+            - generic [ref=f3e136]: WhatsApp
+            - generic [ref=f3e137]: Sin número de WhatsApp, el botón de pedido no se muestra en la tienda.
+          - generic [ref=f3e138]:
+            - generic [ref=f3e139]:
+              - generic [ref=f3e140]: Carrito linea
+              - textbox "Carrito linea" [ref=f3e141]: "{{n}}) *{{producto}}* Talla {{talla}} / {{color}} {{cantidad}} x {{precio}} = {{subtotal}}"
+              - paragraph [ref=f3e142]: "Plantilla de cada línea del pedido. Variables: {{n}} {{producto}} {{talla}} {{color}} {{cantidad}} {{precio}} {{subtotal}}"
+              - paragraph [ref=f3e143]: whatsapp.carrito_linea
+            - generic [ref=f3e144]:
+              - generic [ref=f3e145]: Carrito plantilla
+              - textbox "Carrito plantilla" [ref=f3e146]: "Hola! Quiero pedir: {{items}} Total: {{total}} {{url}}"
+              - paragraph [ref=f3e147]: "Plantilla del pedido con varios productos. Variables: {{items}} {{total}} {{cantidad}} {{url}}"
+              - paragraph [ref=f3e148]: whatsapp.carrito_plantilla
+            - generic [ref=f3e149]:
+              - generic [ref=f3e150]: Horario
+              - textbox "Horario" [ref=f3e151]: Lun a Sab 9-20
+              - paragraph [ref=f3e152]: Horario de atención mostrado en la web
+              - paragraph [ref=f3e153]: whatsapp.horario
+            - generic [ref=f3e154]:
+              - generic [ref=f3e155]: Mensaje plantilla
+              - textbox "Mensaje plantilla" [ref=f3e156]: "Hola! Me interesa este producto: *{{producto}}* {{variante}}Precio: {{precio}} {{url}}"
+              - paragraph [ref=f3e157]: "Plantilla del mensaje. Variables: {{producto}} {{variante}} {{talla}} {{color}} {{precio}} {{url}}"
+              - paragraph [ref=f3e158]: whatsapp.mensaje_plantilla
+            - generic [ref=f3e159]:
+              - generic [ref=f3e160]: Numero
+              - textbox "Numero" [ref=f3e161]
+              - paragraph [ref=f3e162]: "Número de WhatsApp con código de país, sólo dígitos. Ej: 51987654321"
+              - paragraph [ref=f3e163]: whatsapp.numero
+  - button "Open Tanstack query devtools" [ref=f3e214] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=f3e74] [cursor=pointer]
+  - alert [ref=f3e263]

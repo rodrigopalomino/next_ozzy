@@ -1,15 +1,14 @@
 import ProductCard from "./product-card";
 
-type Item = {
-  id: string;
-  name: string;
-  price: number;
-  discountPercent?: number;
-  image: string;
-  badge?: string;
-};
+import type { ProductoTarjetaSalida } from "@/types/catalogo";
 
-export default function BestSellersGrid({ items }: { items: Item[] }) {
+export default function BestSellersGrid({
+  productos,
+}: {
+  productos: ProductoTarjetaSalida[];
+}) {
+  if (productos.length === 0) return null;
+
   return (
     <section>
       <div>
@@ -20,16 +19,11 @@ export default function BestSellersGrid({ items }: { items: Item[] }) {
       </div>
 
       <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {items.map((p) => (
+        {productos.map((producto) => (
           <ProductCard
-            key={p.id}
-            name={p.name}
-            price={p.price}
-            discountPercent={p.discountPercent}
-            image={p.image}
-            hoverImage="/img/polo_2.jpg"
-            badge={p.badge}
-            href={`/producto/${encodeURIComponent(p.name.toLowerCase().replace(/\s+/g, "-"))}`}
+            key={producto.id}
+            producto={producto}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
         ))}
       </div>

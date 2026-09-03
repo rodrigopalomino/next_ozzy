@@ -1,22 +1,33 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Heart, Search, ShoppingBag } from "lucide-react";
+
+import ClienteMenu from "@/components/cliente-menu";
+import { useCarrito } from "@/hooks/carrito/useCarrito";
+import { useCarritoDrawer } from "@/store/carrito-drawer-store";
+import { useConfiguracion, useFavoritos } from "@/hooks/tienda/useTienda";
 
 function SocialIconButton({
   src,
   alt,
   ariaLabel,
-  href = "#",
+  href,
   iconClassName = "h-7 w-7 sm:h-6 sm:w-6",
 }: {
   src: string;
   alt: string;
   ariaLabel: string;
-  href?: string;
+  href: string;
   iconClassName?: string;
 }) {
+  // Una red sin configurar llega como cadena vacía: no se pinta el icono en
+  // vez de dejar un enlace muerto.
+  if (!href) return null;
+
   return (
     <a
       href={href}
@@ -32,7 +43,38 @@ function SocialIconButton({
   );
 }
 
+/** Contador sobre un icono; se oculta en 0. */
+function Contador({ valor }: { valor: number }) {
+  if (valor <= 0) return null;
+
+  return (
+    <span className="absolute -right-1 -top-1 grid h-4 min-w-4 place-items-center rounded-full bg-white px-1 text-[10px] font-bold tabular-nums text-pink-600">
+      {valor > 99 ? "99+" : valor}
+    </span>
+  );
+}
+
 export default function SiteHeader() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const abrirCarrito = useCarritoDrawer((s) => s.abrir);
+  const { data: configuracion } = useConfiguracion();
+  const { data: carrito } = useCarrito();
+  const { data: favoritos } = useFavoritos();
+
+  const config = configuracion?.data;
+
+  const [termino, setTermino] = useState(searchParams.get("q") ?? "");
+
+  const buscar = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = termino.trim();
+    // La búsqueda pública va por `?q=` (índice FULLTEXT del back), no por los
+    // filtros del panel.
+    router.push(q ? `/producto?q=${encodeURIComponent(q)}` : "/producto");
+  };
+
   return (
     <header className="border-b border-neutral-200 bg-bg">
       {/* Top: logo + redes */}
@@ -46,7 +88,7 @@ export default function SiteHeader() {
             <div className="relative h-10 w-28">
               <Image
                 src="/img/logo.svg"
-                alt="OZZY"
+                alt={config?.["tienda.nombre"] || "OZZY"}
                 fill
                 className="object-contain"
                 priority
@@ -59,25 +101,25 @@ export default function SiteHeader() {
               src="/img/instagram.svg"
               alt="Instagram"
               ariaLabel="Instagram"
-              href="https://www.instagram.com/ozzy.urban.store/?igsh=Njg4NW1lY2dlZDZu#"
+              href={config?.["redes.instagram"] ?? ""}
             />
             <SocialIconButton
               src="/img/tiktok.svg"
               alt="TikTok"
               ariaLabel="TikTok"
-              href="https://www.tiktok.com/@ozzy.urban.store?_t=8la1ycsjWz7&_r=1"
+              href={config?.["redes.tiktok"] ?? ""}
             />
             <SocialIconButton
               src="/img/facebook.svg"
               alt="Facebook"
               ariaLabel="Facebook"
-              href="#"
+              href={config?.["redes.facebook"] ?? ""}
             />
           </div>
         </div>
       </div>
 
-      {/* Barra de navegación: limpio (Inicio | Categorías | Colecciones | Tiendas) */}
+      {/* Navegación */}
       <div className="bg-brand">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:gap-6">
           <nav className="flex items-center gap-5 text-sm font-semibold text-white">
@@ -90,20 +132,53 @@ export default function SiteHeader() {
             <Link className="hover:underline" href="/producto?tipo=colecciones">
               Colecciones
             </Link>
-            {/* Si no tienes página /tiendas aún, esto puede ser un anchor a tu sección */}
             <Link className="hover:underline" href="/#tiendas">
               Tiendas
             </Link>
           </nav>
 
-          <div className="sm:ml-auto">
-            <div className="flex w-full max-w-md items-center gap-2 rounded-full bg-white px-4 py-2">
-              <Search className="h-4 w-4 text-muted" />
+          <div className="flex items-center gap-2 sm:ml-auto">
+            <form
+              onSubmit={buscar}
+              role="search"
+              className="flex w-full max-w-md items-center gap-2 rounded-full bg-white px-4 py-2"
+            >
+              <label htmlFor="buscar" className="sr-only">
+                Buscar productos
+              </label>
+              <Search className="h-4 w-4 shrink-0 text-muted" />
               <input
+                id="buscar"
+                type="search"
+                value={termino}
+                onChange={(e) => setTermino(e.target.value)}
                 className="w-full bg-transparent text-sm text-ink outline-none placeholder:text-muted/70"
                 placeholder="Buscar..."
               />
-            </div>
+            </form>
+
+            <Link
+              href="/favoritos"
+              aria-label="Ver favoritos"
+              className="relative inline-flex shrink-0 rounded-full p-2 text-white hover:bg-white/15"
+            >
+              <Heart className="h-5 w-5" />
+              <Contador valor={favoritos?.data.total ?? 0} />
+            </Link>
+
+            {/* Abre el drawer en vez de navegar: el cliente revisa el
+                carrito sin perder la página en la que estaba. */}
+            <button
+              type="button"
+              onClick={abrirCarrito}
+              aria-label="Ver carrito"
+              className="relative inline-flex shrink-0 rounded-full p-2 text-white transition-colors hover:bg-white/15"
+            >
+              <ShoppingBag className="h-5 w-5" />
+              <Contador valor={carrito?.data.cantidad ?? 0} />
+            </button>
+
+            <ClienteMenu />
           </div>
         </div>
       </div>

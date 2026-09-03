@@ -1,0 +1,143 @@
+- generic [ref=f5e2]:
+  - generic [ref=f5e3]:
+    - banner [ref=f5e4]:
+      - generic [ref=f5e5]:
+        - link "Página de inicio de WhatsApp" [ref=f5e8] [cursor=pointer]:
+          - /url: https://www.whatsapp.com/
+          - img "WhatsApp.com" [ref=f5e10]
+        - generic [ref=f5e16]:
+          - button "Funciones" [ref=f5e19] [cursor=pointer]
+          - link "Función de privacidad en WhatsApp" [ref=f5e26] [cursor=pointer]:
+            - /url: https://www.whatsapp.com/privacy
+            - text: Privacidad
+          - link "Blog en WhatsApp" [ref=f5e27] [cursor=pointer]:
+            - /url: https://blog.whatsapp.com/
+            - text: Blog
+          - link "Aplicaciones disponibles en WhatsApp" [ref=f5e28] [cursor=pointer]:
+            - /url: https://www.whatsapp.com/download
+            - text: Aplicaciones
+          - link "Centro de ayuda de WhatsApp" [ref=f5e29] [cursor=pointer]:
+            - /url: https://faq.whatsapp.com/
+            - generic [ref=f5e30]: Centro de ayuda
+          - link "Función de empresas en WhatsApp" [ref=f5e34] [cursor=pointer]:
+            - /url: https://whatsappbusiness.com/es-la/
+            - generic [ref=f5e35]: Para empresas
+        - generic [ref=f5e40]:
+          - link "Iniciar sesión en la aplicación de WhatsApp" [ref=f5e43] [cursor=pointer]:
+            - /url: https://web.whatsapp.com/
+            - generic [ref=f5e44]: Iniciar sesión
+          - link "Descargar la aplicación de WhatsApp" [ref=f5e50] [cursor=pointer]:
+            - /url: https://www.whatsapp.com/download
+            - generic [ref=f5e51]: Descargar
+    - generic [ref=f5e62]:
+      - heading [level=2] [ref=f5e64]:
+        - paragraph [ref=f5e65]: Chatea en WhatsApp con el +51 987 654 321
+      - paragraph [ref=f5e69]: "Hola! Me interesa este producto: *Hoodie Oversize Frost* Talla: S Color: Negro Precio: S/ 126.65 http://localhost:3000/producto/hoodie-oversize-frost"
+      - generic [ref=f5e70]:
+        - link "Abrir aplicación" [ref=f5e71] [cursor=pointer]:
+          - /url: https://web.whatsapp.com/send/?phone=51987654321&text=Hola%21+Me+interesa+este+producto%3A%0A%0A%2AHoodie+Oversize+Frost%2A%0ATalla%3A+S%0AColor%3A+Negro%0APrecio%3A+S%2F+126.65%0A%0Ahttp%3A%2F%2Flocalhost%3A3000%2Fproducto%2Fhoodie-oversize-frost&type=phone_number&app_absent=0
+        - link "Continuar en WhatsApp Web" [ref=f5e73] [cursor=pointer]:
+          - /url: https://web.whatsapp.com/send/?phone=51987654321&text=Hola%21+Me+interesa+este+producto%3A%0A%0A%2AHoodie+Oversize+Frost%2A%0ATalla%3A+S%0AColor%3A+Negro%0APrecio%3A+S%2F+126.65%0A%0Ahttp%3A%2F%2Flocalhost%3A3000%2Fproducto%2Fhoodie-oversize-frost&type=phone_number&app_absent=0
+        - generic [ref=f5e75]:
+          - heading "¿No tienes la aplicación?" [level=4] [ref=f5e81]
+          - heading [level=4] [ref=f5e82]:
+            - link "Descárgala ahora" [ref=f5e83] [cursor=pointer]:
+              - /url: https://www.whatsapp.com/dl?wame_funnel=1
+  - contentinfo [ref=f5e86]:
+    - generic [ref=f5e88]:
+      - generic [ref=f5e89]:
+        - link "Página de inicio de WhatsApp" [ref=f5e90] [cursor=pointer]:
+          - /url: https://www.whatsapp.com/
+          - img "Logotipo principal de WhatsApp" [ref=f5e92]
+        - link "Descargar" [ref=f5e94] [cursor=pointer]:
+          - /url: https://www.whatsapp.com/dl
+      - generic [ref=f5e100]:
+        - heading "Nuestro trabajo" [level=4] [ref=f5e103]
+        - list [ref=f5e104]:
+          - listitem [ref=f5e105]:
+            - link "Funciones" [ref=f5e106] [cursor=pointer]:
+              - /url: https://www.whatsapp.com/calling
+          - listitem [ref=f5e109]:
+            - link "Blogs de WhatsApp para nuestros avisos más recientes" [ref=f5e110] [cursor=pointer]:
+              - /url: https://blog.whatsapp.com/
+              - generic [ref=f5e111]: Blog
+          - listitem [ref=f5e113]:
+            - link "Funciones de seguridad de WhatsApp" [ref=f5e114] [cursor=pointer]:
+              - /url: https://www.whatsapp.com/security
+              - generic [ref=f5e115]: Seguridad
+          - listitem [ref=f5e117]:
+            - link "Para empresas" [ref=f5e118] [cursor=pointer]:
+              - /url: https://whatsappbusiness.com/
+      - generic [ref=f5e121]:
+        - heading "Quiénes somos" [level=4] [ref=f5e124]
+        - list [ref=f5e125]:
+          - listitem [ref=f5e126]:
+            - link "Declaración de la misión de WhatsApp" [ref=f5e127] [cursor=pointer]:
+              - /url: https://www.whatsapp.com/about
+              - generic [ref=f5e128]: Acerca de nosotros
+          - listitem [ref=f5e130]:
+            - link "Empleos" [ref=f5e131] [cursor=pointer]:
+              - /url: https://www.metacareers.com/jobs?divisions[0]=WhatsApp
+          - listitem [ref=f5e134]:
+            - link "Visita el centro de marcas de WhatsApp" [ref=f5e135] [cursor=pointer]:
+              - /url: https://www.facebook.com/brand/resources/whatsapp/whatsapp-brand
+              - generic [ref=f5e136]: Centro de marca
+          - listitem [ref=f5e138]:
+            - link "Funciones de privacidad de WhatsApp" [ref=f5e139] [cursor=pointer]:
+              - /url: https://www.whatsapp.com/privacy
+              - generic [ref=f5e140]: Privacidad
+      - generic [ref=f5e142]:
+        - heading "Usar WhatsApp" [level=4] [ref=f5e145]
+        - list [ref=f5e146]:
+          - listitem [ref=f5e147]:
+            - link "Celular" [ref=f5e148] [cursor=pointer]:
+              - /url: https://www.whatsapp.com/download/mobile
+          - listitem [ref=f5e151]:
+            - link "Computadora" [ref=f5e152] [cursor=pointer]:
+              - /url: https://www.whatsapp.com/download/desktop
+          - listitem [ref=f5e155]:
+            - link "Tableta" [ref=f5e156] [cursor=pointer]:
+              - /url: https://www.whatsapp.com/download/tablet
+          - listitem [ref=f5e159]:
+            - link "Iniciar sesión en WhatsApp Web" [ref=f5e160] [cursor=pointer]:
+              - /url: https://web.whatsapp.com/
+              - generic [ref=f5e161]: WhatsApp Web
+      - generic [ref=f5e163]:
+        - heading "¿Necesitas ayuda?" [level=4] [ref=f5e166]
+        - list [ref=f5e167]:
+          - listitem [ref=f5e168]:
+            - link "Obtener asistencia de WhatsApp" [ref=f5e169] [cursor=pointer]:
+              - /url: https://www.whatsapp.com/contact
+              - generic [ref=f5e170]: Contactarnos
+          - listitem [ref=f5e172]:
+            - link "Página de inicio del Centro de ayuda de WhatsApp" [ref=f5e173] [cursor=pointer]:
+              - /url: https://faq.whatsapp.com/
+              - generic [ref=f5e174]: Centro de ayuda
+          - listitem [ref=f5e176]:
+            - link "Descargar WhatsApp" [ref=f5e177] [cursor=pointer]:
+              - /url: https://www.whatsapp.com/download
+              - generic [ref=f5e178]: Aplicaciones
+          - listitem [ref=f5e180]:
+            - link "Avisos de seguridad más recientes de WhatsApp" [ref=f5e181] [cursor=pointer]:
+              - /url: https://www.whatsapp.com/security/advisories
+              - generic [ref=f5e182]: Avisos de seguridad
+    - generic [ref=f5e185]:
+      - generic [ref=f5e187]:
+        - paragraph [ref=f5e189]: 2026 © WhatsApp LLC
+        - link "Políticas legales de WhatsApp" [ref=f5e190] [cursor=pointer]:
+          - /url: https://www.whatsapp.com/legal/
+          - generic [ref=f5e191]: Condiciones y Política de privacidad
+        - link "Mapa del sitio" [ref=f5e194] [cursor=pointer]:
+          - /url: https://www.whatsapp.com/sitemap
+      - generic [ref=f5e196]:
+        - link "Twitter" [ref=f5e197] [cursor=pointer]:
+          - /url: https://x.com/whatsapp
+        - link "Youtube" [ref=f5e200] [cursor=pointer]:
+          - /url: https://www.youtube.com/channel/UCAuerig2N-RZWJT8x75V9yw
+        - link "Instagram" [ref=f5e203] [cursor=pointer]:
+          - /url: https://www.instagram.com/whatsapp/?hl=en
+        - link "Facebook" [ref=f5e206] [cursor=pointer]:
+          - /url: https://www.facebook.com/profile.php?id=100064758844406
+        - link "Threads" [ref=f5e209] [cursor=pointer]:
+          - /url: https://www.threads.com/@whatsapp
+      - button "español" [ref=f5e214] [cursor=pointer]

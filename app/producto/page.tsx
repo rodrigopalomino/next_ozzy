@@ -1,110 +1,80 @@
-import SiteHeader from "@/components/site-header";
-import SiteFooter from "@/components/site-footer";
+import { Suspense } from "react";
+
 import Breadcrumbs from "@/components/breadcrumbs";
-import CategorySidebar from "@/components/category-sidebar";
-import SortBar from "@/components/sort-bar";
-import ProductGrid from "@/components/product-grid";
-import PaginationBar from "@/components/pagination-bar";
-
-const CATEGORY_FILTERS = [
-  "Poleras",
-  "Casacas",
-  "Polos",
-  "Blusas",
-  "Pantalones",
-  "Shorts",
-];
-
-const COLLECTION_FILTERS = ["Primavera 2025", "Invierno", "Colección 2025"]; // ✅ estático por ahora
+import CatalogoGrid from "@/components/catalogo-grid";
+import { CatalogoFiltros } from "@/components/catalogo-filtros";
+import SiteFooter from "@/components/site-footer";
+import SiteHeader from "@/components/site-header";
 
 type Tipo = "categorias" | "colecciones";
 
-function normalizeTipo(tipo?: string): Tipo {
-  if (tipo === "colecciones") return "colecciones";
-  return "categorias";
-}
-
-function buildProducts({ mode, filter }: { mode: Tipo; filter: string }) {
-  return Array.from({ length: 12 }).map((_, i) => ({
-    id: `${mode}-${filter}-${i + 1}`,
-    name: "Camiseta Ray",
-    price: 50,
-    discountPercent: i % 4 === 0 ? 20 : undefined,
-    image: "/img/polo.png",
-    slug: "camiseta-ray",
-    category: mode === "categorias" ? filter : undefined,
-    collection: mode === "colecciones" ? filter : undefined,
-  }));
-}
+const normalizarTipo = (tipo?: string): Tipo =>
+  tipo === "colecciones" ? "colecciones" : "categorias";
 
 export default async function ProductPage({
   searchParams,
 }: {
-  searchParams: Promise<{ tipo?: string; filtro?: string }>;
+  searchParams: Promise<{
+    tipo?: string;
+    categoria?: string;
+    coleccion?: string;
+  }>;
 }) {
   const sp = await searchParams;
 
-  const mode = normalizeTipo(sp.tipo);
+  const modo = normalizarTipo(sp.tipo);
+  const categoriaSlug = sp.categoria;
+  const coleccionSlug = sp.coleccion;
+  const slugActual = modo === "categorias" ? categoriaSlug : coleccionSlug;
 
-  const sidebarTitle = mode === "categorias" ? "Categorías" : "Colecciones";
-  const options = mode === "categorias" ? CATEGORY_FILTERS : COLLECTION_FILTERS;
-
-  const selected = (sp.filtro && decodeURIComponent(sp.filtro)) || options[0];
-
-  const products = buildProducts({ mode, filter: selected });
+  const tituloSeccion = modo === "categorias" ? "Categorías" : "Colecciones";
 
   return (
-    <div className="min-h-dvh bg-bg text-ink">
+    <div className="min-h-dvh bg-white text-neutral-900">
       <SiteHeader />
 
       <main className="mx-auto max-w-6xl px-4 py-8">
         <Breadcrumbs
           items={[
             { label: "Inicio", href: "/" },
-            { label: "Producto", href: "/producto?tipo=categorias" },
-            { label: sidebarTitle, href: `/producto?tipo=${mode}` },
-            { label: selected },
+            { label: tituloSeccion, href: `/producto?tipo=${modo}` },
+            ...(slugActual ? [{ label: slugActual }] : []),
           ]}
         />
 
-        <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h1 className="text-2xl font-semibold text-black">
-              {sidebarTitle}
-            </h1>
-            <p className="mt-1 text-sm text-muted">
-              {mode === "categorias"
-                ? "Explora por tipo de prenda."
-                : "Explora por temporada/drop."}
-            </p>
-          </div>
-
-          <div className="inline-flex rounded-full border border-muted/25 bg-white px-3 py-1 text-xs font-semibold text-ink">
-            {selected}
-          </div>
+        <div className="mt-4">
+          <h1 className="text-2xl font-semibold">{tituloSeccion}</h1>
+          <p className="mt-1 text-sm text-neutral-600">
+            {modo === "categorias"
+              ? "Explora por tipo de prenda."
+              : "Explora por temporada o drop."}
+          </p>
         </div>
 
-        <div className="mt-6 grid gap-8 md:grid-cols-[240px_1fr]">
-          <aside>
-            <CategorySidebar
-              title={`Filtrar por ${mode === "categorias" ? "categoría" : "colección"}`}
-              current={selected}
-              items={options}
-              baseHref={`/producto?tipo=${mode}&filtro=`}
-            />
+        <div className="mt-6 grid gap-8 lg:grid-cols-[240px_1fr]">
+          {/* Los filtros sólo se muestran aquí en escritorio: en móvil van
+              en un drawer que abre la propia grilla. */}
+          <aside className="hidden lg:block">
+            {/* `useSearchParams` obliga a Suspense en una página servida. */}
+            <Suspense
+              fallback={
+                <div className="h-64 animate-pulse rounded-2xl bg-neutral-100" />
+              }
+            >
+              <CatalogoFiltros />
+            </Suspense>
           </aside>
 
-          <section>
-            <div className="mb-5 flex items-center justify-end">
-              <SortBar />
-            </div>
-
-            <ProductGrid products={products} />
-
-            <div className="mt-8 flex justify-center">
-              <PaginationBar current={1} totalPages={5} />
-            </div>
-          </section>
+          <Suspense
+            fallback={
+              <div className="h-96 animate-pulse rounded-2xl bg-neutral-100" />
+            }
+          >
+            <CatalogoGrid
+              categoriaSlug={categoriaSlug}
+              coleccionSlug={coleccionSlug}
+            />
+          </Suspense>
         </div>
       </main>
 

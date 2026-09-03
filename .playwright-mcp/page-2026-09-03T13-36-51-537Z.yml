@@ -1,0 +1,81 @@
+- generic [ref=f7e2]:
+  - banner [ref=f7e3]:
+    - link "Ir al inicio" [ref=f7e6] [cursor=pointer]:
+      - /url: /
+      - img "OZZY" [ref=f7e8]
+    - generic [ref=f7e10]:
+      - navigation [ref=f7e11]:
+        - link "Inicio" [ref=f7e12] [cursor=pointer]:
+          - /url: /
+        - link "Categorías" [ref=f7e13] [cursor=pointer]:
+          - /url: /producto?tipo=categorias
+        - link "Colecciones" [ref=f7e14] [cursor=pointer]:
+          - /url: /producto?tipo=colecciones
+        - link "Tiendas" [ref=f7e15] [cursor=pointer]:
+          - /url: /#tiendas
+      - generic [ref=f7e16]:
+        - search [ref=f7e17]:
+          - generic [ref=f7e18]: Buscar productos
+          - searchbox "Buscar productos" [ref=f7e22]
+        - link "Ver favoritos" [ref=f7e23] [cursor=pointer]:
+          - /url: /favoritos
+        - link "Ver carrito" [ref=f7e26] [cursor=pointer]:
+          - /url: /carrito
+  - main [ref=f7e31]:
+    - navigation [ref=f7e32]:
+      - list [ref=f7e33]:
+        - listitem [ref=f7e34]:
+          - link "Inicio" [ref=f7e35] [cursor=pointer]:
+            - /url: /
+          - generic [ref=f7e36]: ">"
+        - listitem [ref=f7e37]:
+          - generic [ref=f7e38]: Categorías
+    - generic [ref=f7e39]:
+      - heading "Categorías" [level=1] [ref=f7e40]
+      - paragraph [ref=f7e41]: Explora por tipo de prenda.
+    - generic [ref=f7e42]:
+      - complementary [ref=f7e43]:
+        - generic [ref=f7e44]:
+          - generic [ref=f7e45]: Filtrar por categoría
+          - link "Todos" [ref=f7e47] [cursor=pointer]:
+            - /url: /producto?tipo=categorias
+      - generic [ref=f7e57]:
+        - paragraph [ref=f7e58]: Buscando...
+        - generic [ref=f7e59]:
+          - generic [ref=f7e60]: Ordenar por
+          - combobox "Ordenar por" [ref=f7e61]:
+            - option "Relevancia" [selected]
+            - 'option "Precio: menor a mayor"'
+            - 'option "Precio: mayor a menor"'
+            - 'option "Nombre: A-Z"'
+            - 'option "Nombre: Z-A"'
+  - contentinfo [ref=f7e95]:
+    - generic [ref=f7e96]:
+      - generic [ref=f7e97]:
+        - heading "Ayuda" [level=3] [ref=f7e98]
+        - list [ref=f7e99]:
+          - listitem [ref=f7e100]:
+            - link "Delivery" [ref=f7e101] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f7e102]:
+            - link "Cambios" [ref=f7e103] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f7e104]:
+            - link "Cómo pagar con Yape" [ref=f7e105] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=f7e106]:
+        - heading "Links" [level=3] [ref=f7e107]
+        - list [ref=f7e108]:
+          - listitem [ref=f7e109]:
+            - link "Tiendas" [ref=f7e110] [cursor=pointer]:
+              - /url: /tiendas
+          - listitem [ref=f7e111]:
+            - link "Contáctanos" [ref=f7e112] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f7e113]:
+            - link "Catálogo" [ref=f7e114] [cursor=pointer]:
+              - /url: /producto?tipo=categorias
+      - generic [ref=f7e115]:
+        - heading "OZZY" [level=3] [ref=f7e116]
+        - paragraph [ref=f7e117]: Catálogo de ropa urbana para damas. Elige tu estilo y pide directo por WhatsApp.
+    - generic [ref=f7e118]: © 2026 OZZY — Todos los derechos reservados.

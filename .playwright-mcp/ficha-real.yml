@@ -1,0 +1,105 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - link "Ir al inicio" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "OZZY" [ref=e8]
+      - generic [ref=e10]:
+        - navigation [ref=e11]:
+          - link "Inicio" [ref=e12] [cursor=pointer]:
+            - /url: /
+          - link "Categorías" [ref=e13] [cursor=pointer]:
+            - /url: /producto?tipo=categorias
+          - link "Colecciones" [ref=e14] [cursor=pointer]:
+            - /url: /producto?tipo=colecciones
+          - link "Tiendas" [ref=e15] [cursor=pointer]:
+            - /url: /#tiendas
+        - generic [ref=e16]:
+          - search [ref=e17]:
+            - generic [ref=e18]: Buscar productos
+            - searchbox "Buscar productos" [ref=e22]
+          - link "Ver favoritos" [ref=e23] [cursor=pointer]:
+            - /url: /favoritos
+          - button "Ver carrito" [ref=e26]
+          - button "Entrar" [ref=e125]
+    - main [ref=e31]:
+      - navigation [ref=e32]:
+        - list [ref=e33]:
+          - listitem [ref=e34]:
+            - link "Inicio" [ref=e35] [cursor=pointer]:
+              - /url: /
+            - generic [ref=e36]: ">"
+          - listitem [ref=e37]:
+            - link "Polos" [ref=e38] [cursor=pointer]:
+              - /url: /producto?tipo=categorias&categoria=polos
+            - generic [ref=e39]: ">"
+          - listitem [ref=e40]:
+            - generic [ref=e41]: Polo Oversize Basic
+      - generic [ref=e42]:
+        - img "Polo Oversize Basic" [ref=e45]
+        - generic [ref=e46]:
+          - generic [ref=e47]: TOP
+          - heading "Polo Oversize Basic" [level=1] [ref=e49]
+          - generic [ref=e50]: S/ 59.00
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - generic [ref=e54]:
+                - generic [ref=e55]: "Color:"
+                - generic [ref=e56]:
+                  - button "Color Negro" [pressed] [ref=e57]: Negro
+                  - button "Color Blanco" [ref=e61]: Blanco
+                  - button "Color Beige" [ref=e63]: Beige
+              - generic [ref=e65]:
+                - generic [ref=e66]: "Talla:"
+                - generic [ref=e67]:
+                  - button "Talla S" [pressed] [ref=e68]: S
+                  - button "Talla M" [ref=e69]: M
+                  - button "Talla L" [ref=e70]: L
+                  - button "Talla XL" [ref=e71]: XL
+              - paragraph [ref=e72]: Desde S/ 59.00 en Negro
+            - generic [ref=e73]:
+              - generic [ref=e74]: "Cantidad:"
+              - generic [ref=e75]:
+                - button "Disminuir cantidad" [disabled] [ref=e76]: −
+                - 'status "Cantidad: 1" [ref=e77]': "1"
+                - button "Aumentar cantidad" [ref=e78]: +
+            - button "Guía de tallas" [ref=e80]
+            - generic [ref=e81]:
+              - button "Pedir por WhatsApp" [ref=e83]
+              - button "Agregar al carrito" [ref=e85]
+          - generic [ref=e89]:
+            - heading "Descripción:" [level=2] [ref=e90]
+            - paragraph [ref=e91]: Polo de algodón peruano 100% pima, corte oversize con caída recta. Tela de 180 g/m² que no se transparenta y mantiene la forma tras el lavado. Cuello reforzado con cinta interna. Prelavado, no encoge.
+    - contentinfo [ref=e92]:
+      - generic [ref=e93]:
+        - generic [ref=e94]:
+          - heading "Ayuda" [level=3] [ref=e95]
+          - list [ref=e96]:
+            - listitem [ref=e97]:
+              - link "Delivery" [ref=e98] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e99]:
+              - link "Cambios" [ref=e100] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e101]:
+              - link "Cómo pagar con Yape" [ref=e102] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e103]:
+          - heading "Links" [level=3] [ref=e104]
+          - list [ref=e105]:
+            - listitem [ref=e106]:
+              - link "Tiendas" [ref=e107] [cursor=pointer]:
+                - /url: /tiendas
+            - listitem [ref=e108]:
+              - link "Contáctanos" [ref=e109] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=e110]:
+              - link "Catálogo" [ref=e111] [cursor=pointer]:
+                - /url: /producto?tipo=categorias
+        - generic [ref=e112]:
+          - heading "OZZY" [level=3] [ref=e113]
+          - paragraph [ref=e114]: Catálogo de ropa urbana para damas. Elige tu estilo y pide directo por WhatsApp.
+      - generic [ref=e115]: © 2026 OZZY — Todos los derechos reservados.
+  - button "Open Tanstack query devtools" [ref=e179] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=e121] [cursor=pointer]
+  - alert [ref=e228]

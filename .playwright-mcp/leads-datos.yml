@@ -1,0 +1,15 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e80]:
+    - heading "Iniciar sesión" [level=1] [ref=f3e81]
+    - paragraph [ref=f3e82]: Ingresa tu usuario y contraseña.
+    - generic [ref=f3e83]:
+      - generic [ref=f3e84]:
+        - text: Username
+        - textbox [ref=f3e85]
+      - generic [ref=f3e86]:
+        - text: Contraseña
+        - textbox [ref=f3e87]
+      - button "Ingresar" [ref=f3e88]
+  - button "Open Tanstack query devtools" [ref=f3e139] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=f3e75] [cursor=pointer]
+  - alert [ref=f3e188]: Iniciar sesión

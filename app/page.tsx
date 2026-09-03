@@ -13,121 +13,14 @@ import SocialSection from "@/components/social-section";
 import StoresSection from "@/components/stores-section";
 import CategoriesSection from "@/components/categories-section";
 
-import { useProductos } from "@/hooks/producto/useProductos";
-import type { Producto } from "@/types/Producto";
-
-type UiItem = {
-  id: string;
-  name: string;
-  price: number;
-  discountPercent?: number;
-  image: string; // principal
-  hoverImage?: string; // ✅ hover opcional
-  badge?: string;
-};
-
-function pickImage(p: Producto) {
-  const imgs = p?.imagenes ?? [];
-  if (!Array.isArray(imgs) || imgs.length === 0) return "/img/polo.png";
-
-  const ordered = imgs
-    .slice()
-    .sort((a, b) => Number(a?.orden ?? 0) - Number(b?.orden ?? 0));
-
-  const principal = ordered.find((x) => x?.tipo === "principal");
-  return principal?.url ?? ordered[0]?.url ?? "/img/polo.png";
-}
-
-function calcDiscountPercent(p: Producto): number | undefined {
-  const precio = p?.precio;
-  if (!precio?.activo) return undefined;
-
-  const original = Number(precio?.precioOriginal ?? 0);
-  const oferta =
-    precio?.precioOferta == null ? null : Number(precio?.precioOferta);
-
-  if (!Number.isFinite(original) || original <= 0) return undefined;
-  if (oferta == null || !Number.isFinite(oferta) || oferta <= 0)
-    return undefined;
-  if (oferta >= original) return undefined;
-
-  return Math.round(((original - oferta) / original) * 100);
-}
-
-function getPrice(p: Producto) {
-  const precioBase = Number(p?.precioBase ?? 0);
-  const precio = p?.precio;
-
-  const oferta =
-    precio?.activo && precio?.precioOferta != null
-      ? Number(precio?.precioOferta)
-      : null;
-
-  if (oferta != null && Number.isFinite(oferta) && oferta > 0) return oferta;
-  if (Number.isFinite(precioBase) && precioBase > 0) return precioBase;
-
-  return 0;
-}
-
-function getBadge(p: Producto): string | undefined {
-  const d = calcDiscountPercent(p);
-  if (d) return `-${d}%`;
-
-  // Si tu backend incluye insignia real:
-  // producto.insignias: [{ insignia: { nombre: "TOP" } }]
-  const insignias = p?.insignias ?? [];
-  const nombre = insignias?.[0]?.insignia?.nombre;
-  if (typeof nombre === "string" && nombre.trim()) return nombre.trim();
-
-  return undefined;
-}
-
-function pickHoverImage(p: Producto) {
-  const imgs = p?.imagenes ?? [];
-  if (!Array.isArray(imgs) || imgs.length < 2) return undefined;
-
-  const ordered = imgs
-    .slice()
-    .sort((a, b) => Number(a?.orden ?? 0) - Number(b?.orden ?? 0));
-
-  // ✅ segunda imagen como hover
-  return ordered[1]?.url;
-}
-
-function toUiItem(p: Producto): UiItem {
-  return {
-    id: String(p?.id),
-    name: String(p?.nombre ?? ""),
-    price: getPrice(p),
-    discountPercent: calcDiscountPercent(p),
-    image: pickImage(p),
-    hoverImage: pickHoverImage(p), // ✅
-    badge: getBadge(p),
-  };
-}
-function hasOferta(p: Producto) {
-  const precio = p?.precio;
-  return Boolean(
-    precio?.activo &&
-    (precio?.precioOferta != null ||
-      Number(precio?.porcentajeDescuento ?? 0) > 0),
-  );
-}
+import { useDestacados, useMasVendidos, useNovedades } from "@/hooks/catalogo/useCatalogo";
 
 export default function HomePage() {
-  // ✅ usa TU hook genérico (getProductos)
-  const { data: resp } = useProductos({
-    page: 1,
-    limit: 80,
-    include: ["imagenes", "precio", "insignias"],
-  });
-
-  const productos: Producto[] = resp?.data ?? [];
-
-  // ✅ reemplazo directo de tu data de prueba
-  const featured = productos.slice(0, 10).map(toUiItem);
-  const offers = productos.filter(hasOferta).slice(0, 10).map(toUiItem);
-  const bestSellers = productos.slice(0, 12).map(toUiItem);
+  // Tres rutas dedicadas en vez de una sola llamada grande filtrada en el
+  // cliente: cada sección pide lo suyo, con su propia caché HTTP.
+  const { data: destacados } = useDestacados({ limit: 10 });
+  const { data: novedades } = useNovedades({ limit: 10 });
+  const { data: masVendidos } = useMasVendidos({ limit: 12 });
 
   return (
     <div className="min-h-dvh bg-white text-neutral-900">
@@ -200,23 +93,23 @@ export default function HomePage() {
         <ProductCarousel
           title="Destacado"
           subtitle="Lo más pedido esta semana"
-          items={featured}
+          items={destacados?.data ?? []}
           autoplayMs={0}
         />
 
         <div className="my-10 h-px w-full bg-gradient-to-r from-transparent via-neutral-200 to-transparent" />
 
         <ProductCarousel
-          title="Ofertas"
-          subtitle="Descuentos por tiempo limitado"
-          items={offers}
+          title="Novedades"
+          subtitle="Lo último que llegó"
+          items={novedades?.data ?? []}
           autoplayMs={0}
         />
 
         <div className="my-12 h-px w-full bg-gradient-to-r from-transparent via-pink-200 to-transparent" />
 
         <div id="mas-vendidos" />
-        <BestSellersGrid items={bestSellers} />
+        <BestSellersGrid productos={masVendidos?.data ?? []} />
 
         <div className="my-12 h-px w-full bg-gradient-to-r from-transparent via-neutral-200 to-transparent" />
 

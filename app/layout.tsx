@@ -1,3 +1,4 @@
+import CarritoDrawer from "@/components/carrito-drawer";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 import "./globals.css";
 import { Inter, Sora } from "next/font/google";
@@ -22,7 +23,11 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${sora.variable}`}>
       <body className="antialiased">
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          {children}
+          {/* Montado una vez: lo abren el header, la ficha y las tarjetas. */}
+          <CarritoDrawer />
+        </ReactQueryProvider>
       </body>
     </html>
   );

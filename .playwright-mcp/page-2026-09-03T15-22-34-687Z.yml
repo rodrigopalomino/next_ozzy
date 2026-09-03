@@ -1,0 +1,535 @@
+- generic:
+  - generic [aria-hidden]:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - list:
+              - listitem:
+                - link:
+                  - /url: /admin
+                  - generic:
+                    - generic: OZZY
+                    - generic: Panel de administración
+            - generic:
+              - generic:
+                - generic:
+                  - generic: Search
+                  - textbox:
+                    - /placeholder: Search the docs...
+          - generic:
+            - generic:
+              - list:
+                - generic:
+                  - listitem:
+                    - button: Panel
+                - generic:
+                  - listitem:
+                    - button [expanded]: Catálogo
+                    - generic:
+                      - list:
+                        - listitem:
+                          - link:
+                            - /url: /admin/productos
+                            - text: Productos
+                        - listitem:
+                          - link:
+                            - /url: /admin/productos/nuevo
+                            - text: Crear producto
+                - generic:
+                  - listitem:
+                    - button: Gestión
+                - generic:
+                  - listitem:
+                    - button: Ventas
+                - generic:
+                  - listitem:
+                    - button: Tienda
+                - generic:
+                  - listitem:
+                    - button: Sistema
+          - button
+    - main:
+      - generic:
+        - button:
+          - generic: Toggle Sidebar
+        - navigation:
+          - list:
+            - listitem:
+              - link:
+                - /url: "#"
+                - text: Building Your Application
+            - listitem [aria-hidden]
+            - listitem:
+              - link [disabled]: Data Fetching
+      - generic:
+        - generic:
+          - generic:
+            - heading [level=1]: Leads de WhatsApp
+            - paragraph: Cada clic en «Pedir por WhatsApp» queda registrado aquí. Últimos 30 días.
+          - generic:
+            - generic:
+              - generic:
+                - paragraph: Total histórico
+                - paragraph: "120"
+            - generic:
+              - generic:
+                - paragraph: Últimos 30 días
+                - paragraph: "57"
+            - generic:
+              - generic:
+                - paragraph: Tasa de cierre
+                - paragraph: 23%
+                - paragraph: Vendidos sobre el total
+            - generic:
+              - generic:
+                - paragraph: En el embudo
+                - paragraph: "57"
+          - generic:
+            - generic:
+              - generic: Embudo
+              - generic: En qué etapa está cada lead. Los porcentajes los calcula el servidor.
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic: Nuevos
+                    - generic: 15 · 26%
+                - generic:
+                  - generic:
+                    - generic: Contactados
+                    - generic: 14 · 25%
+                - generic:
+                  - generic:
+                    - generic: Vendidos
+                    - generic: 13 · 23%
+                - generic:
+                  - generic:
+                    - generic: Perdidos
+                    - generic: 15 · 26%
+          - generic:
+            - generic:
+              - generic:
+                - generic: Por origen
+                - generic: Desde dónde llegó el clic.
+              - generic:
+                - list:
+                  - listitem:
+                    - generic: INICIO
+                    - generic: "3"
+                  - listitem:
+                    - generic: CATALOGO
+                    - generic: "23"
+                  - listitem:
+                    - generic: DETALLE_PRODUCTO
+                    - generic: "23"
+                  - listitem:
+                    - generic: OTRO
+                    - generic: "8"
+            - generic:
+              - generic:
+                - generic: Conversión por producto
+                - generic: Cuántas visitas acabaron en un clic de WhatsApp.
+              - generic:
+                - list:
+                  - listitem:
+                    - generic: Hoodie Crop Femenino
+                    - generic:
+                      - text: 4 de 1113
+                      - generic: 0.4%
+                  - listitem:
+                    - generic: Casaca Trucker Corduroy
+                    - generic:
+                      - text: 10 de 1034
+                      - generic: 1%
+                  - listitem:
+                    - generic: Casaca Bomber Nylon
+                    - generic:
+                      - text: 12 de 982
+                      - generic: 1.2%
+                  - listitem:
+                    - generic: Casaca Denim Washed
+                    - generic:
+                      - text: 6 de 829
+                      - generic: 0.7%
+                  - listitem:
+                    - generic: Polo Pima Cuello V
+                    - generic:
+                      - text: 12 de 734
+                      - generic: 1.6%
+                  - listitem:
+                    - generic: Medias Pack x3
+                    - generic:
+                      - text: 3 de 686
+                      - generic: 0.4%
+                  - listitem:
+                    - generic: Pantalón Straight Drill
+                    - generic:
+                      - text: 9 de 594
+                      - generic: 1.5%
+                  - listitem:
+                    - generic: Jogger Felpa Tapered
+                    - generic:
+                      - text: 0 de 533
+                      - generic: 0%
+                  - listitem:
+                    - generic: Polo Manga Larga Rib
+                    - generic:
+                      - text: 9 de 442
+                      - generic: 2%
+                  - listitem:
+                    - generic: Polo Oversize Basic
+                    - generic:
+                      - text: 4 de 433
+                      - generic: 0.9%
+          - generic:
+            - generic:
+              - generic: Todos los leads
+              - generic: 120 en total
+            - generic:
+              - generic:
+                - generic:
+                  - table:
+                    - rowgroup:
+                      - row:
+                        - columnheader: Fecha
+                        - columnheader: Producto
+                        - columnheader: Variante
+                        - columnheader: Precio visto
+                        - columnheader: Origen
+                        - columnheader: Estado
+                    - rowgroup:
+                      - row:
+                        - cell: 02/09/26, 06:35 a. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/hoodie-oversize-frost
+                            - text: Hoodie Oversize Frost
+                        - cell: Negro · XL
+                        - cell: S/ 126.65
+                        - cell: DETALLE_PRODUCTO
+                        - cell:
+                          - generic:
+                            - button: Nuevo
+                            - button: Contactado
+                            - button [pressed]: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 02/09/26, 12:34 a. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/polo-manga-larga-rib
+                            - text: Polo Manga Larga Rib
+                        - cell: Gris Melange · M
+                        - cell: S/ 69.00
+                        - cell: DETALLE_PRODUCTO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 01/09/26, 11:36 p. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/polo-manga-larga-rib
+                            - text: Polo Manga Larga Rib
+                        - cell: Negro · L
+                        - cell: S/ 69.00
+                        - cell: DETALLE_PRODUCTO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 01/09/26, 08:36 a. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/gorra-trucker-bordada
+                            - text: Gorra Trucker Bordada
+                        - cell: Negro · M
+                        - cell: S/ 49.00
+                        - cell: DETALLE_PRODUCTO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 01/09/26, 03:36 a. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/hoodie-zip-full-tech
+                            - text: Hoodie Zip Full Tech
+                        - cell: Negro · M
+                        - cell: S/ 179.00
+                        - cell: DETALLE_PRODUCTO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 31/08/26, 11:35 p. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/casaca-trucker-corduroy
+                            - text: Casaca Trucker Corduroy
+                        - cell: Vino · S
+                        - cell: S/ 249.00
+                        - cell: CATALOGO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 31/08/26, 06:36 p. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/polo-pima-cuello-v
+                            - text: Polo Pima Cuello V
+                        - cell: Blanco · M
+                        - cell: S/ 55.00
+                        - cell: DETALLE_PRODUCTO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 31/08/26, 06:34 p. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/gorra-trucker-bordada
+                            - text: Gorra Trucker Bordada
+                        - cell: Negro · M
+                        - cell: S/ 49.00
+                        - cell: OTRO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 31/08/26, 04:36 p. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/casaca-trucker-corduroy
+                            - text: Casaca Trucker Corduroy
+                        - cell: Vino · XL
+                        - cell: S/ 249.00
+                        - cell: DETALLE_PRODUCTO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 31/08/26, 10:34 a. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/tote-bag-canvas
+                            - text: Tote Bag Canvas
+                        - cell: Beige · M
+                        - cell: S/ 39.00
+                        - cell: DETALLE_PRODUCTO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 29/08/26, 11:35 p. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/casaca-bomber-nylon
+                            - text: Casaca Bomber Nylon
+                        - cell: Verde Militar · XL
+                        - cell: S/ 164.25
+                        - cell: OTRO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 29/08/26, 08:35 p. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/polo-oversize-basic
+                            - text: Polo Oversize Basic
+                        - cell: Negro · XL
+                        - cell: S/ 59.00
+                        - cell: DETALLE_PRODUCTO
+                        - cell:
+                          - generic:
+                            - button: Nuevo
+                            - button [pressed]: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 29/08/26, 03:34 p. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/polo-estampado-back-print
+                            - text: Polo Estampado Back Print
+                        - cell: Blanco · M
+                        - cell: S/ 75.00
+                        - cell: CATALOGO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 29/08/26, 12:36 a. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/gorra-trucker-bordada
+                            - text: Gorra Trucker Bordada
+                        - cell: Blanco · M
+                        - cell: S/ 49.00
+                        - cell: CATALOGO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 28/08/26, 05:36 p. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/polo-oversize-basic
+                            - text: Polo Oversize Basic
+                        - cell: Negro · M
+                        - cell: S/ 59.00
+                        - cell: CATALOGO
+                        - cell:
+                          - generic:
+                            - button: Nuevo
+                            - button: Contactado
+                            - button [pressed]: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 27/08/26, 11:35 p. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/casaca-trucker-corduroy
+                            - text: Casaca Trucker Corduroy
+                        - cell: Beige · M
+                        - cell: S/ 249.00
+                        - cell: OTRO
+                        - cell:
+                          - generic:
+                            - button: Nuevo
+                            - button: Contactado
+                            - button [pressed]: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 26/08/26, 04:35 a. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/polo-estampado-back-print
+                            - text: Polo Estampado Back Print
+                        - cell: Negro · M
+                        - cell: S/ 75.00
+                        - cell: DETALLE_PRODUCTO
+                        - cell:
+                          - generic:
+                            - button: Nuevo
+                            - button: Contactado
+                            - button [pressed]: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 24/08/26, 06:34 p. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/tote-bag-canvas
+                            - text: Tote Bag Canvas
+                        - cell: Negro · M
+                        - cell: S/ 39.00
+                        - cell: OTRO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 24/08/26, 06:10 p. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/pantalon-straight-drill
+                            - text: Pantalón Straight Drill
+                        - cell: Beige · XL
+                        - cell: S/ 139.00
+                        - cell: DETALLE_PRODUCTO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+                      - row:
+                        - cell: 24/08/26, 04:34 p. m.
+                        - cell:
+                          - link:
+                            - /url: /producto/pantalon-straight-drill
+                            - text: Pantalón Straight Drill
+                        - cell: Beige · XL
+                        - cell: S/ 139.00
+                        - cell: DETALLE_PRODUCTO
+                        - cell:
+                          - generic:
+                            - button [pressed]: Nuevo
+                            - button: Contactado
+                            - button: Vendido
+                            - button: Perdido
+              - generic:
+                - navigation:
+                  - link:
+                    - /url: /admin/leads
+                    - text: "1"
+                  - link:
+                    - /url: /admin/leads?page=2
+                    - text: "2"
+                  - link:
+                    - /url: /admin/leads?page=3
+                    - text: "3"
+                  - link:
+                    - /url: /admin/leads?page=4
+                    - text: "4"
+                  - link:
+                    - /url: /admin/leads?page=5
+                    - text: "5"
+                  - link:
+                    - /url: /admin/leads?page=6
+                    - text: "6"
+                  - link:
+                    - /url: /admin/leads?page=2
+  - generic:
+    - button
+  - button "Open Next.js Dev Tools" [ref=f4e75] [cursor=pointer]
+  - alert
+  - dialog [ref=f4e665]:
+    - generic [ref=f4e666]:
+      - heading "Marcar como vendido" [level=2] [ref=f4e667]
+      - paragraph [ref=f4e668]: "Este lead tiene un cupón aplicado. Al marcarlo como vendido, el cupón se consume: su contador de usos sube y no se puede revertir."
+    - generic [ref=f4e669]:
+      - button "Cancelar" [active] [ref=f4e670]
+      - button "Sí, marcar como vendido" [ref=f4e671]
+    - button "Close" [ref=f4e672]

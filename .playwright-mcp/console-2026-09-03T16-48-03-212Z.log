@@ -1,0 +1,2 @@
+[     110ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3203/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[    1206ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_RESET @ http://localhost:3203/__nextjs_font/geist-latin.woff2:0

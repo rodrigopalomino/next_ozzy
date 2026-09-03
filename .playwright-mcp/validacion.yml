@@ -1,0 +1,96 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - banner [ref=f1e3]:
+      - generic [ref=f1e5]:
+        - link "Ir al inicio" [ref=f1e6] [cursor=pointer]:
+          - /url: /
+          - img "Ozzy" [ref=f1e108]
+        - generic [ref=f1e109]:
+          - link "Instagram" [ref=f1e110] [cursor=pointer]:
+            - /url: https://instagram.com/ozzy.pe
+            - img "Instagram" [ref=f1e112]
+          - link "TikTok" [ref=f1e113] [cursor=pointer]:
+            - /url: https://tiktok.com/@ozzy.pe
+            - img "TikTok" [ref=f1e115]
+      - generic [ref=f1e10]:
+        - navigation [ref=f1e11]:
+          - link "Inicio" [ref=f1e12] [cursor=pointer]:
+            - /url: /
+          - link "Categorías" [ref=f1e13] [cursor=pointer]:
+            - /url: /producto?tipo=categorias
+          - link "Colecciones" [ref=f1e14] [cursor=pointer]:
+            - /url: /producto?tipo=colecciones
+          - link "Tiendas" [ref=f1e15] [cursor=pointer]:
+            - /url: /#tiendas
+        - generic [ref=f1e16]:
+          - search [ref=f1e17]:
+            - generic [ref=f1e18]: Buscar productos
+            - searchbox "Buscar productos" [ref=f1e22]
+          - link "Ver favoritos" [ref=f1e23] [cursor=pointer]:
+            - /url: /favoritos
+          - button "Ver carrito" [ref=f1e26]
+          - button "Entrar" [ref=f1e116]
+    - main [ref=f1e31]:
+      - navigation [ref=f1e32]:
+        - list [ref=f1e33]:
+          - listitem [ref=f1e34]:
+            - link "Inicio" [ref=f1e35] [cursor=pointer]:
+              - /url: /
+            - generic [ref=f1e36]: ">"
+          - listitem [ref=f1e37]:
+            - generic [ref=f1e38]: Categorías
+      - generic [ref=f1e39]:
+        - heading "Categorías" [level=1] [ref=f1e40]
+        - paragraph [ref=f1e41]: Explora por tipo de prenda.
+      - generic [ref=f1e44]:
+        - generic [ref=f1e45]:
+          - button "Filtros" [ref=f1e46]
+          - paragraph [ref=f1e47]: Buscando...
+        - generic [ref=f1e48]:
+          - generic [ref=f1e49]: Ordenar por
+          - combobox "Ordenar por" [ref=f1e50]:
+            - option "Relevancia" [selected]
+            - 'option "Precio: menor a mayor"'
+            - 'option "Precio: mayor a menor"'
+            - 'option "Nombre: A-Z"'
+            - 'option "Nombre: Z-A"'
+    - contentinfo [ref=f1e84]:
+      - generic [ref=f1e85]:
+        - generic [ref=f1e86]:
+          - heading "Ayuda" [level=3] [ref=f1e87]
+          - list [ref=f1e88]:
+            - listitem [ref=f1e89]:
+              - link "Delivery" [ref=f1e90] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=f1e91]:
+              - link "Cambios" [ref=f1e92] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=f1e93]:
+              - link "Cómo pagar con Yape" [ref=f1e94] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=f1e95]:
+          - heading "Links" [level=3] [ref=f1e96]
+          - list [ref=f1e97]:
+            - listitem [ref=f1e98]:
+              - link "Tiendas" [ref=f1e99] [cursor=pointer]:
+                - /url: /tiendas
+            - listitem [ref=f1e100]:
+              - link "Contáctanos" [ref=f1e101] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=f1e102]:
+              - link "Catálogo" [ref=f1e103] [cursor=pointer]:
+                - /url: /producto?tipo=categorias
+        - generic [ref=f1e104]:
+          - heading "OZZY" [level=3] [ref=f1e105]
+          - paragraph [ref=f1e106]: Catálogo de ropa urbana para damas. Elige tu estilo y pide directo por WhatsApp.
+          - generic [ref=f1e120]:
+            - link "Pedir por WhatsApp" [ref=f1e121] [cursor=pointer]:
+              - /url: https://wa.me/51987654321
+            - link "Instagram" [ref=f1e122] [cursor=pointer]:
+              - /url: https://instagram.com/ozzy.pe
+            - link "TikTok" [ref=f1e123] [cursor=pointer]:
+              - /url: https://tiktok.com/@ozzy.pe
+      - generic [ref=f1e107]: © 2026 OZZY — Todos los derechos reservados.
+  - button "Open Tanstack query devtools" [ref=f1e174] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=f1e228] [cursor=pointer]
+  - alert [ref=f1e232]

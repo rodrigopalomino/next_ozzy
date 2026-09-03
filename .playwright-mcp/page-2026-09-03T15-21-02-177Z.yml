@@ -1,0 +1,48 @@
+- generic [active] [ref=f4e1]:
+  - generic [ref=f4e2]:
+    - generic [ref=f4e5]:
+      - generic [ref=f4e6]:
+        - list [ref=f4e7]:
+          - listitem [ref=f4e8]:
+            - link "OZZY Panel de administración" [ref=f4e9] [cursor=pointer]:
+              - /url: /admin
+              - generic [ref=f4e13]:
+                - generic [ref=f4e14]: OZZY
+                - generic [ref=f4e15]: Panel de administración
+        - generic [ref=f4e18]:
+          - generic [ref=f4e19]: Search
+          - textbox "Search" [ref=f4e20]:
+            - /placeholder: Search the docs...
+      - list [ref=f4e23]:
+        - listitem [ref=f4e25]:
+          - button "Panel" [ref=f4e26]
+        - listitem [ref=f4e29]:
+          - button "Catálogo" [expanded] [ref=f4e30]
+          - list [ref=f4e33]:
+            - listitem [ref=f4e34]:
+              - link "Productos" [ref=f4e35] [cursor=pointer]:
+                - /url: /admin/productos
+            - listitem [ref=f4e36]:
+              - link "Crear producto" [ref=f4e37] [cursor=pointer]:
+                - /url: /admin/productos/nuevo
+        - listitem [ref=f4e39]:
+          - button "Gestión" [ref=f4e40]
+        - listitem [ref=f4e43]:
+          - button "Ventas" [ref=f4e44]
+        - listitem [ref=f4e47]:
+          - button "Tienda" [ref=f4e48]
+        - listitem [ref=f4e51]:
+          - button "Sistema" [ref=f4e52]
+      - button "Toggle Sidebar" [ref=f4e54]
+    - main [ref=f4e55]:
+      - generic [ref=f4e56]:
+        - button "Toggle Sidebar" [ref=f4e57]
+        - navigation "breadcrumb" [ref=f4e59]:
+          - list [ref=f4e60]:
+            - listitem [ref=f4e61]:
+              - link "Building Your Application" [ref=f4e62] [cursor=pointer]:
+                - /url: "#"
+            - listitem [aria-hidden] [ref=f4e63]
+            - listitem [ref=f4e66]:
+              - link "Data Fetching" [disabled] [ref=f4e67]
+  - button "Open Next.js Dev Tools" [ref=f4e75] [cursor=pointer]

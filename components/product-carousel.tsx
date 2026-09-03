@@ -5,15 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProductCard from "./product-card";
 
-type Item = {
-  id: string;
-  name: string;
-  price: number;
-  discountPercent?: number;
-  image: string; // principal
-  hoverImage?: string; // ✅ hover opcional
-  badge?: string;
-};
+import type { ProductoTarjetaSalida } from "@/types/catalogo";
 
 export default function ProductCarousel({
   title,
@@ -23,7 +15,7 @@ export default function ProductCarousel({
 }: {
   title: string;
   subtitle?: string;
-  items: Item[];
+  items: ProductoTarjetaSalida[];
   autoplayMs?: number;
 }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
@@ -101,15 +93,8 @@ export default function ProductCarousel({
                   ].join(" ")}
                 >
                   <ProductCard
-                    name={p.name}
-                    price={p.price}
-                    discountPercent={p.discountPercent}
-                    image={p.image}
-                    hoverImage={p.hoverImage} // ✅ ya no fijo
-                    badge={p.badge}
-                    href={`/producto/${encodeURIComponent(
-                      p.name.toLowerCase().replace(/\s+/g, "-"),
-                    )}`}
+                    producto={p}
+                    sizes="(max-width: 768px) 72vw, (max-width: 1024px) 26vw, 22vw"
                   />
                 </div>
               );

@@ -1,0 +1,224 @@
+- generic:
+  - generic:
+    - banner [aria-hidden]:
+      - generic:
+        - generic:
+          - link:
+            - /url: /
+          - generic:
+            - link:
+              - /url: https://instagram.com/ozzy
+      - generic:
+        - generic:
+          - navigation:
+            - link:
+              - /url: /
+              - text: Inicio
+            - link:
+              - /url: /producto?tipo=categorias
+              - text: Categorías
+            - link:
+              - /url: /producto?tipo=colecciones
+              - text: Colecciones
+            - link:
+              - /url: /#tiendas
+              - text: Tiendas
+          - generic:
+            - search:
+              - generic: Buscar productos
+              - searchbox
+            - link:
+              - /url: /favoritos
+            - button:
+              - generic: "1"
+            - generic:
+              - button
+    - main:
+      - navigation [aria-hidden]:
+        - list:
+          - listitem:
+            - link:
+              - /url: /
+              - text: Inicio
+            - generic: ">"
+          - listitem:
+            - link:
+              - /url: /producto?tipo=categorias&categoria=polos
+              - text: Polos
+            - generic: ">"
+          - listitem:
+            - generic: Polo Oversize Basic
+      - generic [aria-hidden]:
+        - generic:
+          - generic: TOP
+          - heading [level=1]: Polo Oversize Basic
+          - generic: S/ 59.00
+          - generic:
+            - generic:
+              - generic:
+                - generic: "Color:"
+                - generic:
+                  - button [pressed]: Negro
+                  - button: Blanco
+                  - button: Beige
+              - generic:
+                - generic: "Talla:"
+                - generic:
+                  - button [pressed]: S
+                  - button: M
+                  - button: L
+                  - button: XL
+              - paragraph: Desde S/ 59.00 en Negro
+            - generic:
+              - generic: "Cantidad:"
+              - generic:
+                - button [disabled]: −
+                - status: "1"
+                - button: +
+            - generic:
+              - button: Guía de tallas
+            - generic:
+              - generic:
+                - button: Pedir por WhatsApp
+              - generic:
+                - button: Agregar al carrito
+          - generic:
+            - heading [level=2]: "Descripción:"
+            - paragraph: Polo de algodón peruano 100% pima, corte oversize con caída recta. Tela de 180 g/m² que no se transparenta y mantiene la forma tras el lavado. Cuello reforzado con cinta interna. Prelavado, no encoge.
+      - generic [aria-hidden]:
+        - generic:
+          - generic:
+            - generic:
+              - heading [level=2]: Similares para ti
+              - paragraph: Productos que combinan con este estilo.
+            - generic:
+              - button
+              - button
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: "-20%"
+                        - generic: OFERTA
+                      - button
+                      - link:
+                        - /url: /producto/polo-boxy-fit-heavyweight
+                        - generic:
+                          - generic: Polo Boxy Fit Heavyweight
+                          - generic:
+                            - generic:
+                              - generic: S/ 79.00
+                              - generic: S/ 63.20
+                - generic:
+                  - generic:
+                    - generic:
+                      - button
+                      - link:
+                        - /url: /producto/polo-pima-cuello-v
+                        - generic:
+                          - generic: Polo Pima Cuello V
+                          - generic: S/ 55.00
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic: NUEVO
+                        - generic: TOP
+                      - button
+                      - link:
+                        - /url: /producto/polo-estampado-back-print
+                        - generic:
+                          - generic: Polo Estampado Back Print
+                          - generic: S/ 75.00
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: NUEVO
+                      - button
+                      - link:
+                        - /url: /producto/polo-manga-larga-rib
+                        - generic:
+                          - generic: Polo Manga Larga Rib
+                          - generic: S/ 69.00
+            - generic:
+              - button
+              - button
+    - contentinfo [aria-hidden]:
+      - generic:
+        - generic:
+          - heading [level=3]: Ayuda
+          - list:
+            - listitem:
+              - link:
+                - /url: "#"
+                - text: Delivery
+            - listitem:
+              - link:
+                - /url: "#"
+                - text: Cambios
+            - listitem:
+              - link:
+                - /url: "#"
+                - text: Cómo pagar con Yape
+        - generic:
+          - heading [level=3]: Links
+          - list:
+            - listitem:
+              - link:
+                - /url: /tiendas
+                - text: Tiendas
+            - listitem:
+              - link:
+                - /url: "#"
+                - text: Contáctanos
+            - listitem:
+              - link:
+                - /url: /producto?tipo=categorias
+                - text: Catálogo
+        - generic:
+          - heading [level=3]: OZZY
+          - paragraph: Catálogo de ropa urbana para damas. Elige tu estilo y pide directo por WhatsApp.
+          - generic:
+            - link:
+              - /url: https://instagram.com/ozzy
+              - text: Instagram
+      - generic: © 2026 OZZY — Todos los derechos reservados.
+  - generic:
+    - button
+  - button "Open Next.js Dev Tools" [ref=f1e121] [cursor=pointer]
+  - alert
+  - dialog [ref=f1e127]:
+    - generic [ref=f1e128]:
+      - heading "Tu carrito 1" [level=2] [ref=f1e129]:
+        - text: Tu carrito
+        - generic [ref=f1e133]: "1"
+      - paragraph [ref=f1e134]: El pedido se cierra por WhatsApp con un asesor.
+    - list [ref=f1e136]:
+      - listitem [ref=f1e137]:
+        - link [ref=f1e138] [cursor=pointer]:
+          - /url: /producto/polo-oversize-basic
+          - img "Polo Oversize Basic en Negro" [ref=f1e139]
+        - generic [ref=f1e140]:
+          - generic [ref=f1e141]:
+            - link "Polo Oversize Basic" [ref=f1e142] [cursor=pointer]:
+              - /url: /producto/polo-oversize-basic
+            - button "Quitar Polo Oversize Basic" [active] [ref=f1e143]
+          - paragraph [ref=f1e147]: Negro · S
+          - generic [ref=f1e149]:
+            - generic [ref=f1e150]:
+              - button "Quitar uno" [disabled] [ref=f1e151]
+              - generic [ref=f1e153]: "1"
+              - button "Agregar uno" [ref=f1e154]
+            - generic [ref=f1e156]: S/ 59.00
+    - generic [ref=f1e157]:
+      - generic [ref=f1e158]:
+        - generic [ref=f1e159]:
+          - paragraph [ref=f1e160]: 1 producto
+          - paragraph [ref=f1e161]: S/ 59.00
+        - link "Ver detalle" [ref=f1e162] [cursor=pointer]:
+          - /url: /carrito
+      - button "Pedir por WhatsApp" [ref=f1e163]
+    - button "Close" [ref=f1e164]

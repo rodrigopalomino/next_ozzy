@@ -1,0 +1,474 @@
+- generic [active] [ref=f4e1]:
+  - generic [ref=f4e2]:
+    - generic [ref=f4e5]:
+      - generic [ref=f4e6]:
+        - list [ref=f4e7]:
+          - listitem [ref=f4e8]:
+            - link "OZZY Panel de administración" [ref=f4e9] [cursor=pointer]:
+              - /url: /admin
+              - generic [ref=f4e13]:
+                - generic [ref=f4e14]: OZZY
+                - generic [ref=f4e15]: Panel de administración
+        - generic [ref=f4e18]:
+          - generic [ref=f4e19]: Search
+          - textbox "Search" [ref=f4e20]:
+            - /placeholder: Search the docs...
+      - list [ref=f4e23]:
+        - listitem [ref=f4e25]:
+          - button "Panel" [ref=f4e26]
+        - listitem [ref=f4e29]:
+          - button "Catálogo" [expanded] [ref=f4e30]
+          - list [ref=f4e33]:
+            - listitem [ref=f4e34]:
+              - link "Productos" [ref=f4e35] [cursor=pointer]:
+                - /url: /admin/productos
+            - listitem [ref=f4e36]:
+              - link "Crear producto" [ref=f4e37] [cursor=pointer]:
+                - /url: /admin/productos/nuevo
+        - listitem [ref=f4e39]:
+          - button "Gestión" [ref=f4e40]
+        - listitem [ref=f4e43]:
+          - button "Ventas" [ref=f4e44]
+        - listitem [ref=f4e47]:
+          - button "Tienda" [ref=f4e48]
+        - listitem [ref=f4e51]:
+          - button "Sistema" [ref=f4e52]
+      - button "Toggle Sidebar" [ref=f4e54]
+    - main [ref=f4e55]:
+      - generic [ref=f4e56]:
+        - button "Toggle Sidebar" [ref=f4e57]
+        - navigation "breadcrumb" [ref=f4e59]:
+          - list [ref=f4e60]:
+            - listitem [ref=f4e61]:
+              - link "Building Your Application" [ref=f4e62] [cursor=pointer]:
+                - /url: "#"
+            - listitem [aria-hidden] [ref=f4e63]
+            - listitem [ref=f4e66]:
+              - link "Data Fetching" [disabled] [ref=f4e67]
+      - generic [ref=f4e79]:
+        - generic [ref=f4e80]:
+          - heading "Leads de WhatsApp" [level=1] [ref=f4e81]
+          - paragraph [ref=f4e82]: Cada clic en «Pedir por WhatsApp» queda registrado aquí. Últimos 30 días.
+        - generic [ref=f4e83]:
+          - generic [ref=f4e85]:
+            - paragraph [ref=f4e86]: Total histórico
+            - paragraph [ref=f4e87]: "120"
+          - generic [ref=f4e89]:
+            - paragraph [ref=f4e90]: Últimos 30 días
+            - paragraph [ref=f4e91]: "57"
+          - generic [ref=f4e93]:
+            - paragraph [ref=f4e94]: Tasa de cierre
+            - paragraph [ref=f4e95]: 23%
+            - paragraph [ref=f4e96]: Vendidos sobre el total
+          - generic [ref=f4e98]:
+            - paragraph [ref=f4e99]: En el embudo
+            - paragraph [ref=f4e100]: "57"
+        - generic [ref=f4e101]:
+          - generic [ref=f4e102]:
+            - generic [ref=f4e103]: Embudo
+            - generic [ref=f4e104]: En qué etapa está cada lead. Los porcentajes los calcula el servidor.
+          - generic [ref=f4e106]:
+            - generic [ref=f4e108]:
+              - generic [ref=f4e109]: Nuevos
+              - generic [ref=f4e110]: 15 · 26%
+            - generic [ref=f4e114]:
+              - generic [ref=f4e115]: Contactados
+              - generic [ref=f4e116]: 14 · 25%
+            - generic [ref=f4e120]:
+              - generic [ref=f4e121]: Vendidos
+              - generic [ref=f4e122]: 13 · 23%
+            - generic [ref=f4e126]:
+              - generic [ref=f4e127]: Perdidos
+              - generic [ref=f4e128]: 15 · 26%
+        - generic [ref=f4e131]:
+          - generic [ref=f4e132]:
+            - generic [ref=f4e133]:
+              - generic [ref=f4e134]: Por origen
+              - generic [ref=f4e135]: Desde dónde llegó el clic.
+            - list [ref=f4e137]:
+              - listitem [ref=f4e138]:
+                - generic [ref=f4e139]: INICIO
+                - generic [ref=f4e140]: "3"
+              - listitem [ref=f4e141]:
+                - generic [ref=f4e142]: CATALOGO
+                - generic [ref=f4e143]: "23"
+              - listitem [ref=f4e144]:
+                - generic [ref=f4e145]: DETALLE_PRODUCTO
+                - generic [ref=f4e146]: "23"
+              - listitem [ref=f4e147]:
+                - generic [ref=f4e148]: OTRO
+                - generic [ref=f4e149]: "8"
+          - generic [ref=f4e150]:
+            - generic [ref=f4e151]:
+              - generic [ref=f4e152]: Conversión por producto
+              - generic [ref=f4e153]: Cuántas visitas acabaron en un clic de WhatsApp.
+            - list [ref=f4e155]:
+              - listitem [ref=f4e156]:
+                - generic [ref=f4e157]: Hoodie Crop Femenino
+                - generic [ref=f4e158]:
+                  - text: 4 de 1113
+                  - generic [ref=f4e159]: 0.4%
+              - listitem [ref=f4e160]:
+                - generic [ref=f4e161]: Casaca Trucker Corduroy
+                - generic [ref=f4e162]:
+                  - text: 10 de 1034
+                  - generic [ref=f4e163]: 1%
+              - listitem [ref=f4e164]:
+                - generic [ref=f4e165]: Casaca Bomber Nylon
+                - generic [ref=f4e166]:
+                  - text: 12 de 982
+                  - generic [ref=f4e167]: 1.2%
+              - listitem [ref=f4e168]:
+                - generic [ref=f4e169]: Casaca Denim Washed
+                - generic [ref=f4e170]:
+                  - text: 6 de 829
+                  - generic [ref=f4e171]: 0.7%
+              - listitem [ref=f4e172]:
+                - generic [ref=f4e173]: Polo Pima Cuello V
+                - generic [ref=f4e174]:
+                  - text: 12 de 734
+                  - generic [ref=f4e175]: 1.6%
+              - listitem [ref=f4e176]:
+                - generic [ref=f4e177]: Medias Pack x3
+                - generic [ref=f4e178]:
+                  - text: 3 de 686
+                  - generic [ref=f4e179]: 0.4%
+              - listitem [ref=f4e180]:
+                - generic [ref=f4e181]: Pantalón Straight Drill
+                - generic [ref=f4e182]:
+                  - text: 9 de 594
+                  - generic [ref=f4e183]: 1.5%
+              - listitem [ref=f4e184]:
+                - generic [ref=f4e185]: Jogger Felpa Tapered
+                - generic [ref=f4e186]:
+                  - text: 0 de 533
+                  - generic [ref=f4e187]: 0%
+              - listitem [ref=f4e188]:
+                - generic [ref=f4e189]: Polo Manga Larga Rib
+                - generic [ref=f4e190]:
+                  - text: 9 de 442
+                  - generic [ref=f4e191]: 2%
+              - listitem [ref=f4e192]:
+                - generic [ref=f4e193]: Polo Oversize Basic
+                - generic [ref=f4e194]:
+                  - text: 4 de 433
+                  - generic [ref=f4e195]: 0.9%
+        - generic [ref=f4e196]:
+          - generic [ref=f4e197]:
+            - generic [ref=f4e198]: Todos los leads
+            - generic [ref=f4e199]: 120 en total
+          - generic [ref=f4e200]:
+            - table [ref=f4e203]:
+              - rowgroup [ref=f4e204]:
+                - row [ref=f4e205]:
+                  - columnheader "Fecha" [ref=f4e206]
+                  - columnheader "Producto" [ref=f4e207]
+                  - columnheader "Variante" [ref=f4e208]
+                  - columnheader "Precio visto" [ref=f4e209]
+                  - columnheader "Origen" [ref=f4e210]
+                  - columnheader "Estado" [ref=f4e211]
+              - rowgroup [ref=f4e212]:
+                - row [ref=f4e213]:
+                  - cell "02/09/26, 06:35 a. m." [ref=f4e214]
+                  - cell [ref=f4e215]:
+                    - link "Hoodie Oversize Frost" [ref=f4e216] [cursor=pointer]:
+                      - /url: /producto/hoodie-oversize-frost
+                  - cell "Negro · XL" [ref=f4e221]
+                  - cell "S/ 126.65" [ref=f4e222]
+                  - cell "DETALLE_PRODUCTO" [ref=f4e223]
+                  - cell [ref=f4e224]:
+                    - generic [ref=f4e225]:
+                      - button "Nuevo" [ref=f4e226]
+                      - button "Contactado" [ref=f4e227]
+                      - button "Vendido" [pressed] [ref=f4e228]
+                      - button "Perdido" [ref=f4e229]
+                - row [ref=f4e230]:
+                  - cell "02/09/26, 12:34 a. m." [ref=f4e231]
+                  - cell [ref=f4e232]:
+                    - link "Polo Manga Larga Rib" [ref=f4e233] [cursor=pointer]:
+                      - /url: /producto/polo-manga-larga-rib
+                  - cell "Gris Melange · M" [ref=f4e238]
+                  - cell "S/ 69.00" [ref=f4e239]
+                  - cell "DETALLE_PRODUCTO" [ref=f4e240]
+                  - cell [ref=f4e241]:
+                    - generic [ref=f4e242]:
+                      - button "Nuevo" [pressed] [ref=f4e243]
+                      - button "Contactado" [ref=f4e244]
+                      - button "Vendido" [ref=f4e245]
+                      - button "Perdido" [ref=f4e246]
+                - row [ref=f4e247]:
+                  - cell "01/09/26, 11:36 p. m." [ref=f4e248]
+                  - cell [ref=f4e249]:
+                    - link "Polo Manga Larga Rib" [ref=f4e250] [cursor=pointer]:
+                      - /url: /producto/polo-manga-larga-rib
+                  - cell "Negro · L" [ref=f4e255]
+                  - cell "S/ 69.00" [ref=f4e256]
+                  - cell "DETALLE_PRODUCTO" [ref=f4e257]
+                  - cell [ref=f4e258]:
+                    - generic [ref=f4e259]:
+                      - button "Nuevo" [pressed] [ref=f4e260]
+                      - button "Contactado" [ref=f4e261]
+                      - button "Vendido" [ref=f4e262]
+                      - button "Perdido" [ref=f4e263]
+                - row [ref=f4e264]:
+                  - cell "01/09/26, 08:36 a. m." [ref=f4e265]
+                  - cell [ref=f4e266]:
+                    - link "Gorra Trucker Bordada" [ref=f4e267] [cursor=pointer]:
+                      - /url: /producto/gorra-trucker-bordada
+                  - cell "Negro · M" [ref=f4e272]
+                  - cell "S/ 49.00" [ref=f4e273]
+                  - cell "DETALLE_PRODUCTO" [ref=f4e274]
+                  - cell [ref=f4e275]:
+                    - generic [ref=f4e276]:
+                      - button "Nuevo" [pressed] [ref=f4e277]
+                      - button "Contactado" [ref=f4e278]
+                      - button "Vendido" [ref=f4e279]
+                      - button "Perdido" [ref=f4e280]
+                - row [ref=f4e281]:
+                  - cell "01/09/26, 03:36 a. m." [ref=f4e282]
+                  - cell [ref=f4e283]:
+                    - link "Hoodie Zip Full Tech" [ref=f4e284] [cursor=pointer]:
+                      - /url: /producto/hoodie-zip-full-tech
+                  - cell "Negro · M" [ref=f4e289]
+                  - cell "S/ 179.00" [ref=f4e290]
+                  - cell "DETALLE_PRODUCTO" [ref=f4e291]
+                  - cell [ref=f4e292]:
+                    - generic [ref=f4e293]:
+                      - button "Nuevo" [pressed] [ref=f4e294]
+                      - button "Contactado" [ref=f4e295]
+                      - button "Vendido" [ref=f4e296]
+                      - button "Perdido" [ref=f4e297]
+                - row [ref=f4e298]:
+                  - cell "31/08/26, 11:35 p. m." [ref=f4e299]
+                  - cell [ref=f4e300]:
+                    - link "Casaca Trucker Corduroy" [ref=f4e301] [cursor=pointer]:
+                      - /url: /producto/casaca-trucker-corduroy
+                  - cell "Vino · S" [ref=f4e306]
+                  - cell "S/ 249.00" [ref=f4e307]
+                  - cell "CATALOGO" [ref=f4e308]
+                  - cell [ref=f4e309]:
+                    - generic [ref=f4e310]:
+                      - button "Nuevo" [pressed] [ref=f4e311]
+                      - button "Contactado" [ref=f4e312]
+                      - button "Vendido" [ref=f4e313]
+                      - button "Perdido" [ref=f4e314]
+                - row [ref=f4e315]:
+                  - cell "31/08/26, 06:36 p. m." [ref=f4e316]
+                  - cell [ref=f4e317]:
+                    - link "Polo Pima Cuello V" [ref=f4e318] [cursor=pointer]:
+                      - /url: /producto/polo-pima-cuello-v
+                  - cell "Blanco · M" [ref=f4e323]
+                  - cell "S/ 55.00" [ref=f4e324]
+                  - cell "DETALLE_PRODUCTO" [ref=f4e325]
+                  - cell [ref=f4e326]:
+                    - generic [ref=f4e327]:
+                      - button "Nuevo" [pressed] [ref=f4e328]
+                      - button "Contactado" [ref=f4e329]
+                      - button "Vendido" [ref=f4e330]
+                      - button "Perdido" [ref=f4e331]
+                - row [ref=f4e332]:
+                  - cell "31/08/26, 06:34 p. m." [ref=f4e333]
+                  - cell [ref=f4e334]:
+                    - link "Gorra Trucker Bordada" [ref=f4e335] [cursor=pointer]:
+                      - /url: /producto/gorra-trucker-bordada
+                  - cell "Negro · M" [ref=f4e340]
+                  - cell "S/ 49.00" [ref=f4e341]
+                  - cell "OTRO" [ref=f4e342]
+                  - cell [ref=f4e343]:
+                    - generic [ref=f4e344]:
+                      - button "Nuevo" [pressed] [ref=f4e345]
+                      - button "Contactado" [ref=f4e346]
+                      - button "Vendido" [ref=f4e347]
+                      - button "Perdido" [ref=f4e348]
+                - row [ref=f4e349]:
+                  - cell "31/08/26, 04:36 p. m." [ref=f4e350]
+                  - cell [ref=f4e351]:
+                    - link "Casaca Trucker Corduroy" [ref=f4e352] [cursor=pointer]:
+                      - /url: /producto/casaca-trucker-corduroy
+                  - cell "Vino · XL" [ref=f4e357]
+                  - cell "S/ 249.00" [ref=f4e358]
+                  - cell "DETALLE_PRODUCTO" [ref=f4e359]
+                  - cell [ref=f4e360]:
+                    - generic [ref=f4e361]:
+                      - button "Nuevo" [pressed] [ref=f4e362]
+                      - button "Contactado" [ref=f4e363]
+                      - button "Vendido" [ref=f4e364]
+                      - button "Perdido" [ref=f4e365]
+                - row [ref=f4e366]:
+                  - cell "31/08/26, 10:34 a. m." [ref=f4e367]
+                  - cell [ref=f4e368]:
+                    - link "Tote Bag Canvas" [ref=f4e369] [cursor=pointer]:
+                      - /url: /producto/tote-bag-canvas
+                  - cell "Beige · M" [ref=f4e374]
+                  - cell "S/ 39.00" [ref=f4e375]
+                  - cell "DETALLE_PRODUCTO" [ref=f4e376]
+                  - cell [ref=f4e377]:
+                    - generic [ref=f4e378]:
+                      - button "Nuevo" [pressed] [ref=f4e379]
+                      - button "Contactado" [ref=f4e380]
+                      - button "Vendido" [ref=f4e381]
+                      - button "Perdido" [ref=f4e382]
+                - row [ref=f4e383]:
+                  - cell "29/08/26, 11:35 p. m." [ref=f4e384]
+                  - cell [ref=f4e385]:
+                    - link "Casaca Bomber Nylon" [ref=f4e386] [cursor=pointer]:
+                      - /url: /producto/casaca-bomber-nylon
+                  - cell "Verde Militar · XL" [ref=f4e391]
+                  - cell "S/ 164.25" [ref=f4e392]
+                  - cell "OTRO" [ref=f4e393]
+                  - cell [ref=f4e394]:
+                    - generic [ref=f4e395]:
+                      - button "Nuevo" [pressed] [ref=f4e396]
+                      - button "Contactado" [ref=f4e397]
+                      - button "Vendido" [ref=f4e398]
+                      - button "Perdido" [ref=f4e399]
+                - row [ref=f4e400]:
+                  - cell "29/08/26, 08:35 p. m." [ref=f4e401]
+                  - cell [ref=f4e402]:
+                    - link "Polo Oversize Basic" [ref=f4e403] [cursor=pointer]:
+                      - /url: /producto/polo-oversize-basic
+                  - cell "Negro · XL" [ref=f4e408]
+                  - cell "S/ 59.00" [ref=f4e409]
+                  - cell "DETALLE_PRODUCTO" [ref=f4e410]
+                  - cell [ref=f4e411]:
+                    - generic [ref=f4e412]:
+                      - button "Nuevo" [ref=f4e413]
+                      - button "Contactado" [pressed] [ref=f4e414]
+                      - button "Vendido" [ref=f4e415]
+                      - button "Perdido" [ref=f4e416]
+                - row [ref=f4e417]:
+                  - cell "29/08/26, 03:34 p. m." [ref=f4e418]
+                  - cell [ref=f4e419]:
+                    - link "Polo Estampado Back Print" [ref=f4e420] [cursor=pointer]:
+                      - /url: /producto/polo-estampado-back-print
+                  - cell "Blanco · M" [ref=f4e425]
+                  - cell "S/ 75.00" [ref=f4e426]
+                  - cell "CATALOGO" [ref=f4e427]
+                  - cell [ref=f4e428]:
+                    - generic [ref=f4e429]:
+                      - button "Nuevo" [pressed] [ref=f4e430]
+                      - button "Contactado" [ref=f4e431]
+                      - button "Vendido" [ref=f4e432]
+                      - button "Perdido" [ref=f4e433]
+                - row [ref=f4e434]:
+                  - cell "29/08/26, 12:36 a. m." [ref=f4e435]
+                  - cell [ref=f4e436]:
+                    - link "Gorra Trucker Bordada" [ref=f4e437] [cursor=pointer]:
+                      - /url: /producto/gorra-trucker-bordada
+                  - cell "Blanco · M" [ref=f4e442]
+                  - cell "S/ 49.00" [ref=f4e443]
+                  - cell "CATALOGO" [ref=f4e444]
+                  - cell [ref=f4e445]:
+                    - generic [ref=f4e446]:
+                      - button "Nuevo" [pressed] [ref=f4e447]
+                      - button "Contactado" [ref=f4e448]
+                      - button "Vendido" [ref=f4e449]
+                      - button "Perdido" [ref=f4e450]
+                - row [ref=f4e451]:
+                  - cell "28/08/26, 05:36 p. m." [ref=f4e452]
+                  - cell [ref=f4e453]:
+                    - link "Polo Oversize Basic" [ref=f4e454] [cursor=pointer]:
+                      - /url: /producto/polo-oversize-basic
+                  - cell "Negro · M" [ref=f4e459]
+                  - cell "S/ 59.00" [ref=f4e460]
+                  - cell "CATALOGO" [ref=f4e461]
+                  - cell [ref=f4e462]:
+                    - generic [ref=f4e463]:
+                      - button "Nuevo" [ref=f4e464]
+                      - button "Contactado" [ref=f4e465]
+                      - button "Vendido" [pressed] [ref=f4e466]
+                      - button "Perdido" [ref=f4e467]
+                - row [ref=f4e468]:
+                  - cell "27/08/26, 11:35 p. m." [ref=f4e469]
+                  - cell [ref=f4e470]:
+                    - link "Casaca Trucker Corduroy" [ref=f4e471] [cursor=pointer]:
+                      - /url: /producto/casaca-trucker-corduroy
+                  - cell "Beige · M" [ref=f4e476]
+                  - cell "S/ 249.00" [ref=f4e477]
+                  - cell "OTRO" [ref=f4e478]
+                  - cell [ref=f4e479]:
+                    - generic [ref=f4e480]:
+                      - button "Nuevo" [ref=f4e481]
+                      - button "Contactado" [ref=f4e482]
+                      - button "Vendido" [pressed] [ref=f4e483]
+                      - button "Perdido" [ref=f4e484]
+                - row [ref=f4e485]:
+                  - cell "26/08/26, 04:35 a. m." [ref=f4e486]
+                  - cell [ref=f4e487]:
+                    - link "Polo Estampado Back Print" [ref=f4e488] [cursor=pointer]:
+                      - /url: /producto/polo-estampado-back-print
+                  - cell "Negro · M" [ref=f4e493]
+                  - cell "S/ 75.00" [ref=f4e494]
+                  - cell "DETALLE_PRODUCTO" [ref=f4e495]
+                  - cell [ref=f4e496]:
+                    - generic [ref=f4e497]:
+                      - button "Nuevo" [ref=f4e498]
+                      - button "Contactado" [ref=f4e499]
+                      - button "Vendido" [pressed] [ref=f4e500]
+                      - button "Perdido" [ref=f4e501]
+                - row [ref=f4e502]:
+                  - cell "24/08/26, 06:34 p. m." [ref=f4e503]
+                  - cell [ref=f4e504]:
+                    - link "Tote Bag Canvas" [ref=f4e505] [cursor=pointer]:
+                      - /url: /producto/tote-bag-canvas
+                  - cell "Negro · M" [ref=f4e510]
+                  - cell "S/ 39.00" [ref=f4e511]
+                  - cell "OTRO" [ref=f4e512]
+                  - cell [ref=f4e513]:
+                    - generic [ref=f4e514]:
+                      - button "Nuevo" [pressed] [ref=f4e515]
+                      - button "Contactado" [ref=f4e516]
+                      - button "Vendido" [ref=f4e517]
+                      - button "Perdido" [ref=f4e518]
+                - row [ref=f4e519]:
+                  - cell "24/08/26, 06:10 p. m." [ref=f4e520]
+                  - cell [ref=f4e521]:
+                    - link "Pantalón Straight Drill" [ref=f4e522] [cursor=pointer]:
+                      - /url: /producto/pantalon-straight-drill
+                  - cell "Beige · XL" [ref=f4e527]
+                  - cell "S/ 139.00" [ref=f4e528]
+                  - cell "DETALLE_PRODUCTO" [ref=f4e529]
+                  - cell [ref=f4e530]:
+                    - generic [ref=f4e531]:
+                      - button "Nuevo" [pressed] [ref=f4e532]
+                      - button "Contactado" [ref=f4e533]
+                      - button "Vendido" [ref=f4e534]
+                      - button "Perdido" [ref=f4e535]
+                - row [ref=f4e536]:
+                  - cell "24/08/26, 04:34 p. m." [ref=f4e537]
+                  - cell [ref=f4e538]:
+                    - link "Pantalón Straight Drill" [ref=f4e539] [cursor=pointer]:
+                      - /url: /producto/pantalon-straight-drill
+                  - cell "Beige · XL" [ref=f4e544]
+                  - cell "S/ 139.00" [ref=f4e545]
+                  - cell "DETALLE_PRODUCTO" [ref=f4e546]
+                  - cell [ref=f4e547]:
+                    - generic [ref=f4e548]:
+                      - button "Nuevo" [pressed] [ref=f4e549]
+                      - button "Contactado" [ref=f4e550]
+                      - button "Vendido" [ref=f4e551]
+                      - button "Perdido" [ref=f4e552]
+            - navigation "Paginación de resultados" [ref=f4e554]:
+              - link "Página 1" [ref=f4e555] [cursor=pointer]:
+                - /url: /admin/leads
+                - text: "1"
+              - link "Página 2" [ref=f4e556] [cursor=pointer]:
+                - /url: /admin/leads?page=2
+                - text: "2"
+              - link "Página 3" [ref=f4e557] [cursor=pointer]:
+                - /url: /admin/leads?page=3
+                - text: "3"
+              - link "Página 4" [ref=f4e558] [cursor=pointer]:
+                - /url: /admin/leads?page=4
+                - text: "4"
+              - link "Página 5" [ref=f4e559] [cursor=pointer]:
+                - /url: /admin/leads?page=5
+                - text: "5"
+              - link "Página 6" [ref=f4e560] [cursor=pointer]:
+                - /url: /admin/leads?page=6
+                - text: "6"
+              - link "Página siguiente" [ref=f4e561] [cursor=pointer]:
+                - /url: /admin/leads?page=2
+  - button "Open Tanstack query devtools" [ref=f4e614] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=f4e75] [cursor=pointer]
+  - alert [ref=f4e663]

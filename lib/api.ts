@@ -28,7 +28,14 @@ export const api = ky.create({
     ],
     beforeError: [
       (error) => {
-        console.log("🔥 Error global:", error);
+        // Un 401 es la respuesta normal de un visitante sin sesión (por
+        // ejemplo en `/cliente/me`), no un fallo: registrarlo llenaba la
+        // consola de errores que no lo son. El resto sí se registra, y sólo
+        // en desarrollo.
+        const status = error.response?.status;
+        if (status !== 401 && process.env.NODE_ENV === "development") {
+          console.warn(`[api] ${status ?? "sin respuesta"} ${error.request?.url ?? ""}`);
+        }
         return error;
       },
     ],

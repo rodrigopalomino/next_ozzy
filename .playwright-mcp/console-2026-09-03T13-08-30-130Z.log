@@ -1,0 +1,30 @@
+[     138ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3200/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[     202ms] [LOG] [HMR] connected @ http://localhost:3200/_next/static/chunks/node_modules_next_dist_f3530cac._.js:2297
+[     292ms] [ERROR] Access to fetch at 'http://localhost:4000/cliente/me' from origin 'http://localhost:3200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3200/producto?tipo=categorias:0
+[     293ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:4000/cliente/me:0
+[     293ms] [ERROR] Access to fetch at 'http://localhost:4000/configuracion' from origin 'http://localhost:3200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3200/producto?tipo=categorias:0
+[     293ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:4000/configuracion:0
+[     362ms] [ERROR] Access to fetch at 'http://localhost:4000/catalogo/facetas' from origin 'http://localhost:3200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3200/producto?tipo=categorias:0
+[     362ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:4000/catalogo/facetas:0
+[     598ms] [ERROR] Access to fetch at 'http://localhost:4000/cliente/me' from origin 'http://localhost:3200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3200/producto?tipo=categorias:0
+[     598ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:4000/cliente/me:0
+[     600ms] [ERROR] Access to fetch at 'http://localhost:4000/configuracion' from origin 'http://localhost:3200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3200/producto?tipo=categorias:0
+[     600ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:4000/configuracion:0
+[     666ms] [ERROR] Access to fetch at 'http://localhost:4000/catalogo/facetas' from origin 'http://localhost:3200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3200/producto?tipo=categorias:0
+[     666ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:4000/catalogo/facetas:0
+[     909ms] [ERROR] Access to fetch at 'http://localhost:4000/cliente/favoritos?dispositivo=cce7cf0f-1275-445c-9355-a8b05226cba2' from origin 'http://localhost:3200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3200/producto?tipo=categorias:0
+[     909ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:4000/cliente/favoritos?dispositivo=cce7cf0f-1275-445c-9355-a8b05226cba2:0
+[     917ms] [ERROR] Access to fetch at 'http://localhost:4000/carrito?dispositivo=cce7cf0f-1275-445c-9355-a8b05226cba2' from origin 'http://localhost:3200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3200/producto?tipo=categorias:0
+[     917ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:4000/carrito?dispositivo=cce7cf0f-1275-445c-9355-a8b05226cba2:0
+[    1201ms] [ERROR] Access to fetch at 'http://localhost:4000/cliente/me' from origin 'http://localhost:3200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3200/producto?tipo=categorias:0
+[    1201ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:4000/cliente/me:0
+[    1203ms] [ERROR] Access to fetch at 'http://localhost:4000/configuracion' from origin 'http://localhost:3200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3200/producto?tipo=categorias:0
+[    1203ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:4000/configuracion:0
+[    1269ms] [ERROR] Access to fetch at 'http://localhost:4000/catalogo/facetas' from origin 'http://localhost:3200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3200/producto?tipo=categorias:0
+[    1269ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:4000/catalogo/facetas:0
+[    1419ms] [ERROR] Access to fetch at 'http://localhost:4000/cliente/favoritos?dispositivo=cce7cf0f-1275-445c-9355-a8b05226cba2' from origin 'http://localhost:3200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3200/producto?tipo=categorias:0
+[    1420ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:4000/cliente/favoritos?dispositivo=cce7cf0f-1275-445c-9355-a8b05226cba2:0
+[    1423ms] [ERROR] Access to fetch at 'http://localhost:4000/carrito?dispositivo=cce7cf0f-1275-445c-9355-a8b05226cba2' from origin 'http://localhost:3200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3200/producto?tipo=categorias:0
+[    1423ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:4000/carrito?dispositivo=cce7cf0f-1275-445c-9355-a8b05226cba2:0
+[    1798ms] [ERROR] Access to fetch at 'http://localhost:4000/catalogo?limit=20' from origin 'http://localhost:3200' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3200/producto?tipo=categorias:0
+[    1798ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:4000/catalogo?limit=20:0

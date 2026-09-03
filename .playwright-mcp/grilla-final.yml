@@ -1,0 +1,348 @@
+- generic [active] [ref=f2e1]:
+  - generic [ref=f2e2]:
+    - banner [ref=f2e3]:
+      - generic [ref=f2e5]:
+        - link "Ir al inicio" [ref=f2e6] [cursor=pointer]:
+          - /url: /
+          - img "Ozzy" [ref=f2e128]
+        - link "Instagram" [ref=f2e130] [cursor=pointer]:
+          - /url: https://instagram.com/ozzy
+          - img "Instagram" [ref=f2e132]
+      - generic [ref=f2e10]:
+        - navigation [ref=f2e11]:
+          - link "Inicio" [ref=f2e12] [cursor=pointer]:
+            - /url: /
+          - link "Categorías" [ref=f2e13] [cursor=pointer]:
+            - /url: /producto?tipo=categorias
+          - link "Colecciones" [ref=f2e14] [cursor=pointer]:
+            - /url: /producto?tipo=colecciones
+          - link "Tiendas" [ref=f2e15] [cursor=pointer]:
+            - /url: /#tiendas
+        - generic [ref=f2e16]:
+          - search [ref=f2e17]:
+            - generic [ref=f2e18]: Buscar productos
+            - searchbox "Buscar productos" [ref=f2e22]
+          - link "Ver favoritos" [ref=f2e23] [cursor=pointer]:
+            - /url: /favoritos
+          - button "Ver carrito" [ref=f2e26]:
+            - generic [ref=f2e133]: "1"
+          - button "Entrar" [ref=f2e134]
+    - main [ref=f2e31]:
+      - navigation [ref=f2e32]:
+        - list [ref=f2e33]:
+          - listitem [ref=f2e34]:
+            - link "Inicio" [ref=f2e35] [cursor=pointer]:
+              - /url: /
+            - generic [ref=f2e36]: ">"
+          - listitem [ref=f2e37]:
+            - generic [ref=f2e38]: Categorías
+      - generic [ref=f2e39]:
+        - heading "Categorías" [level=1] [ref=f2e40]
+        - paragraph [ref=f2e41]: Explora por tipo de prenda.
+      - generic [ref=f2e42]:
+        - complementary [ref=f2e43]:
+          - generic [ref=f2e44]:
+            - generic [ref=f2e45]: Filtrar por categoría
+            - generic [ref=f2e46]:
+              - link "Todos" [ref=f2e47] [cursor=pointer]:
+                - /url: /producto?tipo=categorias
+              - link "Accesorios 3" [ref=f2e138] [cursor=pointer]:
+                - /url: /producto?tipo=categorias&categoria=accesorios
+                - generic [ref=f2e140]: Accesorios
+                - generic [ref=f2e141]: "3"
+              - link "Casacas 3" [ref=f2e142] [cursor=pointer]:
+                - /url: /producto?tipo=categorias&categoria=casacas
+                - generic [ref=f2e144]: Casacas
+                - generic [ref=f2e145]: "3"
+              - link "Hoodies 3" [ref=f2e146] [cursor=pointer]:
+                - /url: /producto?tipo=categorias&categoria=hoodies
+                - generic [ref=f2e148]: Hoodies
+                - generic [ref=f2e149]: "3"
+              - link "Pantalones 3" [ref=f2e150] [cursor=pointer]:
+                - /url: /producto?tipo=categorias&categoria=pantalones
+                - generic [ref=f2e152]: Pantalones
+                - generic [ref=f2e153]: "3"
+              - link "Polos 5" [ref=f2e154] [cursor=pointer]:
+                - /url: /producto?tipo=categorias&categoria=polos
+                - generic [ref=f2e156]: Polos
+                - generic [ref=f2e157]: "5"
+        - generic [ref=f2e56]:
+          - generic [ref=f2e57]:
+            - paragraph [ref=f2e58]: 17 productos
+            - generic [ref=f2e59]:
+              - generic [ref=f2e60]: Ordenar por
+              - combobox "Ordenar por" [ref=f2e61]:
+                - option "Relevancia" [selected]
+                - 'option "Precio: menor a mayor"'
+                - 'option "Precio: mayor a menor"'
+                - 'option "Nombre: A-Z"'
+                - 'option "Nombre: Z-A"'
+          - generic [ref=f2e158]:
+            - generic [ref=f2e160]:
+              - generic [ref=f2e161]: TOP
+              - button "Guardar en favoritos" [ref=f2e163]
+              - link "Polo Oversize Basic Polo Oversize Basic S/ 59.00 Negro Blanco Beige" [ref=f2e166] [cursor=pointer]:
+                - /url: /producto/polo-oversize-basic
+                - img "Polo Oversize Basic" [ref=f2e168]
+                - generic [ref=f2e169]:
+                  - generic [ref=f2e170]: Polo Oversize Basic
+                  - generic [ref=f2e171]: S/ 59.00
+                  - generic [ref=f2e173]:
+                    - generic "Negro" [ref=f2e174]
+                    - generic "Blanco" [ref=f2e175]
+                    - generic "Beige" [ref=f2e176]
+            - generic [ref=f2e178]:
+              - generic [ref=f2e179]:
+                - generic [ref=f2e180]: "-20%"
+                - generic [ref=f2e181]: OFERTA
+              - button "Guardar en favoritos" [ref=f2e182]
+              - link "Polo Boxy Fit Heavyweight Polo Boxy Fit Heavyweight S/ 79.00 S/ 63.20 Negro Verde Militar Vino" [ref=f2e185] [cursor=pointer]:
+                - /url: /producto/polo-boxy-fit-heavyweight
+                - img "Polo Boxy Fit Heavyweight" [ref=f2e187]
+                - generic [ref=f2e188]:
+                  - generic [ref=f2e189]: Polo Boxy Fit Heavyweight
+                  - generic [ref=f2e191]:
+                    - generic [ref=f2e192]: S/ 79.00
+                    - generic [ref=f2e193]: S/ 63.20
+                  - generic [ref=f2e194]:
+                    - generic "Negro" [ref=f2e195]
+                    - generic "Verde Militar" [ref=f2e196]
+                    - generic "Vino" [ref=f2e197]
+            - generic [ref=f2e199]:
+              - generic [ref=f2e200]:
+                - generic [ref=f2e201]: "-15%"
+                - generic [ref=f2e202]: OFERTA
+                - generic [ref=f2e203]: TOP
+              - button "Guardar en favoritos" [ref=f2e204]
+              - link "Hoodie Oversize Frost Hoodie Oversize Frost S/ 149.00 S/ 126.65 Negro Beige Gris Melange" [ref=f2e207] [cursor=pointer]:
+                - /url: /producto/hoodie-oversize-frost
+                - img "Hoodie Oversize Frost" [ref=f2e209]
+                - generic [ref=f2e210]:
+                  - generic [ref=f2e211]: Hoodie Oversize Frost
+                  - generic [ref=f2e213]:
+                    - generic [ref=f2e214]: S/ 149.00
+                    - generic [ref=f2e215]: S/ 126.65
+                  - generic [ref=f2e216]:
+                    - generic "Negro" [ref=f2e217]
+                    - generic "Beige" [ref=f2e218]
+                    - generic "Gris Melange" [ref=f2e219]
+            - generic [ref=f2e221]:
+              - generic [ref=f2e222]: TOP
+              - button "Guardar en favoritos" [ref=f2e224]
+              - link "Casaca Denim Washed Casaca Denim Washed S/ 189.00 Negro Azul Marino" [ref=f2e227] [cursor=pointer]:
+                - /url: /producto/casaca-denim-washed
+                - img "Casaca Denim Washed" [ref=f2e229]
+                - generic [ref=f2e230]:
+                  - generic [ref=f2e231]: Casaca Denim Washed
+                  - generic [ref=f2e232]: S/ 189.00
+                  - generic [ref=f2e234]:
+                    - generic "Negro" [ref=f2e235]
+                    - generic "Azul Marino" [ref=f2e236]
+            - generic [ref=f2e238]:
+              - generic [ref=f2e239]: TOP
+              - button "Guardar en favoritos" [ref=f2e241]
+              - link "Pantalón Cargo Wide Pantalón Cargo Wide S/ 159.00 Negro Beige Verde Militar" [ref=f2e244] [cursor=pointer]:
+                - /url: /producto/pantalon-cargo-wide
+                - img "Pantalón Cargo Wide" [ref=f2e246]
+                - generic [ref=f2e247]:
+                  - generic [ref=f2e248]: Pantalón Cargo Wide
+                  - generic [ref=f2e249]: S/ 159.00
+                  - generic [ref=f2e251]:
+                    - generic "Negro" [ref=f2e252]
+                    - generic "Beige" [ref=f2e253]
+                    - generic "Verde Militar" [ref=f2e254]
+            - generic [ref=f2e256]:
+              - generic [ref=f2e257]: NUEVO
+              - button "Guardar en favoritos" [ref=f2e259]
+              - link "Polo Manga Larga Rib Polo Manga Larga Rib S/ 69.00 Negro Blanco Gris Melange" [ref=f2e262] [cursor=pointer]:
+                - /url: /producto/polo-manga-larga-rib
+                - img "Polo Manga Larga Rib" [ref=f2e264]
+                - generic [ref=f2e265]:
+                  - generic [ref=f2e266]: Polo Manga Larga Rib
+                  - generic [ref=f2e267]: S/ 69.00
+                  - generic [ref=f2e269]:
+                    - generic "Negro" [ref=f2e270]
+                    - generic "Blanco" [ref=f2e271]
+                    - generic "Gris Melange" [ref=f2e272]
+            - generic [ref=f2e274]:
+              - generic [ref=f2e275]:
+                - generic [ref=f2e276]: NUEVO
+                - generic [ref=f2e277]: TOP
+              - button "Guardar en favoritos" [ref=f2e278]
+              - link "Polo Estampado Back Print Polo Estampado Back Print S/ 75.00 Negro Blanco" [ref=f2e281] [cursor=pointer]:
+                - /url: /producto/polo-estampado-back-print
+                - img "Polo Estampado Back Print" [ref=f2e283]
+                - generic [ref=f2e284]:
+                  - generic [ref=f2e285]: Polo Estampado Back Print
+                  - generic [ref=f2e286]: S/ 75.00
+                  - generic [ref=f2e288]:
+                    - generic "Negro" [ref=f2e289]
+                    - generic "Blanco" [ref=f2e290]
+            - generic [ref=f2e292]:
+              - button "Guardar en favoritos" [ref=f2e293]
+              - link "Polo Pima Cuello V Polo Pima Cuello V S/ 55.00 Blanco Azul Marino Gris Melange" [ref=f2e296] [cursor=pointer]:
+                - /url: /producto/polo-pima-cuello-v
+                - img "Polo Pima Cuello V" [ref=f2e298]
+                - generic [ref=f2e299]:
+                  - generic [ref=f2e300]: Polo Pima Cuello V
+                  - generic [ref=f2e301]: S/ 55.00
+                  - generic [ref=f2e303]:
+                    - generic "Blanco" [ref=f2e304]
+                    - generic "Azul Marino" [ref=f2e305]
+                    - generic "Gris Melange" [ref=f2e306]
+            - generic [ref=f2e308]:
+              - generic [ref=f2e309]: NUEVO
+              - button "Guardar en favoritos" [ref=f2e311]
+              - link "Hoodie Zip Full Tech Hoodie Zip Full Tech S/ 179.00 Negro Azul Marino" [ref=f2e314] [cursor=pointer]:
+                - /url: /producto/hoodie-zip-full-tech
+                - img "Hoodie Zip Full Tech" [ref=f2e316]
+                - generic [ref=f2e317]:
+                  - generic [ref=f2e318]: Hoodie Zip Full Tech
+                  - generic [ref=f2e319]: S/ 179.00
+                  - generic [ref=f2e321]:
+                    - generic "Negro" [ref=f2e322]
+                    - generic "Azul Marino" [ref=f2e323]
+            - generic [ref=f2e325]:
+              - button "Guardar en favoritos" [ref=f2e326]
+              - link "Hoodie Crop Femenino Hoodie Crop Femenino S/ 129.00 Blanco Beige Vino" [ref=f2e329] [cursor=pointer]:
+                - /url: /producto/hoodie-crop-femenino
+                - img "Hoodie Crop Femenino" [ref=f2e331]
+                - generic [ref=f2e332]:
+                  - generic [ref=f2e333]: Hoodie Crop Femenino
+                  - generic [ref=f2e334]: S/ 129.00
+                  - generic [ref=f2e336]:
+                    - generic "Blanco" [ref=f2e337]
+                    - generic "Beige" [ref=f2e338]
+                    - generic "Vino" [ref=f2e339]
+            - generic [ref=f2e341]:
+              - generic [ref=f2e342]:
+                - generic [ref=f2e343]: "-25%"
+                - generic [ref=f2e344]: OFERTA
+              - button "Guardar en favoritos" [ref=f2e345]
+              - link "Casaca Bomber Nylon Casaca Bomber Nylon S/ 219.00 S/ 164.25 Negro Verde Militar" [ref=f2e348] [cursor=pointer]:
+                - /url: /producto/casaca-bomber-nylon
+                - img "Casaca Bomber Nylon" [ref=f2e350]
+                - generic [ref=f2e351]:
+                  - generic [ref=f2e352]: Casaca Bomber Nylon
+                  - generic [ref=f2e354]:
+                    - generic [ref=f2e355]: S/ 219.00
+                    - generic [ref=f2e356]: S/ 164.25
+                  - generic [ref=f2e357]:
+                    - generic "Negro" [ref=f2e358]
+                    - generic "Verde Militar" [ref=f2e359]
+            - generic [ref=f2e361]:
+              - generic [ref=f2e362]: NUEVO
+              - button "Guardar en favoritos" [ref=f2e364]
+              - link "Casaca Trucker Corduroy Casaca Trucker Corduroy S/ 249.00 Beige Verde Militar Vino" [ref=f2e367] [cursor=pointer]:
+                - /url: /producto/casaca-trucker-corduroy
+                - img "Casaca Trucker Corduroy" [ref=f2e369]
+                - generic [ref=f2e370]:
+                  - generic [ref=f2e371]: Casaca Trucker Corduroy
+                  - generic [ref=f2e372]: S/ 249.00
+                  - generic [ref=f2e374]:
+                    - generic "Beige" [ref=f2e375]
+                    - generic "Verde Militar" [ref=f2e376]
+                    - generic "Vino" [ref=f2e377]
+            - generic [ref=f2e379]:
+              - generic [ref=f2e380]:
+                - generic [ref=f2e381]: "-30%"
+                - generic [ref=f2e382]: OFERTA
+              - button "Guardar en favoritos" [ref=f2e383]
+              - link "Jogger Felpa Tapered Jogger Felpa Tapered S/ 119.00 S/ 83.30 Negro Azul Marino Gris Melange" [ref=f2e386] [cursor=pointer]:
+                - /url: /producto/jogger-felpa-tapered
+                - img "Jogger Felpa Tapered" [ref=f2e388]
+                - generic [ref=f2e389]:
+                  - generic [ref=f2e390]: Jogger Felpa Tapered
+                  - generic [ref=f2e392]:
+                    - generic [ref=f2e393]: S/ 119.00
+                    - generic [ref=f2e394]: S/ 83.30
+                  - generic [ref=f2e395]:
+                    - generic "Negro" [ref=f2e396]
+                    - generic "Azul Marino" [ref=f2e397]
+                    - generic "Gris Melange" [ref=f2e398]
+            - generic [ref=f2e400]:
+              - button "Guardar en favoritos" [ref=f2e401]
+              - link "Pantalón Straight Drill Pantalón Straight Drill S/ 139.00 Negro Beige" [ref=f2e404] [cursor=pointer]:
+                - /url: /producto/pantalon-straight-drill
+                - img "Pantalón Straight Drill" [ref=f2e406]
+                - generic [ref=f2e407]:
+                  - generic [ref=f2e408]: Pantalón Straight Drill
+                  - generic [ref=f2e409]: S/ 139.00
+                  - generic [ref=f2e411]:
+                    - generic "Negro" [ref=f2e412]
+                    - generic "Beige" [ref=f2e413]
+            - generic [ref=f2e415]:
+              - generic [ref=f2e416]: NUEVO
+              - button "Guardar en favoritos" [ref=f2e418]
+              - link "Gorra Trucker Bordada Gorra Trucker Bordada S/ 49.00 Negro Blanco Rojo" [ref=f2e421] [cursor=pointer]:
+                - /url: /producto/gorra-trucker-bordada
+                - img "Gorra Trucker Bordada" [ref=f2e423]
+                - generic [ref=f2e424]:
+                  - generic [ref=f2e425]: Gorra Trucker Bordada
+                  - generic [ref=f2e426]: S/ 49.00
+                  - generic [ref=f2e428]:
+                    - generic "Negro" [ref=f2e429]
+                    - generic "Blanco" [ref=f2e430]
+                    - generic "Rojo" [ref=f2e431]
+            - generic [ref=f2e433]:
+              - button "Guardar en favoritos" [ref=f2e434]
+              - link "Tote Bag Canvas Tote Bag Canvas S/ 39.00 Negro Beige" [ref=f2e437] [cursor=pointer]:
+                - /url: /producto/tote-bag-canvas
+                - img "Tote Bag Canvas" [ref=f2e439]
+                - generic [ref=f2e440]:
+                  - generic [ref=f2e441]: Tote Bag Canvas
+                  - generic [ref=f2e442]: S/ 39.00
+                  - generic [ref=f2e444]:
+                    - generic "Negro" [ref=f2e445]
+                    - generic "Beige" [ref=f2e446]
+            - generic [ref=f2e448]:
+              - generic [ref=f2e449]:
+                - generic [ref=f2e450]: "-10%"
+                - generic [ref=f2e451]: OFERTA
+              - button "Guardar en favoritos" [ref=f2e452]
+              - link "Medias Pack x3 Medias Pack x3 S/ 35.00 S/ 31.50 Negro Blanco" [ref=f2e455] [cursor=pointer]:
+                - /url: /producto/medias-pack-x3
+                - img "Medias Pack x3" [ref=f2e457]
+                - generic [ref=f2e458]:
+                  - generic [ref=f2e459]: Medias Pack x3
+                  - generic [ref=f2e461]:
+                    - generic [ref=f2e462]: S/ 35.00
+                    - generic [ref=f2e463]: S/ 31.50
+                  - generic [ref=f2e464]:
+                    - generic "Negro" [ref=f2e465]
+                    - generic "Blanco" [ref=f2e466]
+    - contentinfo [ref=f2e95]:
+      - generic [ref=f2e96]:
+        - generic [ref=f2e97]:
+          - heading "Ayuda" [level=3] [ref=f2e98]
+          - list [ref=f2e99]:
+            - listitem [ref=f2e100]:
+              - link "Delivery" [ref=f2e101] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=f2e102]:
+              - link "Cambios" [ref=f2e103] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=f2e104]:
+              - link "Cómo pagar con Yape" [ref=f2e105] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=f2e106]:
+          - heading "Links" [level=3] [ref=f2e107]
+          - list [ref=f2e108]:
+            - listitem [ref=f2e109]:
+              - link "Tiendas" [ref=f2e110] [cursor=pointer]:
+                - /url: /tiendas
+            - listitem [ref=f2e111]:
+              - link "Contáctanos" [ref=f2e112] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=f2e113]:
+              - link "Catálogo" [ref=f2e114] [cursor=pointer]:
+                - /url: /producto?tipo=categorias
+        - generic [ref=f2e115]:
+          - heading "OZZY" [level=3] [ref=f2e116]
+          - paragraph [ref=f2e117]: Catálogo de ropa urbana para damas. Elige tu estilo y pide directo por WhatsApp.
+          - link "Instagram" [ref=f2e468] [cursor=pointer]:
+            - /url: https://instagram.com/ozzy
+      - generic [ref=f2e118]: © 2026 OZZY — Todos los derechos reservados.
+  - button "Open Tanstack query devtools" [ref=f2e519] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=f2e124] [cursor=pointer]
+  - alert [ref=f2e568]

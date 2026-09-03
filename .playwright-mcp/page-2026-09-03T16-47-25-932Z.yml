@@ -1,0 +1,241 @@
+- generic [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - banner [ref=f1e3]:
+      - generic [ref=f1e5]:
+        - link "Ir al inicio" [ref=f1e6] [cursor=pointer]:
+          - /url: /
+          - img "Ozzy" [ref=f1e108]
+        - generic [ref=f1e109]:
+          - link "Instagram" [ref=f1e110] [cursor=pointer]:
+            - /url: https://instagram.com/ozzy.pe
+            - img "Instagram" [ref=f1e112]
+          - link "TikTok" [ref=f1e113] [cursor=pointer]:
+            - /url: https://tiktok.com/@ozzy.pe
+            - img "TikTok" [ref=f1e115]
+      - generic [ref=f1e10]:
+        - navigation [ref=f1e11]:
+          - link "Inicio" [ref=f1e12] [cursor=pointer]:
+            - /url: /
+          - link "Categorías" [ref=f1e13] [cursor=pointer]:
+            - /url: /producto?tipo=categorias
+          - link "Colecciones" [ref=f1e14] [cursor=pointer]:
+            - /url: /producto?tipo=colecciones
+          - link "Tiendas" [ref=f1e15] [cursor=pointer]:
+            - /url: /#tiendas
+        - generic [ref=f1e16]:
+          - search [ref=f1e17]:
+            - generic [ref=f1e18]: Buscar productos
+            - searchbox "Buscar productos" [ref=f1e22]
+          - link "Ver favoritos" [ref=f1e23] [cursor=pointer]:
+            - /url: /favoritos
+          - button "Ver carrito" [ref=f1e26]
+          - button "Entrar" [ref=f1e116]
+    - main [ref=f1e31]:
+      - navigation [ref=f1e32]:
+        - list [ref=f1e33]:
+          - listitem [ref=f1e34]:
+            - link "Inicio" [ref=f1e35] [cursor=pointer]:
+              - /url: /
+            - generic [ref=f1e36]: ">"
+          - listitem [ref=f1e37]:
+            - link "Categorías" [ref=f1e670] [cursor=pointer]:
+              - /url: /producto?tipo=categorias
+            - generic [ref=f1e671]: ">"
+          - listitem [ref=f1e672]:
+            - generic [ref=f1e673]: hoodies
+      - generic [ref=f1e39]:
+        - heading "Categorías" [level=1] [ref=f1e40]
+        - paragraph [ref=f1e41]: Explora por tipo de prenda.
+      - generic [ref=f1e42]:
+        - complementary [ref=f1e542]:
+          - generic [ref=f1e544]:
+            - generic [ref=f1e545]:
+              - heading "Categorías" [level=3] [ref=f1e546]
+              - generic [ref=f1e547]:
+                - button "Accesorios 3" [ref=f1e548]:
+                  - generic [ref=f1e550]: Accesorios
+                  - generic [ref=f1e551]: "3"
+                - button "Casacas 3" [ref=f1e552]:
+                  - generic [ref=f1e554]: Casacas
+                  - generic [ref=f1e555]: "3"
+                - button "Hoodies 3" [active] [pressed] [ref=f1e556]:
+                  - generic [ref=f1e558]: Hoodies
+                  - generic [ref=f1e559]: "3"
+                - button "Pantalones 3" [ref=f1e560]:
+                  - generic [ref=f1e562]: Pantalones
+                  - generic [ref=f1e563]: "3"
+                - button "Polos 5" [ref=f1e564]:
+                  - generic [ref=f1e566]: Polos
+                  - generic [ref=f1e567]: "5"
+            - generic [ref=f1e568]:
+              - heading "Colecciones" [level=3] [ref=f1e569]
+              - generic [ref=f1e570]:
+                - button "Drop Enero 4" [ref=f1e571]:
+                  - generic [ref=f1e573]: Drop Enero
+                  - generic [ref=f1e574]: "4"
+                - button "Essential 4" [ref=f1e575]:
+                  - generic [ref=f1e577]: Essential
+                  - generic [ref=f1e578]: "4"
+                - button "Street 2026 5" [ref=f1e579]:
+                  - generic [ref=f1e581]: Street 2026
+                  - generic [ref=f1e582]: "5"
+            - generic [ref=f1e583]:
+              - heading "Etiquetas" [level=3] [ref=f1e584]
+              - generic [ref=f1e585]:
+                - button "NUEVO 5" [ref=f1e586]:
+                  - generic [ref=f1e588]: NUEVO
+                  - generic [ref=f1e589]: "5"
+                - button "OFERTA 5" [ref=f1e590]:
+                  - generic [ref=f1e592]: OFERTA
+                  - generic [ref=f1e593]: "5"
+                - button "TOP 5" [ref=f1e594]:
+                  - generic [ref=f1e596]: TOP
+                  - generic [ref=f1e597]: "5"
+            - generic [ref=f1e598]:
+              - heading "Colores" [level=3] [ref=f1e599]
+              - generic [ref=f1e600]:
+                - button "Azul Marino 4" [ref=f1e601]:
+                  - generic [ref=f1e604]: Azul Marino
+                  - generic [ref=f1e605]: "4"
+                - button "Beige 7" [ref=f1e606]:
+                  - generic [ref=f1e609]: Beige
+                  - generic [ref=f1e610]: "7"
+                - button "Blanco 7" [ref=f1e611]:
+                  - generic [ref=f1e614]: Blanco
+                  - generic [ref=f1e615]: "7"
+                - button "Gris Melange 4" [ref=f1e616]:
+                  - generic [ref=f1e619]: Gris Melange
+                  - generic [ref=f1e620]: "4"
+                - button "Negro 14" [ref=f1e621]:
+                  - generic [ref=f1e624]: Negro
+                  - generic [ref=f1e625]: "14"
+                - button "Rojo 1" [ref=f1e626]:
+                  - generic [ref=f1e629]: Rojo
+                  - generic [ref=f1e630]: "1"
+                - button "Verde Militar 4" [ref=f1e631]:
+                  - generic [ref=f1e634]: Verde Militar
+                  - generic [ref=f1e635]: "4"
+                - button "Vino 3" [ref=f1e636]:
+                  - generic [ref=f1e639]: Vino
+                  - generic [ref=f1e640]: "3"
+            - generic [ref=f1e641]:
+              - heading "Tallas" [level=3] [ref=f1e642]
+              - generic [ref=f1e643]:
+                - button "S 10" [ref=f1e644]:
+                  - generic [ref=f1e646]: S
+                  - generic [ref=f1e647]: "10"
+                - button "M 17" [ref=f1e648]:
+                  - generic [ref=f1e650]: M
+                  - generic [ref=f1e651]: "17"
+                - button "L 15" [ref=f1e652]:
+                  - generic [ref=f1e654]: L
+                  - generic [ref=f1e655]: "15"
+                - button "XL 13" [ref=f1e656]:
+                  - generic [ref=f1e658]: XL
+                  - generic [ref=f1e659]: "13"
+            - generic [ref=f1e660]:
+              - heading "Precio" [level=3] [ref=f1e661]
+              - generic [ref=f1e663]:
+                - paragraph [ref=f1e664]: Entre S/ 31.50 y S/ 249.00
+                - generic [ref=f1e665]:
+                  - spinbutton "Precio mínimo" [ref=f1e666]
+                  - generic [ref=f1e667]: –
+                  - spinbutton "Precio máximo" [ref=f1e668]
+                - button "Aplicar precio" [ref=f1e669]
+        - generic [ref=f1e43]:
+          - generic [ref=f1e44]:
+            - paragraph [ref=f1e47]: 3 productos
+            - generic [ref=f1e48]:
+              - generic [ref=f1e49]: Ordenar por
+              - combobox "Ordenar por" [ref=f1e50]:
+                - option "Relevancia" [selected]
+                - 'option "Precio: menor a mayor"'
+                - 'option "Precio: mayor a menor"'
+                - 'option "Nombre: A-Z"'
+                - 'option "Nombre: Z-A"'
+          - button "Hoodies Quitar filtro" [ref=f1e678]:
+            - text: Hoodies
+            - generic [ref=f1e682]: Quitar filtro
+          - generic [ref=f1e683]:
+            - generic [ref=f1e685]:
+              - generic [ref=f1e686]:
+                - generic [ref=f1e687]: "-15%"
+                - generic [ref=f1e688]: OFERTA
+                - generic [ref=f1e689]: TOP
+              - button "Guardar en favoritos" [ref=f1e690]
+              - link "Hoodie Oversize Frost Hoodie Oversize Frost S/ 149.00 S/ 126.65 Negro Beige Gris Melange" [ref=f1e693] [cursor=pointer]:
+                - /url: /producto/hoodie-oversize-frost
+                - img "Hoodie Oversize Frost" [ref=f1e695]
+                - generic [ref=f1e696]:
+                  - generic [ref=f1e697]: Hoodie Oversize Frost
+                  - generic [ref=f1e699]:
+                    - generic [ref=f1e700]: S/ 149.00
+                    - generic [ref=f1e701]: S/ 126.65
+                  - generic [ref=f1e702]:
+                    - generic "Negro" [ref=f1e703]
+                    - generic "Beige" [ref=f1e704]
+                    - generic "Gris Melange" [ref=f1e705]
+            - generic [ref=f1e707]:
+              - generic [ref=f1e708]: NUEVO
+              - button "Guardar en favoritos" [ref=f1e710]
+              - link "Hoodie Zip Full Tech Hoodie Zip Full Tech S/ 179.00 Negro Azul Marino" [ref=f1e713] [cursor=pointer]:
+                - /url: /producto/hoodie-zip-full-tech
+                - img "Hoodie Zip Full Tech" [ref=f1e715]
+                - generic [ref=f1e716]:
+                  - generic [ref=f1e717]: Hoodie Zip Full Tech
+                  - generic [ref=f1e718]: S/ 179.00
+                  - generic [ref=f1e720]:
+                    - generic "Negro" [ref=f1e721]
+                    - generic "Azul Marino" [ref=f1e722]
+            - generic [ref=f1e724]:
+              - button "Guardar en favoritos" [ref=f1e725]
+              - link "Hoodie Crop Femenino Hoodie Crop Femenino S/ 129.00 Blanco Beige Vino" [ref=f1e728] [cursor=pointer]:
+                - /url: /producto/hoodie-crop-femenino
+                - img "Hoodie Crop Femenino" [ref=f1e730]
+                - generic [ref=f1e731]:
+                  - generic [ref=f1e732]: Hoodie Crop Femenino
+                  - generic [ref=f1e733]: S/ 129.00
+                  - generic [ref=f1e735]:
+                    - generic "Blanco" [ref=f1e736]
+                    - generic "Beige" [ref=f1e737]
+                    - generic "Vino" [ref=f1e738]
+    - contentinfo [ref=f1e84]:
+      - generic [ref=f1e85]:
+        - generic [ref=f1e86]:
+          - heading "Ayuda" [level=3] [ref=f1e87]
+          - list [ref=f1e88]:
+            - listitem [ref=f1e89]:
+              - link "Delivery" [ref=f1e90] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=f1e91]:
+              - link "Cambios" [ref=f1e92] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=f1e93]:
+              - link "Cómo pagar con Yape" [ref=f1e94] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=f1e95]:
+          - heading "Links" [level=3] [ref=f1e96]
+          - list [ref=f1e97]:
+            - listitem [ref=f1e98]:
+              - link "Tiendas" [ref=f1e99] [cursor=pointer]:
+                - /url: /tiendas
+            - listitem [ref=f1e100]:
+              - link "Contáctanos" [ref=f1e101] [cursor=pointer]:
+                - /url: "#"
+            - listitem [ref=f1e102]:
+              - link "Catálogo" [ref=f1e103] [cursor=pointer]:
+                - /url: /producto?tipo=categorias
+        - generic [ref=f1e104]:
+          - heading "OZZY" [level=3] [ref=f1e105]
+          - paragraph [ref=f1e106]: Catálogo de ropa urbana para damas. Elige tu estilo y pide directo por WhatsApp.
+          - generic [ref=f1e120]:
+            - link "Pedir por WhatsApp" [ref=f1e121] [cursor=pointer]:
+              - /url: https://wa.me/51987654321
+            - link "Instagram" [ref=f1e122] [cursor=pointer]:
+              - /url: https://instagram.com/ozzy.pe
+            - link "TikTok" [ref=f1e123] [cursor=pointer]:
+              - /url: https://tiktok.com/@ozzy.pe
+      - generic [ref=f1e107]: © 2026 OZZY — Todos los derechos reservados.
+  - button "Open Tanstack query devtools" [ref=f1e174] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=f1e228] [cursor=pointer]
+  - alert [ref=f1e232]
