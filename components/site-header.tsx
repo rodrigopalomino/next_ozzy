@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -54,16 +54,14 @@ function Contador({ valor }: { valor: number }) {
   );
 }
 
-export default function SiteHeader() {
+/**
+ * Formulario de búsqueda. Vive aparte porque `useSearchParams` obliga a
+ * Suspense: si estuviera en `SiteHeader`, cada página que use el header
+ * tendría que envolverlo, y basta olvidarlo en una para romper el build.
+ */
+function BuscadorForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-
-  const abrirCarrito = useCarritoDrawer((s) => s.abrir);
-  const { data: configuracion } = useConfiguracion();
-  const { data: carrito } = useCarrito();
-  const { data: favoritos } = useFavoritos();
-
-  const config = configuracion?.data;
 
   const [termino, setTermino] = useState(searchParams.get("q") ?? "");
 
@@ -74,6 +72,36 @@ export default function SiteHeader() {
     // filtros del panel.
     router.push(q ? `/producto?q=${encodeURIComponent(q)}` : "/producto");
   };
+
+  return (
+    <form
+      onSubmit={buscar}
+      role="search"
+      className="flex w-full max-w-md items-center gap-2 rounded-full bg-white px-4 py-2"
+    >
+      <label htmlFor="buscar" className="sr-only">
+        Buscar productos
+      </label>
+      <Search className="h-4 w-4 shrink-0 text-muted" />
+      <input
+        id="buscar"
+        type="search"
+        value={termino}
+        onChange={(e) => setTermino(e.target.value)}
+        className="w-full bg-transparent text-sm text-ink outline-none placeholder:text-muted/70"
+        placeholder="Buscar..."
+      />
+    </form>
+  );
+}
+
+export default function SiteHeader() {
+  const abrirCarrito = useCarritoDrawer((s) => s.abrir);
+  const { data: configuracion } = useConfiguracion();
+  const { data: carrito } = useCarrito();
+  const { data: favoritos } = useFavoritos();
+
+  const config = configuracion?.data;
 
   return (
     <header className="border-b border-neutral-200 bg-bg">
@@ -138,24 +166,13 @@ export default function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-2 sm:ml-auto">
-            <form
-              onSubmit={buscar}
-              role="search"
-              className="flex w-full max-w-md items-center gap-2 rounded-full bg-white px-4 py-2"
+            <Suspense
+              fallback={
+                <div className="h-10 w-full max-w-md rounded-full bg-white/60" />
+              }
             >
-              <label htmlFor="buscar" className="sr-only">
-                Buscar productos
-              </label>
-              <Search className="h-4 w-4 shrink-0 text-muted" />
-              <input
-                id="buscar"
-                type="search"
-                value={termino}
-                onChange={(e) => setTermino(e.target.value)}
-                className="w-full bg-transparent text-sm text-ink outline-none placeholder:text-muted/70"
-                placeholder="Buscar..."
-              />
-            </form>
+              <BuscadorForm />
+            </Suspense>
 
             <Link
               href="/favoritos"

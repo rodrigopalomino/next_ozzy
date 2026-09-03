@@ -8,10 +8,22 @@ import type { SitemapSalida } from "@/types/tienda";
  * publicado o activo, así que no hay que filtrar aquí.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const respuesta = await obtenerDelCatalogo<SitemapSalida>(
-    "catalogo/sitemap",
-    { revalidate: 3600 },
-  );
+  // El sitemap no puede tumbar el build: al compilar (CI, imagen de deploy) el
+  // back no está levantado y `fetch` lanza, no devuelve un status. Sin datos se
+  // emite un sitemap vacío y la siguiente revalidación lo repuebla.
+  //
+  // Esto NO se hace en `obtenerDelCatalogo`: en `/producto/[slug]` tragarse un
+  // fallo de red daría un 404 falso y desindexaría productos que sí existen.
+  let respuesta: Awaited<ReturnType<typeof obtenerDelCatalogo<SitemapSalida>>>;
+
+  try {
+    respuesta = await obtenerDelCatalogo<SitemapSalida>("catalogo/sitemap", {
+      revalidate: 3600,
+    });
+  } catch (error) {
+    console.warn("[sitemap] catálogo no disponible, se emite vacío:", error);
+    return [];
+  }
 
   if (!respuesta) return [];
 

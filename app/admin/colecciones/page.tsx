@@ -598,7 +598,7 @@ function ColeccionDialogContent(props: {
   const coleccionId = props.value?.id ?? 0;
 
   // ✅ hooks imagen (USAR los tuyos)
-  const presign = useColeccionImagenPresign(coleccionId);
+  const presign = useColeccionImagenPresign();
   const setPortada = useSetColeccionImagenPortada(coleccionId);
   const removePortada = useRemoveColeccionImagenPortada(coleccionId);
 
@@ -664,7 +664,11 @@ function ColeccionDialogContent(props: {
     setProgress(5);
 
     try {
-      const pres = await presign.mutateAsync({ filename: file.name });
+      const pres = await presign.mutateAsync({
+        coleccionId,
+        filename: file.name,
+        contentType: file.type || "application/octet-stream",
+      });
 
       await uploadWithProgress(pres.uploadUrl, file, (p) => setProgress(p));
 
